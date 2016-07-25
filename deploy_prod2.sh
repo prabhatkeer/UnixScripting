@@ -1,6 +1,6 @@
 #!/bin/bash
 # 21-07-2016 Prabhat Keer < prabhat@ecconnect.com.au >
-# Script for Jeenee Gateway deploy
+# Script for Prabhat's deploy script checks
 
 function log {
         echo "[`date`] $1"
