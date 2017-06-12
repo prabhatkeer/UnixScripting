@@ -1,0 +1,292 @@
+#!/usr/bin/perl -I /scripts_apps/
+
+use strict;
+use warnings;
+use English qw( -no_match_vars );
+use DBI;
+use POSIX qw( strftime );
+use File::Basename;
+use File::Temp;
+use IO::Dir;
+use Data::Dumper;
+use Config::Tiny;
+use Getopt::Long;
+
+#==================== G L O B A L S  =========================
+
+my $SCRIPT = "fix_logistics_sims.pl";
+my  $LOCAL_HOST = `uname -n`;
+my  %PARAMS = ();
+my $config_ini;
+my $dbconfig_ini;
+my $sp_config_ini;
+
+#==================== S T A R T  =========================
+
+parse_entry();
+
+#==================== F U N C T I O N S ================
+
+## Main parsing function
+sub parse_entry{
+    if ( $#ARGV == -1 ) { print_usage(); } #if
+
+    GetOptions( 'c|config=s'            => \$PARAMS{'configfile'},
+                'dbs|dbsection=s'       => \$PARAMS{'dbsection'},
+                'cs|csection=s'         => \$PARAMS{'csection'},
+                'sp|spsection=s'         => \$PARAMS{'spsection'},
+                'jp|justprint'          => \$PARAMS{'justprintFLAG'},
+                'n|notify'              => \$PARAMS{'notify'},
+                'help|?'                => sub{ print_usage() },
+                'v|version'             => sub{ print_version() },
+    'debug'     => \$PARAMS{'Debug'}
+              );
+
+    #Parameters logic
+    my_log("debug","[".__LINE__."] parse_entry() validatign paramters logic");
+    if ( (!defined $PARAMS{'configfile'}) ) {
+        print ("Missing config file parameter. You need provide .ini file with database configuration\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'dbsection'}) ) {
+        print ("Missing dbsection parameter. You need to provide database section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'csection'}) ) {
+        print ("Missing csection parameter. You need to provide configuration section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'spsection'}) ) {
+        print ("Missing spsection parameter. You need to provide configuration section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    #Processing the parameters
+
+    # this variable contains the keyworks which are the parameters readed from the config ini file,
+    # Parameters from this array will be readed from ini file and placed in the returned array by
+    # readConfigFile(...) function
+    my @DB_IniDict     = ('Port','Host','User','Password','Eap_db');
+    my @Config_IniDict = ('URI','SecureLink','Mail','FixScript','FixScriptArgs','SimsInDir','SimsOutDir','SimsFailed', 'PrefixItemNo', 'ActivateOutDir', 'SimsFailed');
+    my @SP_Config_IniDict = ( 'SpConfigId','SoapUser','SoapPass');
+
+    #Geting pointer to master hash config ini
+    $dbconfig_ini = readConfigFile( $PARAMS{'configfile'}, $PARAMS{'dbsection'}, \@DB_IniDict );
+    $config_ini   = readConfigFile( $PARAMS{'configfile'}, $PARAMS{'csection'},  \@Config_IniDict );
+    $sp_config_ini= readConfigFile( $PARAMS{'configfile'}, $PARAMS{'spsection'}, \@SP_Config_IniDict );
+
+    # checking if u want only to print the configuration params
+    if ( defined $PARAMS{'justprintFLAG'} ) {
+        printIniConfig( $dbconfig_ini,"database connection",0); #last arg in the end says if you want to exit or continue;
+        printIniConfig( $config_ini,"configuration params",1); #last arg in the end says if you want to exit or continue;
+    } #if
+
+    process_dir( $config_ini->{'SimsFailed'},  $config_ini->{'SimsOutDir'} ); #starting main program code
+
+    exit(2); #this line shouldn't be reached
+}
+
+## Prints script usage
+sub print_usage{
+        print "Usage:\n";
+        print "\t$0 [options]\n";
+        print "\n\n-h,--help\t\tthis output";
+        print "\n-c,--config\t\tconfig ini file";
+        print "\n-dbs,--dbsection\tconfig ini database section name";
+        print "\n-cs,--csection\t\tconfig ini section with configuration parameters";
+        print "\n-runfixscript\t\tif flag is set will run fix-script defined in the connection section in case of critical issue";
+        print "\n-jp,--justprint\t\tif flag is set prints section from config file and exit(1)";
+        print "\n-n,--notify\t\tif flag is set script will notify aobut the issue";
+        print "\n-v,--version\t\tprint version and exit";
+        print "\n-debug\t\t\tenter debug mode";
+        print "\n";
+        exit(0);
+} #print_usage
+
+## Complain about a bogus line of input
+sub invalid {
+    my ($content) = @_;
+    die "Invalid row at line $INPUT_LINE_NUMBER:\n$content";
+}
+
+sub trim($){
+        my $string = shift;
+        $string =~ s/^\s+//;
+        $string =~ s/\s+$//;
+        return $string;
+}
+
+sub my_log {
+        my ($type, @message ) = @_;
+        my $now = trim(`date`);
+
+        open(my $fh, '>>', "/var/log/$SCRIPT.log");
+        if( $type eq "crit" ){
+                print $fh "$now [Error] ". join(' ', @message) ."\n";
+                die sprintf "[Error]",    @message;
+        } elsif( $type eq "warn" ){
+                print $fh "$now [WARNING] ". join(' ', @message) ."\n";
+        } else {
+                print $fh "$now [INFO] ". join(' ', @message) ."\n";
+        }
+        close $fh;
+}##sub my_log {
+
+##Reads config ini file. Exits if file doesn't exists. Function retuns
+##the hash with the database configuration block
+sub readConfigFile {
+    my $ConfigIniFile = $_[0];
+    my $DatabaseID    = $_[1];
+    my @ConfigIniDict = @{$_[2]};
+    my %DB;
+
+    # print "file: $ConfigIniFile\n";
+    # print "sectionId: $DatabaseID\n";
+    # foreach ( @ConfigIniDict ) {
+    #     print "ConfigIniDict : ". $_ ."\n";
+    # }
+
+    $DB{'section_name'} = $DatabaseID;
+    #Check if file exists
+    if ( ! -e $ConfigIniFile ) {
+        my_log("crit","Config file doesn't exists");
+        exit(2);
+    } #if
+    if ( ! -r $ConfigIniFile ) {
+        my_log("crit","Cannot read config file. Permission denied");
+        exit(2);
+    } #if
+    my $Config = Config::Tiny->read( $ConfigIniFile );
+
+    # -- loading generic block to the %CONF_INI_PARAMS array
+    foreach ( @ConfigIniDict ) {
+        my $pname = $_;
+        $DB{$pname} = $Config->{generic}->{$pname};
+    } #foreach
+    # -- checking if section in configuration file exists
+    my $section = $Config->{$DatabaseID};
+    if ( ! defined $section ) {
+        my_log("crit","Provided section doesn't exists in configuration file");
+    } #ifvim
+    # -- reloading database block to the %CONF_INI_PARAMS array
+    foreach ( @ConfigIniDict ) {
+        my $pname = $_;
+        if ( defined $Config->{$DatabaseID}->{$pname} ) {
+          $DB{$pname} = $Config->{$DatabaseID}->{$pname};
+        } #if
+    } #foreach
+   return \%DB;
+} #readConfigFile
+
+## Handle a single text file
+sub process_txt {
+    my ( $dbh, $filename ) = @_;
+
+    ##check whether the sim exists in the database with item_no is equal to value of column 13 in CSV file
+    my $check = $dbh->prepare("SELECT itemid FROM inventory WHERE item_no=? AND item_used=0");
+    my $check_phone = $dbh->prepare("SELECT phoneid FROM phones WHERE sim = ? AND phonestatus=0");
+    my $update_inventory = $dbh->prepare("UPDATE inventory SET item_used = 1 WHERE item_no = ? AND item_used=0");
+
+    my $date = strftime( '%Y-%m-%d %H:%M:%S', localtime );
+
+    ## Open the file
+    open my $file, '<', $filename or die sprintf( "open: $OS_ERROR" );
+
+    ## Process the single header row (always the first)
+    $_ =  <$file>;
+        my $header = trim($_);
+    my $activate_file = $filename;
+        $activate_file =~ s/.csv/-activate.csv/g;
+    $activate_file =~ s/ /\\ /g;
+    $activate_file = "$config_ini->{'SimsOutDir'}/$activate_file";
+    `echo "$header" > $activate_file`;
+
+    my $revision_file = $filename;
+          $revision_file =~ s/.csv/-revision.csv/g;
+    $revision_file =~ s/ /\\ /g;
+    $revision_file =  "$config_ini->{'SimsInDir'}/$revision_file";
+    `echo "$header" > $revision_file`;
+
+    ## Handle any events
+    while (<$file>) {
+        ## Fix line endings
+        s{ [\r\n\s]+ \Z }{}msix;
+
+        ## Extract the values we want
+        my $line = trim($_);
+        my @values        = split( m{ , }msix, $_ );
+        my $date          = $values[0];
+        my $id            = $values[1];
+        my $iccid         = $values[16];
+        my $check_item_no = $config_ini->{'PrefixItemNo'} . $values[16];
+#        my $check_item_no = $config_ini->{'PrefixItemNo'} . $values[17]; ##TEST ONLY wrong column
+        $check_item_no =~ s/ //g;
+
+        my_log( 'debug', "check_item_no = $check_item_no" );
+
+        ##execute SELECT itemid FROM inventory WHERE item_no=$check_item_no AND item_used=0
+        $check->execute( $check_item_no );
+
+        if( $check->rows > 0 ){
+
+            #my $check_phone = $dbh->prepare("SELECT phoneid FROM phones WHERE sim = ? AND phonestatus=0");
+            $check_phone->execute( $check_item_no );
+            if( $check_phone->rows > 0 ) { ##phone is already activated
+                  #my $update_inventory = $dbh->prepare("UPDATE inventory SET item_used = 1 WHERE item_no = ? AND item_used=0");
+                  #update inventory so SIM wont be used again
+                  my_log( 'debug', "UPDATE inventory SET item_used = 1 WHERE item_no = '$check_item_no' AND item_used=0" );
+                  $update_inventory->execute( $check_item_no );
+            } else {
+              ##waiting for activation
+              `echo "$line" >> $revision_file`;
+            }
+
+        } else {##        if( $check->rows > 0 ){
+            ##waiting for re-process
+            `echo "$line" >> $activate_file`;
+
+        }##        if( $check->rows > 0 ){
+
+    }    # while loop
+
+    #close $file or die "close: $OS_ERROR!\n";
+    close $file
+        or die sprintf( "close: $OS_ERROR" );
+
+    rename $filename, "$config_ini->{'ActivateOutDir'}/" . basename($filename) or die "rename: $OS_ERROR!\n";
+    return;
+}
+
+## Single pass of the directory
+sub process_dir {
+    my ( $in_dir, $out_dir ) = @_;
+
+   ## Connect to the database
+    my $connectionString = "DBI:mysql:".$dbconfig_ini->{'Eap_db'}.":".$dbconfig_ini->{'Host'}.":".$dbconfig_ini->{'Port'};
+
+    my $dbh = DBI->connect($connectionString, $dbconfig_ini->{'User'}, $dbconfig_ini->{'Password'},
+                           { PrintError => 1, AutoCommit => 1, RaiseError => 1 } )
+        or my_log( 'crit', "database: $DBI::errstr" );
+
+    ## Let's go to our new home
+    chdir $in_dir or die sprintf( "chdir $in_dir: $OS_ERROR" );
+
+    my $dir = IO::Dir->new(q{.}) or die sprintf( "opendir: $OS_ERROR" );
+
+    ## Process each text file (older than 60 seconds)
+    while ( defined( my $filename = $dir->read() ) ) {
+        next if not -f $filename;                         # Regular files
+        next if not $filename =~ m{ \. csv \Z }msix;      # Check extension
+
+        eval {
+            process_txt( $dbh, $filename );
+        };
+    }
+
+    ## Disconnect from the database
+    $dbh->disconnect();
+    return;
+}

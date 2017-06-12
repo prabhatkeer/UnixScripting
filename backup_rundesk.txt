@@ -1,0 +1,81 @@
+#!/bin/bash
+# To clean the tons of files under /data/rundeck/
+# Prabhat Keer
+#
+
+# Initial variables
+YEAR=`date +%Y`;
+PVR_MTH=`date +'%m' -d '-1 month'`;
+BACKUP_DIR=/data/rundeck.logs.archive
+BACKUP_FILE=rundeck_"$PVR_MTH$YEAR"
+LOG_FILE=$BACKUP_DIR/archive.log
+
+log () {
+  # Adding useful info in /data/rundeck.logs.archive/archive.log
+  CTIME=`date +%d:%m:%Y-%H:%M:%S`
+  echo "$CTIME $*" >> $LOG_FILE
+}
+
+# Checking for conflicting file
+if [ -f $BACKUP_DIR/$BACKUP_FILE ]
+then
+  log "WARN $BACKUP_DIR/$BACKUP_FILE exists, renaming it to .orig.timestamp"
+  /bin/mv $BACKUP_DIR/$BACKUP_FILE $BACKUP_DIR/$BACKUP_FILE".orig.`date +%H%M%S`"
+  log "INFO Creating a new backup file $BACKUP_FILE"
+  touch $BACKUP_FILE
+else
+  log "INFO Creating an empty backup file $BACKUP_FILE"
+  touch $BACKUP_FILE
+fi
+
+if [ $PVR_MTH -eq '12' ]
+then
+  log "WARN Previous month was December so changing the year to previous year"
+  YEAR=`date +%Y -d "1 year ago"`
+fi
+
+createtimestamp ()
+{
+# Calculting the precise timestamps values
+
+MTH_START_DATE=01;
+MTH_START_TIME=0000;
+MTH_END_DATE=`cal $PVR_MTH $YEAR | egrep "28|29|30|31" |tail -1 |awk '{print $NF}'`;
+MTH_END_TIME=2359;
+START_VAR="$YEAR$PVR_MTH$MTH_START_DATE$MTH_START_TIME"
+STOP_VAR="$YEAR$PVR_MTH$MTH_END_DATE$MTH_END_TIME"
+touch -t $START_VAR $BACKUP_DIR/start
+log "INFO Created new start file with timestamp $START_VAR"
+touch -t $STOP_VAR $BACKUP_DIR/stop
+log "INFO Created new stop file with timestamp $STOP_VAR"
+}
+
+# Creating the timestamp files
+WORKPATH=/data/rundeck.logs.archive
+if [[ -f $WORKPATH/start || -f $WORKPATH/stop ]]
+then
+  /bin/rm -f $WORKPATH/start && /bin/rm -f $WORKPATH/stop
+  log "WARN Timestamp file exist at $BACKUP_DIR, deleting them before proceeding"
+  createtimestamp;
+else
+  createtimestamp;
+fi
+
+# Creating the file containing the cuplrit files
+find /data/rundeck/rundeck/EAP/job/ -type f -newer start \! -newer stop > $BACKUP_DIR/$BACKUP_FILE
+CNTFL=`wc -l ./$BACKUP_FILE | cut -d" " -f 1`
+log "INFO Found $CNTFL files and stored in $BACKUP_DIR/$BACKUP_FILE"
+
+# Creating a zipped tar
+tar -czf /data/rundeck.logs.archive/$BACKUP_FILE.tar.gz -T $BACKUP_DIR/$BACKUP_FILE
+log "INFO Tar $BACKUP_FILE is created"
+
+# Remove the large number of files
+find /data/rundeck/rundeck/EAP/job/ -type f -newer start \! -newer stop -exec rm -f {} \;
+log "INFO Files from $PVR_MTH $YEAR have been removed"
+log "------------------------------------------------------------"
+
+# Housekeeping
+/bin/rm -f $WORKPATH/start; /bin/rm -f $WORKPATH/stop
+
+exit 0;

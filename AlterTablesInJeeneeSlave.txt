@@ -1,0 +1,3307 @@
+Using username "pkeer".
+Authenticating with public key "rsa-key-20160511" from agent
+Last login: Fri Jul  1 09:56:34 2016 from 202.68.170.130
+[pkeer@vaya-monitoring01 ~]$ grep -i back /etc/hosts
+10.10.1.30      vaya-backend01
+10.10.1.31      vaya-backend02
+10.10.1.32      vaya-backend03
+10.10.1.33      vaya-backend04
+127.0.0.1       VAYA_DatabasesBackend
+103.1.216.178   vaya-backend05
+10.10.1.159     vaya-backend07
+10.10.1.149     vaya-backend06
+10.10.1.160     vaya-backend08
+10.10.1.161    vaya-backend09-optusrts
+[pkeer@vaya-monitoring01 ~]$ ssh vaya-backend03
+Last login: Fri Jul  1 09:47:52 2016 from vaya-monitoring01
+[pkeer@vaya-backend03 ~]$ sudo su -
+[root@vaya-backend03 ~]# df -hl
+Filesystem                    Size  Used Avail Use% Mounted on
+/dev/mapper/rootvg-root_lv     15G  2.6G   12G  19% /
+tmpfs                         9.8G     0  9.8G   0% /dev/shm
+/dev/sda1                     194M   50M  134M  28% /boot
+/dev/mapper/rootvg-home_lv    5.0G  1.8G  3.0G  38% /home
+/dev/mapper/rootvg-tmp_lv     2.1G  857M  1.2G  42% /tmp
+/dev/mapper/rootvg-varlog_lv  5.1G  1.2G  3.7G  24% /var/log
+/dev/mapper/datavg-datalv      15G  5.5G  8.6G  39% /data
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]# cd /home/vaya/
+[root@vaya-backend03 vaya]# df -h .
+Filesystem                Size  Used Avail Use% Mounted on
+vaya-service001nfs:/data  1.3T  1.3T   22G  99% /nfs
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]# df -h
+Filesystem                     Size  Used Avail Use% Mounted on
+/dev/mapper/rootvg-root_lv      15G  2.6G   12G  19% /
+tmpfs                          9.8G     0  9.8G   0% /dev/shm
+/dev/sda1                      194M   50M  134M  28% /boot
+/dev/mapper/rootvg-home_lv     5.0G  1.8G  3.0G  38% /home
+/dev/mapper/rootvg-tmp_lv      2.1G  857M  1.2G  42% /tmp
+/dev/mapper/rootvg-varlog_lv   5.1G  1.2G  3.7G  24% /var/log
+/dev/mapper/datavg-datalv       15G  5.5G  8.6G  39% /data
+vaya-service001nfs:/data       1.3T  1.3T   22G  99% /nfs
+118.102.106.86:/home/owi_fin/  9.9G  6.4G  3.1G  68% /mnt/vaya_owi_fin
+118.102.106.83:/home/owi_fin    95G   37G   54G  41% /mnt/lc_owi_fin
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]#
+[root@vaya-backend03 vaya]# cd /home/vaya/www/secure/
+[root@vaya-backend03 secure]# cd ..
+[root@vaya-backend03 www]# wdps
+-bash: wdps: command not found
+[root@vaya-backend03 www]# pwd
+/home/vaya/www
+[root@vaya-backend03 www]# ls
+secure
+[root@vaya-backend03 www]# cd secure/
+[root@vaya-backend03 secure]# ls
+1404021843.changelist.log  ecgateway.20160120.tar.gz  ecgateway.20160330.tar.gz  ecgateway.20160517.tar.gz  ecgateway.20160614.tar.gz  ecgateway_primo
+1404021843.launch.log      ecgateway.20160201.tar.gz  ecgateway.20160406.tar.gz  ecgateway.20160518         ecgateway.20160615.tar.gz  emailText2.cfm
+1404021843.notice.log      ecgateway.20160210.tar.gz  ecgateway.20160415.tar.gz  ecgateway.20160519082510   ecgateway.20160623.tar.gz  emailText3.cfm
+1404021843.rollback.log    ecgateway.20160217.tar.gz  ecgateway.20160420.tar.gz  ecgateway.20160519082857   ecgateway.20160701.tar.gz  emailText4.cfm
+CFIDE                      ecgateway.20160224.tar.gz  ecgateway.20160422.tar.gz  ecgateway.20160520         ecgateway_backup           emailText.cfm
+CodeChecker                ecgateway.20160226.tar.gz  ecgateway.20160504.tar.gz  ecgateway.20160525         ecgateway_cleanup          index.cfm
+crons                      ecgateway.20160304.tar.gz  ecgateway.20160509         ecgateway.20160531         ecgateway_git              return_vaya.cfm
+deploy_temp                ecgateway.20160309.tar.gz  ecgateway.20160510         ecgateway.20160601.tar.gz  ecgateway_int              trung.cfm
+eccapi                     ecgateway.20160316         ecgateway.20160511         ecgateway.20160602.tar.gz  ecgateway_last             webfusion_myadmin
+ecgateway                  ecgateway.20160317.tar.gz  ecgateway.20160512         ecgateway.20160603         ecgateway_optushlr
+ecgateway.20160114.tar.gz  ecgateway.20160323.tar.gz  ecgateway.20160516.tar.gz  ecgateway.20160608.tar.gz  ecgateway_pre
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]# cd ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# find . -name 0eb8c9f6d5cf90352669c32e2be5d6eda7850232
+^C
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cd
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]#
+[root@vaya-backend03 ~]# cd -
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cd ..
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]# ls -l
+total 3605680
+-rw-r--r--  1 root   root        7409 Apr  2  2014 1404021843.changelist.log
+-rwxr--r--  1 root   root       13074 Apr  2  2014 1404021843.launch.log
+-rw-r--r--  1 root   root         480 Apr  2  2014 1404021843.notice.log
+-rw-r--r--  1 root   root       12654 Apr  2  2014 1404021843.rollback.log
+lrwxrwxrwx  1 root   root          19 Mar 23  2014 CFIDE -> /var/www/html/CFIDE
+drwxr-xr-x  4 root   root        4096 Apr  8  2015 CodeChecker
+drwxr-xr-x  2 root   root        4096 Jan 19  2015 crons
+drwxr-xr-x  2 root   root        4096 Jun 29 17:00 deploy_temp
+drwxr-xr-x 29 nobody nobody      4096 Jun  3 13:36 eccapi
+drwxrwxrwx 59 root   root       45056 Jul  1 10:01 ecgateway
+-rw-rw-r--  1 nobody nobody 141457889 Jan 14 13:37 ecgateway.20160114.tar.gz
+-rw-rw-r--  1 nobody nobody 141668297 Jan 20 13:35 ecgateway.20160120.tar.gz
+-rw-r--r--  1 root   root   142358074 Feb  1 15:22 ecgateway.20160201.tar.gz
+-rw-r--r--  1 root   root   142485759 Feb 10 13:32 ecgateway.20160210.tar.gz
+-rw-r--r--  1 root   root   143243538 Feb 17 13:37 ecgateway.20160217.tar.gz
+-rw-r--r--  1 root   root   143478154 Feb 24 13:35 ecgateway.20160224.tar.gz
+-rw-r--r--  1 root   root   143697719 Feb 26 09:07 ecgateway.20160226.tar.gz
+-rw-r--r--  1 root   root   143776697 Mar  4 10:06 ecgateway.20160304.tar.gz
+-rw-r--r--  1 root   root   144253942 Mar  9 13:33 ecgateway.20160309.tar.gz
+drwxrwxrwx 56 root   root       45056 Mar  9 13:35 ecgateway.20160316
+-rw-r--r--  1 root   root   145264697 Mar 17 10:55 ecgateway.20160317.tar.gz
+-rw-r--r--  1 root   root   145352815 Mar 23 13:33 ecgateway.20160323.tar.gz
+-rw-r--r--  1 root   root   145531548 Mar 30 13:25 ecgateway.20160330.tar.gz
+-rw-r--r--  1 root   root   145682572 Apr  6 13:24 ecgateway.20160406.tar.gz
+-rw-r--r--  1 root   root    28557312 Apr 15 09:59 ecgateway.20160415.tar.gz
+-rw-r--r--  1 root   root   146666815 Apr 20 13:44 ecgateway.20160420.tar.gz
+-rw-r--r--  1 root   root   147001973 Apr 22 11:08 ecgateway.20160422.tar.gz
+-rw-rw-r--  1 nobody nobody 147265068 May  4 11:59 ecgateway.20160504.tar.gz
+drwxrwxrwx 58 root   root       45056 May  4 13:20 ecgateway.20160509
+drwxrwxrwx 58 root   root       45056 May  9 15:34 ecgateway.20160510
+drwxrwxrwx 58 root   root       45056 May  9 15:34 ecgateway.20160511
+drwxrwxrwx 59 root   root       45056 May 11 13:45 ecgateway.20160512
+-rw-r--r--  1 root   root   148454294 May 16 14:02 ecgateway.20160516.tar.gz
+-rw-r--r--  1 root   root   148534831 May 17 14:33 ecgateway.20160517.tar.gz
+drwxrwxrwx 59 root   root       45056 May 11 13:45 ecgateway.20160518
+drwxrwxrwx 59 root   root       45056 May 18 13:37 ecgateway.20160519082510
+drwxrwxrwx 59 root   root       45056 May 18 13:37 ecgateway.20160519082857
+drwxrwxrwx 59 root   root       45056 May 18 13:37 ecgateway.20160520
+drwxrwxrwx 59 root   root       45056 May 18 13:37 ecgateway.20160525
+drwxrwxrwx 59 root   root       45056 May 25 13:35 ecgateway.20160531
+-rw-r--r--  1 root   root   149715904 Jun  1 13:38 ecgateway.20160601.tar.gz
+-rw-r--r--  1 root   root   149882784 Jun  2 10:49 ecgateway.20160602.tar.gz
+drwxrwxrwx 59 root   root       45056 Jun  2 10:50 ecgateway.20160603
+-rw-r--r--  1 root   root   150576445 Jun  8 13:19 ecgateway.20160608.tar.gz
+-rw-r--r--  1 root   root   151002939 Jun 14 09:30 ecgateway.20160614.tar.gz
+-rw-r--r--  1 root   root   151169617 Jun 15 13:25 ecgateway.20160615.tar.gz
+-rw-r--r--  1 root   root   151430592 Jun 23 10:12 ecgateway.20160623.tar.gz
+-rw-r--r--  1 root   root   152380963 Jul  1 09:53 ecgateway.20160701.tar.gz
+drwxr-xr-x  2 root   root        4096 Jun 30 16:21 ecgateway_backup
+drwxr-xr-x 56 root   root       45056 Nov  5  2015 ecgateway_cleanup
+drwxr-xr-x 53 root   root       36864 Jan 13  2015 ecgateway_git
+drwxr-xr-x 52 root   root       36864 Aug 18  2014 ecgateway_int
+drwxrwxrwx 53 nobody nobody     36864 May 17  2014 ecgateway_last
+drwxr-xr-x 59 root   root       45056 Jul  1 10:28 ecgateway-mszu
+drwxr-xr-x 56 root   root       45056 Feb  5 21:25 ecgateway_optushlr
+drwxrwxrwx 58 root   root       36864 Jun 22 09:38 ecgateway_pre
+drwxr-xr-x 50 root   root       45056 May 28  2014 ecgateway_primo
+-rwxrwxr-x  1 nobody nobody       585 May  4 10:35 emailText2.cfm
+-rwxr-xr-x  1 root   root         314 May  4 11:04 emailText3.cfm
+-rwxr-xr-x  1 root   root         333 May  4 11:33 emailText4.cfm
+-rwxrwxr-x  1 nobody nobody       580 May  4 10:35 emailText.cfm
+-rw-r--r--  1 nobody nobody        74 Mar 24  2014 index.cfm
+-rw-r--r--  1 nobody nobody      2012 Mar 24  2014 return_vaya.cfm
+-rw-r--r--  1 root   root         450 Dec 15  2015 trung.cfm
+drwxr-xr-x  8 nobody root        4096 Mar 25  2014 webfusion_myadmin
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]# ls-ltrh
+-bash: ls-ltrh: command not found
+[root@vaya-backend03 secure]# ls -ltrh
+total 3.5G
+lrwxrwxrwx  1 root   root     19 Mar 23  2014 CFIDE -> /var/www/html/CFIDE
+-rw-r--r--  1 nobody nobody   74 Mar 24  2014 index.cfm
+-rw-r--r--  1 nobody nobody 2.0K Mar 24  2014 return_vaya.cfm
+drwxr-xr-x  8 nobody root   4.0K Mar 25  2014 webfusion_myadmin
+-rw-r--r--  1 root   root   7.3K Apr  2  2014 1404021843.changelist.log
+-rw-r--r--  1 root   root    13K Apr  2  2014 1404021843.rollback.log
+-rw-r--r--  1 root   root    480 Apr  2  2014 1404021843.notice.log
+-rwxr--r--  1 root   root    13K Apr  2  2014 1404021843.launch.log
+drwxrwxrwx 53 nobody nobody  36K May 17  2014 ecgateway_last
+drwxr-xr-x 50 root   root    44K May 28  2014 ecgateway_primo
+drwxr-xr-x 52 root   root    36K Aug 18  2014 ecgateway_int
+drwxr-xr-x 53 root   root    36K Jan 13  2015 ecgateway_git
+drwxr-xr-x  2 root   root   4.0K Jan 19  2015 crons
+drwxr-xr-x  4 root   root   4.0K Apr  8  2015 CodeChecker
+drwxr-xr-x 56 root   root    44K Nov  5  2015 ecgateway_cleanup
+-rw-r--r--  1 root   root    450 Dec 15  2015 trung.cfm
+-rw-rw-r--  1 nobody nobody 135M Jan 14 13:37 ecgateway.20160114.tar.gz
+-rw-rw-r--  1 nobody nobody 136M Jan 20 13:35 ecgateway.20160120.tar.gz
+-rw-r--r--  1 root   root   136M Feb  1 15:22 ecgateway.20160201.tar.gz
+drwxr-xr-x 56 root   root    44K Feb  5 21:25 ecgateway_optushlr
+-rw-r--r--  1 root   root   136M Feb 10 13:32 ecgateway.20160210.tar.gz
+-rw-r--r--  1 root   root   137M Feb 17 13:37 ecgateway.20160217.tar.gz
+-rw-r--r--  1 root   root   137M Feb 24 13:35 ecgateway.20160224.tar.gz
+-rw-r--r--  1 root   root   138M Feb 26 09:07 ecgateway.20160226.tar.gz
+-rw-r--r--  1 root   root   138M Mar  4 10:06 ecgateway.20160304.tar.gz
+-rw-r--r--  1 root   root   138M Mar  9 13:33 ecgateway.20160309.tar.gz
+drwxrwxrwx 56 root   root    44K Mar  9 13:35 ecgateway.20160316
+-rw-r--r--  1 root   root   139M Mar 17 10:55 ecgateway.20160317.tar.gz
+-rw-r--r--  1 root   root   139M Mar 23 13:33 ecgateway.20160323.tar.gz
+-rw-r--r--  1 root   root   139M Mar 30 13:25 ecgateway.20160330.tar.gz
+-rw-r--r--  1 root   root   139M Apr  6 13:24 ecgateway.20160406.tar.gz
+-rw-r--r--  1 root   root    28M Apr 15 09:59 ecgateway.20160415.tar.gz
+-rw-r--r--  1 root   root   140M Apr 20 13:44 ecgateway.20160420.tar.gz
+-rw-r--r--  1 root   root   141M Apr 22 11:08 ecgateway.20160422.tar.gz
+-rwxrwxr-x  1 nobody nobody  585 May  4 10:35 emailText2.cfm
+-rwxrwxr-x  1 nobody nobody  580 May  4 10:35 emailText.cfm
+-rwxr-xr-x  1 root   root    314 May  4 11:04 emailText3.cfm
+-rwxr-xr-x  1 root   root    333 May  4 11:33 emailText4.cfm
+-rw-rw-r--  1 nobody nobody 141M May  4 11:59 ecgateway.20160504.tar.gz
+drwxrwxrwx 58 root   root    44K May  4 13:20 ecgateway.20160509
+drwxrwxrwx 58 root   root    44K May  9 15:34 ecgateway.20160511
+drwxrwxrwx 58 root   root    44K May  9 15:34 ecgateway.20160510
+drwxrwxrwx 59 root   root    44K May 11 13:45 ecgateway.20160518
+drwxrwxrwx 59 root   root    44K May 11 13:45 ecgateway.20160512
+-rw-r--r--  1 root   root   142M May 16 14:02 ecgateway.20160516.tar.gz
+-rw-r--r--  1 root   root   142M May 17 14:33 ecgateway.20160517.tar.gz
+drwxrwxrwx 59 root   root    44K May 18 13:37 ecgateway.20160525
+drwxrwxrwx 59 root   root    44K May 18 13:37 ecgateway.20160520
+drwxrwxrwx 59 root   root    44K May 18 13:37 ecgateway.20160519082857
+drwxrwxrwx 59 root   root    44K May 18 13:37 ecgateway.20160519082510
+drwxrwxrwx 59 root   root    44K May 25 13:35 ecgateway.20160531
+-rw-r--r--  1 root   root   143M Jun  1 13:38 ecgateway.20160601.tar.gz
+-rw-r--r--  1 root   root   143M Jun  2 10:49 ecgateway.20160602.tar.gz
+drwxrwxrwx 59 root   root    44K Jun  2 10:50 ecgateway.20160603
+drwxr-xr-x 29 nobody nobody 4.0K Jun  3 13:36 eccapi
+-rw-r--r--  1 root   root   144M Jun  8 13:19 ecgateway.20160608.tar.gz
+-rw-r--r--  1 root   root   145M Jun 14 09:30 ecgateway.20160614.tar.gz
+-rw-r--r--  1 root   root   145M Jun 15 13:25 ecgateway.20160615.tar.gz
+drwxrwxrwx 58 root   root    36K Jun 22 09:38 ecgateway_pre
+-rw-r--r--  1 root   root   145M Jun 23 10:12 ecgateway.20160623.tar.gz
+drwxr-xr-x  2 root   root   4.0K Jun 29 17:00 deploy_temp
+drwxr-xr-x  2 root   root   4.0K Jun 30 16:21 ecgateway_backup
+-rw-r--r--  1 root   root   146M Jul  1 09:53 ecgateway.20160701.tar.gz
+drwxrwxrwx 59 root   root    44K Jul  1 10:01 ecgateway
+drwxr-xr-x 59 root   root    44K Jul  1 10:28 ecgateway-mszu
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]# mkdir ecgateway_temp
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]#
+[root@vaya-backend03 secure]# cd ecgateway_
+ecgateway_backup/   ecgateway_git/      ecgateway_last/     ecgateway_pre/      ecgateway_temp/
+ecgateway_cleanup/  ecgateway_int/      ecgateway_optushlr/ ecgateway_primo/
+[root@vaya-backend03 secure]# cd ecgateway_temp/
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# pwd
+/home/vaya/www/secure/ecgateway_temp
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# cd ../ecgateway
+[root@vaya-backend03 ecgateway]# cd .git
+[root@vaya-backend03 .git]# ls
+branches  COMMIT_EDITMSG  config  description  FETCH_HEAD  HEAD  hooks  index  index.lock  info  logs  objects  ORIG_HEAD  packed-refs  refs
+[root@vaya-backend03 .git]# ls -l
+total 620
+drwxr-xr-x   2 root root   4096 Jan 13  2015 branches
+-rw-r--r--   1 root root    745 Jan 27 13:32 COMMIT_EDITMSG
+-rw-r--r--   1 root root    295 Jul  1 10:00 config
+-rw-r--r--   1 root root     73 Jan 13  2015 description
+-rw-r--r--   1 root root 120841 Jul  1 10:29 FETCH_HEAD
+-rw-r--r--   1 root root     23 Jan 13  2015 HEAD
+drwxr-xr-x   2 root root   4096 Jan 13  2015 hooks
+-rw-r--r--   1 root root 422088 Jul  1 09:54 index
+-rw-r--r--   1 root root      0 Jul  1 10:01 index.lock
+drwxr-xr-x   2 root root   4096 Jan 13  2015 info
+drwxr-xr-x   3 root root   4096 Jan 13  2015 logs
+drwxr-xr-x 260 root root   4096 Apr  2  2015 objects
+-rw-r--r--   1 root root     41 Jul  1 10:01 ORIG_HEAD
+-rw-r--r--   1 root root  39916 Jan 13  2015 packed-refs
+drwxr-xr-x   5 root root   4096 Jan 13  2015 refs
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]# cat config
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = false
+        logallrefupdates = true
+[remote "origin"]
+        url = http://prabhat@stash.ecconnect.com.au:7990/scm/vaya/ecgateway_2015.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]#
+[root@vaya-backend03 .git]# cd ..
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cp -p .git ../ec
+eccapi/                    ecgateway.20160304.tar.gz  ecgateway.20160422.tar.gz  ecgateway.20160519082510/  ecgateway.20160614.tar.gz  ecgateway-mszu/
+ecgateway/                 ecgateway.20160309.tar.gz  ecgateway.20160504.tar.gz  ecgateway.20160519082857/  ecgateway.20160615.tar.gz  ecgateway_optushlr/
+ecgateway.20160114.tar.gz  ecgateway.20160316/        ecgateway.20160509/        ecgateway.20160520/        ecgateway.20160623.tar.gz  ecgateway_pre/
+ecgateway.20160120.tar.gz  ecgateway.20160317.tar.gz  ecgateway.20160510/        ecgateway.20160525/        ecgateway.20160701.tar.gz  ecgateway_primo/
+ecgateway.20160201.tar.gz  ecgateway.20160323.tar.gz  ecgateway.20160511/        ecgateway.20160531/        ecgateway_backup/          ecgateway_temp/
+ecgateway.20160210.tar.gz  ecgateway.20160330.tar.gz  ecgateway.20160512/        ecgateway.20160601.tar.gz  ecgateway_cleanup/
+ecgateway.20160217.tar.gz  ecgateway.20160406.tar.gz  ecgateway.20160516.tar.gz  ecgateway.20160602.tar.gz  ecgateway_git/
+ecgateway.20160224.tar.gz  ecgateway.20160415.tar.gz  ecgateway.20160517.tar.gz  ecgateway.20160603/        ecgateway_int/
+ecgateway.20160226.tar.gz  ecgateway.20160420.tar.gz  ecgateway.20160518/        ecgateway.20160608.tar.gz  ecgateway_last/
+[root@vaya-backend03 ecgateway]# cp -p .git ../ecgateway_temp/
+cp: omitting directory `.git'
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cd ../ecgateway_temp/
+[root@vaya-backend03 ecgateway_temp]# ls -la
+total 8
+drwxr-xr-x  2 root root 4096 Jul  1 10:35 .
+drwxrwxrwx 30 root root 4096 Jul  1 10:35 ..
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# cd -
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# git remote -v
+origin  http://prabhat@stash.ecconnect.com.au:7990/scm/vaya/ecgateway_2015.git (fetch)
+origin  http://prabhat@stash.ecconnect.com.au:7990/scm/vaya/ecgateway_2015.git (push)
+[root@vaya-backend03 ecgateway]# cd -
+/home/vaya/www/secure/ecgateway_temp
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# git clone http://prabhat@stash.ecconnect.com.au:7990/scm/vaya/ecgateway_2015.git
+Cloning into 'ecgateway_2015'...
+Password for 'http://prabhat@stash.ecconnect.com.au:7990':
+remote: Counting objects: 19376, done.
+remote: Compressing objects: 100% (11184/11184), done.
+remote: Total 19376 (delta 11411), reused 13977 (delta 8011)
+Receiving objects: 100% (19376/19376), 46.74 MiB | 4.06 MiB/s, done.
+Resolving deltas: 100% (11411/11411), done.
+Checking out files: 100% (4147/4147), done.
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# pwd
+/home/vaya/www/secure/ecgateway_temp
+[root@vaya-backend03 ecgateway_temp]# ls -la
+total 44
+drwxr-xr-x  3 root root  4096 Jul  1 10:47 .
+drwxrwxrwx 30 root root  4096 Jul  1 10:35 ..
+drwxr-xr-x 58 root root 36864 Jul  1 10:48 ecgateway_2015
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]#
+[root@vaya-backend03 ecgateway_temp]# cd ecgateway_2015/
+[root@vaya-backend03 ecgateway_2015]# pwd
+/home/vaya/www/secure/ecgateway_temp/ecgateway_2015
+[root@vaya-backend03 ecgateway_2015]# ls
+accounts_add_payment_advanced.cfm            inc_form_upgradeplan.cfm                       report_bill_run_adsl_ll.cfm
+accounts_cc.cfm                              inc_input_cleanup.cfm                          report_bill_run_avg_trans.cfm
+accounts.cfm                                 inc_jquery_head_bak.cfm                        report_bill_run_bill_log.cfm
+accounts_reactiv.cfm                         inc_jquery_head.cfm                            report_bill_run_cdrs_not_billed.cfm
+acma_export2.cfm                             inc_landline_move.cfm                          report_bill_run_expensive_bill.cfm
+acma_export3.cfm                             inc_manage_services_roaming.cfm                report_bill_run_main.cfm
+acma_export.cfm                              inc_manage_tio_actions.cfm                     report_bill_run_mobile_adsl.cfm
+action_log.cfm                               inc_manage_tio_form.cfm                        report_bill_run_mobile_excess.cfm
+actions.cfm                                  inc_manage_tio_list.cfm                        report_bill_run_mobile_ll.cfm
+addcomment.cfm                               inc_msgvars_get.cfm                            report_bill_run_rand_mmc.cfm
+address_checking.cfm                         inc_paf_barcode.cfm                            report_bill_run_recon_c1.cfm
+address_checking_prev.cfm                    inc_phone_changeplan.cfm                       report_bill_run_recon_c2.cfm
+adsl_view.cfm                                inc_phone_move.cfm                             report_bill_run_retail_less_2_months.cfm
+api                                          inc_phones_form3.cfm                           report_bill_run_smallest_bill.cfm
+Application.cfm                              inc_phones_form.cfm                            report_bolton_active.cfm
+auth_error.cfm                               inc_phones_search_msns.cfm                     report_call_aves.cfm
+barcode.cfc                                  inc_phones_upgrades_2.cfm                      report_calltype.cfm
+barcode_imgs                                 inc_phones_upgrades.cfm                        report_cc_dishonours.cfm
+barred_out.cfm                               inc_queries_report_overdue_70days.cfm          report_cc_incomplete.cfm
+bi                                           inc_queries_report_overdue_bak.cfm             report_client_bolton.cfm
+bid_code_app.cfm                             inc_queries_report_overdue.cfm                 report_connected.cfm
+billboards                                   inc_queries_report_overdue_zen.cfm             report_connected_daily.cfm
+bill_checks2.cfm                             inc_queries_report_phones_to_cancel.cfm        report_connected_daily_ll.cfm
+bill_checks2_connected_date.cfm              inc_queries_report_phones_to_upgrade.cfm       report_connected_dealers.cfm
+bill_checks2_lc.cfm                          inc_queries_report_phonetotal.cfm              report_connected_disconnections.cfm
+bill_checks.cfm                              inc_report_bad_debt_toolbar.cfm                report_connected_export.cfm
+bill_checks_lc.cfm                           inc_report_new_clients_01_daily.cfm            report_connected_lc.cfm
+bill_export.cfm                              inc_report_new_clients_01_monthly.cfm          report_connected_list.cfm
+billing                                      inc_report_new_orders_daily.cfm                report_connected_monthly.cfm
+billing_landline                             inc_report_new_orders_monthly.cfm              report_connected_ryantest.cfm
+billing_landline_prov_files                  inc_result_page_numbers.cfm                    report_connected_ryantest.php
+billing_lc                                   inc_result_page_numbers_finalise.cfm           report_connected_sales_2nd.cfm
+billing_scripts                              inc_result_page_numbers_with_param.cfm         report_connected_sales_bak.cfm
+billing_scripts_lc                           inc_sms_manage_toolbar.cfm                     report_connected_sales.cfm
+bill_log.cfm                                 inc_smsmessage_replace.cfm                     report_connected_target.cfm
+bill_print_ftp.cfm                           inc_sms_slide.cfm                              report_connected_zen.cfm
+bill_sendbillnotpaid_email.cfm               inc_sql_details.cfm                            report_correction_needed.cfm
+bill_send_email.cfm                          inc_table_generator.cfm                        report_data_mb_calc.cfm
+bsbchecker                                   inc_table_generator_xls.cfm                    report_data_mb.cfm
+bulkdelete.cfm                               inc_table_report_acc_rec.cfm                   report_data_mb_test.cfm
+CalendarPopup.js                             inc_tabs.cfm                                   report_data_tethered.cfm
+CaseFormat.cfm                               inc_unallocated_toolbar.cfm                    report_disconnected.cfm
+cbox_test.cfm                                inc_user_list_dealers.cfm                      report_disconnected_export.cfm
+ccdaterange.cfm                              index.cfm                                      report_ebill_log.cfm
+ccheck_popup.cfm                             indicator.gif                                  report_email_daily.cfm
+ccheckview.cfm                               insertLog.cfm                                  report_email_daily_customer.cfm
+cc_reminder.cfm                              invoice_.cfm                                   report_email_daily_status.cfm
+certificates                                 invoice.cfm                                    report_flash_data_bar.cfm
+change_phone_user.cfm                        invoiceitem.cfm                                report_flashFiles.cfm
+check_duplicate.cfm                          invoice_test.cfm                               report_groups
+check_plantype.cfm                           IPND                                           report_inventory.cfm
+check_sp_payment.cfm                         IPND_checks.cfm                                report_inventory_export.cfm
+check_sp_xml.cfm                             jquery-1.4.2.js                                report_landline_billing.cfm
+client_addresses.cfm                         jquery.autocomplete.css                        report_ll_overlimit.cfm
+client_bup.cfm                               jquery.autocomplete.js                         report_margins.cfm
+clientcc_comment.cfm                         jquery.iframe.js                               report_msns.cfm
+client.cfm                                   jquery.marquee.js                              report_new_clients_01.cfm
+client_credit_check.cfm                      jquery-ui-1.8.5.custom.min.js                  report_new_orders.cfm
+clientfiles_bak.cfm                          js                                             report_nontoll.cfm
+clientfiles.cfm                              js_HtmlBox.cfm                                 report_nontoll_export.cfm
+clientidentities.cfm                         landline_view.cfm                              report_overdue3_on_guard.cfm
+clientid_floatbox.cfm                        layout.css                                     report_overdue_byplan.cfm
+clientid_floatbox_test.cfm                   layout_modules.css                             report_overdue_byuser_backup.cfm
+client_noback.cfm                            LeadGen                                        report_overdue_byuser.cfm
+client_noback_ming.cfm                       leadgenreports.cfm                             report_overdue_byuser_landline.cfm
+client_plan.cfm                              letter_send.cfm                                report_overdue.cfm
+client_plan_test.cfm                         letter_send_lc.cfm                             report_overdue_export_70days.cfm
+client_test.cfm                              letter_send_zen.cfm                            report_overdue_export.cfm
+connection_display.cfm                       library                                        report_overdue_export_zen.cfm
+connection_display_total_active.cfm          list_bills.cfm                                 report_overdue_landline.cfm
+connect_manual.cfm                           list_clients.cfm                               report_overdue_percents_time.cfm
+connexnet_export.cfm                         loading.swf                                    report_overdue_percents_time_landline.cfm
+connex_no_acc_barred.cfm                     log                                            report_overdue_percents_time_test.cfm
+copy_to_vaya_xml_receiver.cfm                log_checking_xml_4.cfm                         report_overdue_percents_time_user.cfm
+coverage_check.cfm                           login                                          report_overdue_plan.cfm
+Coverage Maps.cfm                            login_all-ie-only.css                          report_overdue_turnoff.cfm
+creditcheck                                  login.cfm                                      report_overdue_zen.cfm
+creditcheck.cfm                              login_changeuser.cfm                           report_overlimit.cfc
+creditcheck_dynamic.cfm                      login.css                                      report_overlimit.cfm
+creditcheck_manual.cfm                       login_test.cfm                                 report_overlimit_export.cfm
+creditcheck_req_confirm.cfm                  logintester.cfm                                report_overlimit_plan.cfm
+creditcheck_req_confirm_veda.cfm             logout.cfm                                     report_overlimit_v2.cfm
+creditcheck_req_perform.cfm                  m2_test.cfm                                    report_owi_request.cfm
+creditcheck_req_perform_limited.cfm          manage_adsl_actions.cfm                        report_owi_snapshot.cfm
+creditcheck_req_perform_send.cfm             manage_adsl_add.cfm                            report_payment_per_client.cfm
+creditcheck_rsp.cfm                          manage_adsl.cfm                                report_payments.cfm
+credit_check_table.cfm                       manage_adsl_edit.cfm                           report_payments_new.cfm
+creditcheck_xml.cfm                          manage_adsl_main.cfm                           report_pending.cfm
+css                                          manage_bak.cfm                                 report_pending_export.cfm
+custom_tags                                  manage_barchecks.cfm                           report_pending_payment.cfm
+dashboard_callbacks.cfm                      manage_ccrules.cfm                             report_phones_to_cancel.cfm
+dashboard.cfm                                manage.cfm                                     report_phones_to_upgrade.cfm
+dashboard_conne                              manage_faqs.cfm                                report_phones_to_upgrade_v2.cfm
+dashboard_connections.cfm                    manage_identities.cfm                          report_phonetotal.cfm
+dashboard_connections_dealer.cfm             manage_insurance.cfm                           report_phonetotal_test.cfm
+dashboard_connections_lc_daily.cfm           manage_invoices.cfm                            report_porting.cfm
+dashboard_connections_vaya_daily.cfm         manage_landlines_actions.cfm                   report_porting_export.cfm
+dashboard_connections_zc_daily.cfm           manage_landlines_add.cfm                       report_retail_vs_ws.cfm
+dashboard_resourcefiles.cfm                  manage_landlines.cfm                           report_rpu_usage.cfm
+dashboard_sms_log.cfm                        manage_landlines_edit.cfm                      report_service_eligible.cfm
+data                                         manage_landlines_main_20120625.cfm             report_service_eligible_export.cfm
+data.cfm                                     manage_landlines_main.cfm                      report_service_eligible_v2.cfm
+data_create.cfm                              manage_landlines_popup.cfm                     report_sms_received.cfm
+data_delete.cfm                              manage_leads.cfm                               report_sms_usage.cfm
+data_download.cfm                            management_tasks                               report_snapshot2.cfm
+data_header.cfm                              management_tasks.cfm                           report_snapshot.cfm
+data_move_action.cfm                         management_tasks_popup.cfm                     report_tablet_plans.cfm
+data_move.cfm                                manage_owi_barring.cfm                         report_thisbill.cfm
+data_upload.cfm                              manage_owi.cfm                                 report_thiswelcomebill.cfm
+data_upload_insert.cfm                       manage_owi_edit.cfm                            report_transactions.cfm
+DateFormat.cfm                               manage_owi_menu.cfm                            report_washed_msns.cfm
+date_selects.cfm                             manage_owi_menu_original.cfm                   report_washed_msns_export.cfm
+DateTimeFormat.cfm                           manage_owi_popup.cfm                           report_washing.cfm
+date_vars_arr.cfm                            manage_owi_popup_fee.cfm                       report_watchlist.cfm
+date_vars.cfm                                manage_owi_psms.cfm                            report_wholesale_totals.cfm
+date_vars_weekly.cfm                         manage_owi_reqlink.cfm                         report_wholesale_to_upgrade.cfm
+dealer                                       manage_owi_reqlink_imei.cfm                    resorcefilesupload.cfm
+dealerfiles.cfm                              manage_owi_xml.cfm                             resource_upload.cfm
+demo.js                                      manage_phones.cfm                              return.cfm
+disconnect.cfm                               manage_phones_conn_link.cfm                    sch
+display_connections2.cfm                     manage_phones_conn_link.php                    sched
+display_connections3.cfm                     manage_phones_csv.cfm                          schedule_phone_changeplan.cfm
+display_connections4.cfm                     manage_prevbalance.cfm                         schedule_phone_changerateplan.cfm
+display_connections_billboard2.cfm           manage_qualify_address.cfm                     schedule_view.cfm
+display_connections_billboard3.cfm           manage_quicks.cfm                              scp
+display_connections_billboard.cfm            manage_security.cfm                            scp_preprocess_form.cfm
+display_connections.cfm                      manage_statuses.cfm                            scripts
+display_connections_only.cfm                 manage_stock.cfm                               search_apd_1.cfm
+display_connections_screen.cfm               manage_suppCharges.cfm                         search_apd.cfm
+display_connections_screen.html              manage_test.cfm                                search_cancelled.cfm
+display_connections_test.cfm                 manage_tickets_board.cfm                       search_csr.cfm
+DnB                                          manage_tickets.cfm                             search_dealer.cfm
+DnB_clientpay                                manage_tio.cfm                                 search_display_cancelled.cfm
+DNCR                                         manage_trans.cfm                               search_display.cfm
+docs                                         manage_usagetotal.cfm                          search_finalised.cfm
+duplicate_client.cfm                         manage_watchlists.cfm                          search_main.cfm
+ecbill_billday_calc.cfm                      manage_wsg_xml.cfm                             searchredirect2.cfm
+ecbill.cfm                                   marek_end_of_month.cfm                         searchredirect.cfm
+ecbill_dd_export.cfm                         mateemail.cfm                                  search_referred.cfm
+ecbill_dd_export_paymentONLY.cfm             menu                                           search_simple.cfm
+ecbill_dd_footer.cfm                         menu.cfm                                       search_tio.cfm
+ecbill_dd_header.cfm                         merge.cfm                                      search_worker.cfm
+ecbill_dd_header_with_nbsp.cfm               merge_display.cfm                              search_worker_list.cfm
+ecbill_empty_log_payment.cfm                 merge_sql1.cfm                                 search.xml
+ecbill_ezi_bpay_payments.cfm                 merge_sql2.cfm                                 securepay
+ecbill_ezi_callback_payments.cfm             merge_tfr.cfm                                  securepay_xml.cfm
+ecbill_ezi_payments.cfm                      message_replace.cfm                            send_auto_verify.cfm
+ecbill_ezi_payments_overdue.cfm              messages.cfm                                   send_email.cfm
+ecbill_ezi_temp_sms.cfm                      messages_delete.cfm                            send_manualsms.cfm
+ecbill_ezi_update_pending_payments.cfm       modifyDataPlans.cfm                            send_sms.cfm
+ecbill_itemisation_csv.cfm                   mur_viewer.cfm                                 send_sms_MUR.cfm
+ecbill_payments.cfm                          nbn_serviceability_import.cfm                  services
+ecbill_process_cc.cfm                        newsearch.xml                                  SessionTracker.cfm
+ecbill_process_cc_overdue.cfm                nohup.out                                      settings.cfc
+ecbill_process_cc_sched_bash.cfm             notices.cfm                                    settings-vaya.cfc
+ecbill_process_cc_std.cfm                    notices_display.cfm                            sms_alert_on-off.cfm
+ecbill_sched.cfm                             optusmaps.js                                   sms_app.cfm
+ecbill_test.cfm                              overlimit_20120716.cfm                         sms.cfm
+ec_dump2.cfm                                 overlimit.cfm                                  sms_gateway.cfm
+ec_dump.cfm                                  owi                                            sms_manage.cfm
+edit_notes.cfm                               owi_cdr_counts.cfm                             sms_message_popup.cfm
+email_auto_sender.cfm                        owi_cids.cfm                                   sms_receive.cfm
+email_campaign                               owi_cids_lc.cfm                                sms_receive_test.cfm
+email_checker.cfm                            owi_msn_assign_manageonly.cfm                  sms_roaming.cfm
+email_content_send.cfm                       owi_msn_export.cfm                             soaperror.cfm
+emailer_send.cfm                             owi_msn_import.cfm                             soap_receiver_auth.cfm
+emailer_send_dealer.cfm                      owi_msn_insert.cfm                             soap_receiver_auth_copy_to_vaya.cfm
+emailer_send_lc.cfm                          owi_msn_insert_range.cfm                       sql
+emailer_send_zen.cfm                         owi_msn_snapshot_import.cfm                    SQLScripts
+empty_sched_unbar.cfm                        owi_notices.cfm                                statuses_include.cfm
+export_cdrs.cfm                              owi_notices_view.cfm                           style
+eziDebitEx                                   owi_plans.cfm                                  styles.css
+favicon4.png                                 owi_scp_batch.cfm                              styles_z.css
+fblogint_getid.php                           owi_scp.cfm                                    system_widgets
+files                                        owi_sims.cfm                                   temp_scripts
+finalised.cfm                                page_cookie.cfm                                termfee_not_inbill.cfm
+finalised_check.cfm                          page_surround.cfm                              testModules
+finalised_export.cfm                         password.cfm                                   testmur.cfm
+FIX_auto_unbar.cfm                           passwords.cfm                                  text_format.cfm
+FIX_bar-to-stay.cfm                          payment.cfm                                    thankyou.php
+FIX_bar-to-unbar.cfm                         payment_overdue.cfm                            themes
+FIX_Bulk_Send_Message_FORM.cfm               phone_activate.cfm                             ticketmanagement.cfc
+fix_disconnected_calc_term_fees.cfm          phone.cfm                                      tinyeditor.cfm
+fix_disconnected_calc_term_fees_include.cfm  phone_changeplan_ll.cfm                        TrueFalseFormat.cfm
+FIX_ecbill_ezi_payments_delete.cfm           PhoneFormat.cfm                                ui
+FIX_not-bar-dont-bar.cfm                     phone_limits.cfm                               unallocated.cfm
+FIX_not-bar-to-bar.cfm                       phones_conn_action.cfm                         unallocated_csv.cfm
+FIX_not-bar-to-bar-unbarred.cfm              phones_conn.cfm                                update_barintphones.cfm
+fix_phone_upd_prorata.cfm                    phonetest.cfm                                  update_pending_payments.cfm
+fix_recreate_pdfs.cfm                        phone_update_check_fee.cfm                     update_phoneExpiry_temp.cfm
+fix_trans.cfm                                phone_update_select_network.cfm                update_phone_finalised.cfm
+FIX_update_sc_monthly_list.cfm               phone_update_select_plan.cfm                   update_syncplans.cfm
+flexigrid                                    phone_upd_prorata.cfm                          update_syncplans_new_test.cfm
+font.html                                    plan_reconcile.cfm                             upgradeRatePlan.cfc
+for_editService.cfm                          plan_reconcile_export.cfm                      upgrade_rate_plans.cfm
+form_validation.js                           plans.cfc                                      upload
+func_changePlan.cfm                          plans.cfm                                      upload_1
+functionsInvoiceNotifications.cfm            plans_ll_display.cfm                           upload_2
+generalFunctions.cfc                         plans_mobile_display.cfm                       upload_new
+gen_validatorv2.js                           plans_offset.cfm                               upload_old
+get_usage.cfm                                plans_popup.cfm                                upload_paying_client.cfm
+gunzipFile.cfm                               plans_radius_setting.cfm                       upload_paying_client_download.cfm
+helpballoon                                  plans_v2.cfm                                   userautoallocate.cfm
+help.html                                    pni                                            userpopup.cfm
+hpp_change.cfm                               primo_cron.txt                                 userprivilege.cfm
+htmlbox.colors.js                            primo_test.cfm                                 users.cfm
+htmlbox.full.js                              query_check_vaya_abk.cfm                       userstatus.cfm
+htmlbox.min.js                               query_check_vaya.cfm                           vayaico.ico
+htmlbox.styles.js                            queue                                          vaya-services
+htmlbox.syntax.js                            rbtcdr                                         vaya_settings.cfm
+htmlbox.undoredomanager.js                   rbt_cdr_upload.cfm                             verify_email_action.cfm
+htmlCompressFormat.cfm                       rbt_itemisation.cfm                            verify_email.cfm
+images                                       reasoncode_include.cfm                         viewfullreport.jpg
+inc_activate_services.cfm                    rec_download.cfm                               viewwddx.cfm
+inc_address_check_01.cfm                     recordings                                     voip_check2.cfm
+inc_address_check_02.cfm                     rec_upload.php                                 voip_check.cfm
+inc_address_check_03.cfm                     report_12_bolton.cfm                           voip_check_moved_2_lc.cfm
+inc_address_check_04.cfm                     report_accounting_calc_bill.cfm                voip_check_v1.cfm
+inc_address_check_copy_crnt_to_dlv.cfm       report_accounting_calc_bolton.cfm              voip_check_v2.cfm
+inc_address_check_prev_01.cfm                report_accounting_calc.cfm                     waiting_conections.cfm
+inc_address_check_prev_02.cfm                report_accounting_calc_landline.cfm            washed
+inc_address_check_prev_03.cfm                report_accounting_calc_mobile.cfm              washed.cfm
+inc_address_check_prev_04.cfm                report_accounting_calc_total.cfm               washed_header.cfm
+inc_address_check_zero_address_data.cfm      report_accounting.cfm                          washed_upload.cfm
+inc_address_prefill_process.cfm              report_accounting_receivables_adj1.cfm         write_off_overdues.cfm
+inc_autocomplete_ajax_msn.cfm                report_accounting_receivables_adj2.cfm         wsg_address_check.cfm
+inc_autocomplete_ajax_street_types.cfm       report_accounting_receivables_adj_item.cfm     wsg_b2b
+inc_autocomplete_ajax_suburbs.cfm            report_accounting_receivables_cal2.cfm         wsg_fuzzy_address_match.cfm
+inc_autocomplete_js.cfm                      report_accounting_receivables_cal2_script.cfm  wsg_manage.cfm
+inc_bill_email_notification.cfm              report_accounting_receivables.cfm              wsg_manage_landlines_actions.cfm
+inc_bill_notification.cfm                    report_accounting_receivables_comms.cfm        wsg_manage_landlines_add.cfm
+inc_bill_run_main.cfm                        report_accounting_receivables_pay1.cfm         wsg_manage_landlines.cfm
+inc_charge_purchase.cfm                      report_accounting_receivables_pay2.cfm         wsg_manage_landlines_edit.cfm
+inc_client_header.cfm                        report_accounting_receivables_pay_item.cfm     wsg_manage_landlines_main.cfm
+inc_connection_type.cfm                      report_airtime.cfm                             wsg_manage_menu.cfm
+inc_credit_checks_view.cfm                   report_apd.cfm                                 wsg_manage_radius_setting.cfm
+inc_dateselect_form.cfm                      report_apd_new.cfm                             wsg_manage_radius_settings.cfm
+inc_display_phonetotal.cfm                   report_arpu.cfm                                wsg_manage_request.cfm
+inc_display_washed_result.cfm                report_avarage_spend_by_plan.cfm               wsg_manage_setting.cfm
+inc_ecbill_itemisation_calculate.cfm         report_average_rpu_and_payments.cfm            wsg_radius_request.cfm
+inc_ecbill_itemisation_cap.cfm               report_bad_debt.cfm                            wsg_sync.cfm
+inc_ecbill_itemisation.cfm                   report_balance_checks.cfm                      wsg_view_output.cfm
+inc_ecbill_itemisation_vars.cfm              report_barred.cfm                              wysiwyg
+inc_error_dump.cfm                           report_bill_extras.cfm                         xhtml.js
+inc_error_dump_val_req.cfm                   report_billing.cfm                             xml
+inc_form_changeplan.cfm                      report_billing_splitup.cfm
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]# ls -ltrh
+total 9.3M
+-rw-r--r--  1 root root  22K Jul  1 10:47 Application.cfm
+-rw-r--r--  1 root root  59K Jul  1 10:47 CalendarPopup.js
+-rw-r--r--  1 root root 7.1K Jul  1 10:47 CaseFormat.cfm
+-rw-r--r--  1 root root 4.2K Jul  1 10:47 Coverage Maps.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 DNCR
+-rw-r--r--  1 root root 2.4K Jul  1 10:47 DateFormat.cfm
+-rw-r--r--  1 root root 1.4K Jul  1 10:47 DateTimeFormat.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 DnB
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 DnB_clientpay
+-rw-r--r--  1 root root 9.5K Jul  1 10:47 FIX_Bulk_Send_Message_FORM.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:47 FIX_auto_unbar.cfm
+-rw-r--r--  1 root root 9.9K Jul  1 10:47 FIX_bar-to-stay.cfm
+-rw-r--r--  1 root root  10K Jul  1 10:47 FIX_bar-to-unbar.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 FIX_ecbill_ezi_payments_delete.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:47 FIX_not-bar-dont-bar.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:47 FIX_not-bar-to-bar-unbarred.cfm
+-rw-r--r--  1 root root 5.2K Jul  1 10:47 FIX_not-bar-to-bar.cfm
+-rw-r--r--  1 root root  732 Jul  1 10:47 FIX_update_sc_monthly_list.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 IPND
+-rw-r--r--  1 root root  14K Jul  1 10:47 IPND_checks.cfm
+drwxr-xr-x  4 root root 4.0K Jul  1 10:47 LeadGen
+-rw-r--r--  1 root root 3.2K Jul  1 10:47 PhoneFormat.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 SQLScripts
+-rw-r--r--  1 root root 1.1K Jul  1 10:47 SessionTracker.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:47 TrueFalseFormat.cfm
+-rw-r--r--  1 root root  77K Jul  1 10:47 accounts.cfm
+-rw-r--r--  1 root root 5.5K Jul  1 10:47 accounts_add_payment_advanced.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:47 accounts_cc.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:47 accounts_reactiv.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 acma_export.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:47 acma_export2.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:47 acma_export3.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:47 action_log.cfm
+-rw-r--r--  1 root root  27K Jul  1 10:47 actions.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 addcomment.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:47 address_checking.cfm
+-rw-r--r--  1 root root 4.7K Jul  1 10:47 address_checking_prev.cfm
+-rw-r--r--  1 root root 5.0K Jul  1 10:47 adsl_view.cfm
+drwxr-xr-x  5 root root 4.0K Jul  1 10:47 api
+-rw-r--r--  1 root root 7.2K Jul  1 10:47 auth_error.cfm
+-rw-r--r--  1 root root 5.5K Jul  1 10:47 barcode.cfc
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 barcode_imgs
+-rw-r--r--  1 root root  16K Jul  1 10:47 barred_out.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 bi
+-rw-r--r--  1 root root  921 Jul  1 10:47 bid_code_app.cfm
+-rw-r--r--  1 root root  39K Jul  1 10:47 bill_checks.cfm
+-rw-r--r--  1 root root 6.5K Jul  1 10:47 bill_checks2.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:47 bill_checks2_connected_date.cfm
+-rw-r--r--  1 root root 6.7K Jul  1 10:47 bill_checks2_lc.cfm
+-rw-r--r--  1 root root 9.5K Jul  1 10:47 bill_checks_lc.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:47 bill_export.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:47 bill_log.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:47 bill_print_ftp.cfm
+-rw-r--r--  1 root root 4.9K Jul  1 10:47 bill_send_email.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:47 bill_sendbillnotpaid_email.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 billboards
+drwxr-xr-x  6 root root 4.0K Jul  1 10:47 billing
+lrwxrwxrwx  1 root root   48 Jul  1 10:47 billing_landline_prov_files -> /nfs/ecgateway_files/billing_landline_prov_files
+lrwxrwxrwx  1 root root   37 Jul  1 10:47 billing_landline -> /nfs/ecgateway_files/billing_landline
+drwxr-xr-x  4 root root 4.0K Jul  1 10:47 billing_lc
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 billing_scripts
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 billing_scripts_lc
+drwxr-xr-x  7 root root 4.0K Jul  1 10:47 bsbchecker
+-rw-r--r--  1 root root 1.3K Jul  1 10:47 bulkdelete.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:47 cbox_test.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:47 cc_reminder.cfm
+-rw-r--r--  1 root root  73K Jul  1 10:47 ccdaterange.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:47 ccheck_popup.cfm
+-rw-r--r--  1 root root  97K Jul  1 10:47 ccheckview.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 certificates
+-rw-r--r--  1 root root 3.7K Jul  1 10:47 change_phone_user.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 check_duplicate.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:47 check_plantype.cfm
+-rw-r--r--  1 root root 4.4K Jul  1 10:47 check_sp_payment.cfm
+-rw-r--r--  1 root root 4.2K Jul  1 10:47 check_sp_xml.cfm
+-rw-r--r--  1 root root  43K Jul  1 10:47 client.cfm
+-rw-r--r--  1 root root 7.7K Jul  1 10:47 client_addresses.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 client_bup.cfm
+-rw-r--r--  1 root root  29K Jul  1 10:47 client_credit_check.cfm
+-rw-r--r--  1 root root  544 Jul  1 10:47 client_noback.cfm
+-rw-r--r--  1 root root  436 Jul  1 10:47 client_noback_ming.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 client_plan.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:47 client_plan_test.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 client_test.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:47 clientcc_comment.cfm
+-rw-r--r--  1 root root 6.1K Jul  1 10:47 clientfiles.cfm
+-rw-r--r--  1 root root 6.1K Jul  1 10:47 clientfiles_bak.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:47 clientid_floatbox.cfm
+-rw-r--r--  1 root root 3.7K Jul  1 10:47 clientid_floatbox_test.cfm
+-rw-r--r--  1 root root  30K Jul  1 10:47 clientidentities.cfm
+-rw-r--r--  1 root root 9.8K Jul  1 10:47 connect_manual.cfm
+-rw-r--r--  1 root root 7.1K Jul  1 10:47 connection_display.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:47 connection_display_total_active.cfm
+-rw-r--r--  1 root root 8.1K Jul  1 10:47 connex_no_acc_barred.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:47 connexnet_export.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:47 copy_to_vaya_xml_receiver.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 coverage_check.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 credit_check_table.cfm
+lrwxrwxrwx  1 root root   32 Jul  1 10:47 creditcheck -> /nfs/ecgateway_files/creditcheck
+-rw-r--r--  1 root root 7.2K Jul  1 10:47 creditcheck.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 creditcheck_dynamic.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:47 creditcheck_manual.cfm
+-rw-r--r--  1 root root 6.4K Jul  1 10:47 creditcheck_req_confirm.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:47 creditcheck_req_confirm_veda.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:47 creditcheck_req_perform.cfm
+-rw-r--r--  1 root root 2.2K Jul  1 10:47 creditcheck_req_perform_limited.cfm
+-rw-r--r--  1 root root 2.2K Jul  1 10:47 creditcheck_req_perform_send.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:47 creditcheck_rsp.cfm
+-rw-r--r--  1 root root  910 Jul  1 10:47 creditcheck_xml.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 css
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 custom_tags
+-rw-r--r--  1 root root 3.2K Jul  1 10:47 dashboard.cfm
+-rw-r--r--  1 root root 2.3K Jul  1 10:47 dashboard_callbacks.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:47 dashboard_conne
+-rw-r--r--  1 root root  18K Jul  1 10:47 dashboard_connections.cfm
+-rw-r--r--  1 root root  22K Jul  1 10:47 dashboard_connections_dealer.cfm
+-rw-r--r--  1 root root 7.9K Jul  1 10:47 dashboard_connections_lc_daily.cfm
+-rw-r--r--  1 root root 8.0K Jul  1 10:47 dashboard_connections_vaya_daily.cfm
+-rw-r--r--  1 root root 7.8K Jul  1 10:47 dashboard_connections_zc_daily.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 dashboard_resourcefiles.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 dashboard_sms_log.cfm
+lrwxrwxrwx  1 root root   25 Jul  1 10:47 data -> /nfs/ecgateway_files/data
+-rw-r--r--  1 root root  12K Jul  1 10:47 data.cfm
+-rw-r--r--  1 root root 2.1K Jul  1 10:47 data_create.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:47 data_delete.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:47 data_download.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:47 data_header.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 data_move.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:47 data_move_action.cfm
+-rw-r--r--  1 root root 3.3K Jul  1 10:47 data_upload.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 data_upload_insert.cfm
+-rw-r--r--  1 root root  963 Jul  1 10:47 date_selects.cfm
+-rw-r--r--  1 root root 3.3K Jul  1 10:47 date_vars.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:47 date_vars_arr.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:47 date_vars_weekly.cfm
+-rw-r--r--  1 root root   28 Jul  1 10:47 dealer
+-rw-r--r--  1 root root 4.1K Jul  1 10:47 dealerfiles.cfm
+-rw-r--r--  1 root root  758 Jul  1 10:47 demo.js
+-rw-r--r--  1 root root  18K Jul  1 10:47 disconnect.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:47 display_connections.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:47 display_connections2.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:47 display_connections3.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:47 display_connections4.cfm
+-rw-r--r--  1 root root  779 Jul  1 10:47 display_connections_billboard.cfm
+-rw-r--r--  1 root root  680 Jul  1 10:47 display_connections_billboard2.cfm
+-rw-r--r--  1 root root  682 Jul  1 10:47 display_connections_billboard3.cfm
+-rw-r--r--  1 root root 7.2K Jul  1 10:47 display_connections_only.cfm
+-rw-r--r--  1 root root  446 Jul  1 10:47 display_connections_screen.cfm
+-rw-r--r--  1 root root  522 Jul  1 10:47 display_connections_screen.html
+-rw-r--r--  1 root root 2.5K Jul  1 10:47 display_connections_test.cfm
+lrwxrwxrwx  1 root root   25 Jul  1 10:47 docs -> /nfs/ecgateway_files/docs
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 duplicate_client.cfm
+-rw-r--r--  1 root root 1.3K Jul  1 10:47 ec_dump.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:47 ec_dump2.cfm
+-rw-r--r--  1 root root 118K Jul  1 10:47 ecbill.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 ecbill_billday_calc.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:47 ecbill_dd_export.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:47 ecbill_dd_export_paymentONLY.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:47 ecbill_dd_footer.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:47 ecbill_dd_header.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:47 ecbill_dd_header_with_nbsp.cfm
+-rw-r--r--  1 root root  774 Jul  1 10:47 ecbill_empty_log_payment.cfm
+-rw-r--r--  1 root root 8.7K Jul  1 10:47 ecbill_ezi_bpay_payments.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 ecbill_ezi_callback_payments.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 ecbill_ezi_payments.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 ecbill_ezi_payments_overdue.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:47 ecbill_ezi_temp_sms.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:47 ecbill_ezi_update_pending_payments.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:47 ecbill_itemisation_csv.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:47 ecbill_payments.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:47 ecbill_process_cc.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:47 ecbill_process_cc_overdue.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:47 ecbill_process_cc_sched_bash.cfm
+-rw-r--r--  1 root root 9.4K Jul  1 10:47 ecbill_process_cc_std.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:47 ecbill_sched.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:47 ecbill_test.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:47 edit_notes.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:47 email_auto_sender.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 email_campaign
+-rw-r--r--  1 root root 3.7K Jul  1 10:47 email_checker.cfm
+-rw-r--r--  1 root root  911 Jul  1 10:47 email_content_send.cfm
+-rw-r--r--  1 root root 8.5K Jul  1 10:47 emailer_send.cfm
+-rw-r--r--  1 root root 4.7K Jul  1 10:47 emailer_send_dealer.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:47 emailer_send_lc.cfm
+-rw-r--r--  1 root root 6.5K Jul  1 10:47 emailer_send_zen.cfm
+-rw-r--r--  1 root root  753 Jul  1 10:47 empty_sched_unbar.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:47 export_cdrs.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 eziDebitEx
+-rw-r--r--  1 root root 7.4K Jul  1 10:47 favicon4.png
+-rw-r--r--  1 root root 2.5K Jul  1 10:47 fblogint_getid.php
+drwxr-xr-x  2 root root 4.0K Jul  1 10:47 files
+-rw-r--r--  1 root root  23K Jul  1 10:47 finalised.cfm
+-rw-r--r--  1 root root 4.8K Jul  1 10:47 finalised_check.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:47 finalised_export.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:47 fix_disconnected_calc_term_fees.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:47 fix_disconnected_calc_term_fees_include.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:47 fix_phone_upd_prorata.cfm
+-rw-r--r--  1 root root  672 Jul  1 10:47 fix_recreate_pdfs.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:47 fix_trans.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 flexigrid
+-rw-r--r--  1 root root  13K Jul  1 10:47 font.html
+-rw-r--r--  1 root root 3.2K Jul  1 10:47 for_editService.cfm
+-rw-r--r--  1 root root  742 Jul  1 10:47 form_validation.js
+-rw-r--r--  1 root root  33K Jul  1 10:47 func_changePlan.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:47 functionsInvoiceNotifications.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 gen_validatorv2.js
+-rw-r--r--  1 root root 119K Jul  1 10:47 generalFunctions.cfc
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 get_usage.cfm
+-rw-r--r--  1 root root 2.7K Jul  1 10:47 gunzipFile.cfm
+-rw-r--r--  1 root root  23K Jul  1 10:47 help.html
+drwxr-xr-x  6 root root 4.0K Jul  1 10:47 helpballoon
+-rw-r--r--  1 root root 5.2K Jul  1 10:47 hpp_change.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:47 htmlCompressFormat.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:47 htmlbox.colors.js
+-rw-r--r--  1 root root  36K Jul  1 10:47 htmlbox.full.js
+-rw-r--r--  1 root root  14K Jul  1 10:47 htmlbox.min.js
+-rw-r--r--  1 root root 1.1K Jul  1 10:47 htmlbox.styles.js
+-rw-r--r--  1 root root 7.1K Jul  1 10:47 htmlbox.syntax.js
+-rw-r--r--  1 root root  473 Jul  1 10:47 htmlbox.undoredomanager.js
+drwxr-xr-x  5 root root 4.0K Jul  1 10:47 images
+-rw-r--r--  1 root root 9.4K Jul  1 10:47 inc_activate_services.cfm
+-rw-r--r--  1 root root 9.8K Jul  1 10:47 inc_address_check_01.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:47 inc_address_check_02.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:47 inc_address_check_03.cfm
+-rw-r--r--  1 root root 8.5K Jul  1 10:47 inc_address_check_04.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 inc_address_check_copy_crnt_to_dlv.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:47 inc_address_check_prev_01.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:47 inc_address_check_prev_02.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:47 inc_address_check_prev_03.cfm
+-rw-r--r--  1 root root 6.3K Jul  1 10:47 inc_address_check_prev_04.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:47 inc_address_check_zero_address_data.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:47 inc_address_prefill_process.cfm
+-rw-r--r--  1 root root  842 Jul  1 10:47 inc_autocomplete_ajax_msn.cfm
+-rw-r--r--  1 root root  491 Jul  1 10:47 inc_autocomplete_ajax_street_types.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 inc_autocomplete_ajax_suburbs.cfm
+-rw-r--r--  1 root root 2.7K Jul  1 10:47 inc_autocomplete_js.cfm
+-rw-r--r--  1 root root 7.7K Jul  1 10:47 inc_bill_email_notification.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:47 inc_bill_notification.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:47 inc_bill_run_main.cfm
+-rw-r--r--  1 root root 9.7K Jul  1 10:47 inc_charge_purchase.cfm
+-rw-r--r--  1 root root  711 Jul  1 10:47 inc_client_header.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:47 inc_connection_type.cfm
+-rw-r--r--  1 root root  27K Jul  1 10:47 inc_credit_checks_view.cfm
+-rw-r--r--  1 root root 4.3K Jul  1 10:47 inc_dateselect_form.cfm
+-rw-r--r--  1 root root 5.8K Jul  1 10:47 inc_display_phonetotal.cfm
+-rw-r--r--  1 root root 2.2K Jul  1 10:47 inc_display_washed_result.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:47 inc_ecbill_itemisation.cfm
+-rw-r--r--  1 root root 7.9K Jul  1 10:47 inc_ecbill_itemisation_calculate.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:47 inc_ecbill_itemisation_cap.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 inc_ecbill_itemisation_vars.cfm
+-rw-r--r--  1 root root 6.5K Jul  1 10:47 inc_error_dump.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:47 inc_error_dump_val_req.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:47 inc_form_changeplan.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:47 inc_form_upgradeplan.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:47 inc_input_cleanup.cfm
+-rw-r--r--  1 root root 7.3K Jul  1 10:47 inc_jquery_head.cfm
+-rw-r--r--  1 root root 4.2K Jul  1 10:47 inc_jquery_head_bak.cfm
+-rw-r--r--  1 root root 6.0K Jul  1 10:47 inc_landline_move.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 inc_manage_services_roaming.cfm
+-rw-r--r--  1 root root 1.4K Jul  1 10:47 inc_manage_tio_actions.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:47 inc_manage_tio_form.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:47 inc_manage_tio_list.cfm
+-rw-r--r--  1 root root 2.3K Jul  1 10:47 inc_msgvars_get.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:47 inc_paf_barcode.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 inc_phone_changeplan.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:47 inc_phone_move.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 inc_phones_form.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:47 inc_phones_form3.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:47 inc_phones_search_msns.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:47 inc_phones_upgrades.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:47 inc_phones_upgrades_2.cfm
+-rw-r--r--  1 root root 7.1K Jul  1 10:47 inc_queries_report_overdue.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:47 inc_queries_report_overdue_70days.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:47 inc_queries_report_overdue_bak.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:47 inc_queries_report_overdue_zen.cfm
+-rw-r--r--  1 root root 3.1K Jul  1 10:47 inc_queries_report_phones_to_cancel.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:47 inc_queries_report_phones_to_upgrade.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:47 inc_queries_report_phonetotal.cfm
+-rw-r--r--  1 root root  278 Jul  1 10:47 inc_report_bad_debt_toolbar.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:47 inc_report_new_clients_01_daily.cfm
+-rw-r--r--  1 root root 8.1K Jul  1 10:47 inc_report_new_clients_01_monthly.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:47 inc_report_new_orders_daily.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:47 inc_report_new_orders_monthly.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 inc_result_page_numbers.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 inc_result_page_numbers_finalise.cfm
+-rw-r--r--  1 root root 3.8K Jul  1 10:47 inc_result_page_numbers_with_param.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:47 inc_sms_manage_toolbar.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:47 inc_sms_slide.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:47 inc_smsmessage_replace.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:47 inc_sql_details.cfm
+-rw-r--r--  1 root root 3.9K Jul  1 10:47 inc_table_generator.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:47 inc_table_generator_xls.cfm
+-rw-r--r--  1 root root 4.9K Jul  1 10:47 inc_table_report_acc_rec.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:47 inc_tabs.cfm
+-rw-r--r--  1 root root 1.3K Jul  1 10:47 inc_unallocated_toolbar.cfm
+-rw-r--r--  1 root root  678 Jul  1 10:47 inc_user_list_dealers.cfm
+-rw-r--r--  1 root root 3.9K Jul  1 10:47 index.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:47 indicator.gif
+-rwxr-xr-x  1 root root 2.3K Jul  1 10:47 insertLog.cfm
+-rw-r--r--  1 root root  30K Jul  1 10:47 invoice.cfm
+-rw-r--r--  1 root root  27K Jul  1 10:47 invoice_.cfm
+-rw-r--r--  1 root root  27K Jul  1 10:47 invoice_test.cfm
+-rw-r--r--  1 root root 6.2K Jul  1 10:47 invoiceitem.cfm
+-rw-r--r--  1 root root 167K Jul  1 10:47 jquery-1.4.2.js
+-rw-r--r--  1 root root 201K Jul  1 10:47 jquery-ui-1.8.5.custom.min.js
+-rw-r--r--  1 root root  758 Jul  1 10:47 jquery.autocomplete.css
+-rw-r--r--  1 root root  14K Jul  1 10:47 jquery.autocomplete.js
+-rw-r--r--  1 root root 3.2K Jul  1 10:47 jquery.iframe.js
+-rw-r--r--  1 root root 7.4K Jul  1 10:47 jquery.marquee.js
+drwxr-xr-x  3 root root 4.0K Jul  1 10:47 js
+-rw-r--r--  1 root root 2.3K Jul  1 10:47 js_HtmlBox.cfm
+-rw-r--r--  1 root root 8.1K Jul  1 10:47 landline_view.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:47 layout.css
+-rw-r--r--  1 root root  42K Jul  1 10:47 layout_modules.css
+-rw-r--r--  1 root root 2.4K Jul  1 10:47 leadgenreports.cfm
+-rw-r--r--  1 root root  25K Jul  1 10:47 letter_send.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:47 letter_send_lc.cfm
+-rw-r--r--  1 root root  22K Jul  1 10:47 letter_send_zen.cfm
+drwxr-xr-x 12 root root 4.0K Jul  1 10:48 library
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 list_bills.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 list_clients.cfm
+-rw-r--r--  1 root root 462K Jul  1 10:48 loading.swf
+lrwxrwxrwx  1 root root   24 Jul  1 10:48 log -> /nfs/ecgateway_files/log
+-rw-r--r--  1 root root  25K Jul  1 10:48 log_checking_xml_4.cfm
+-rw-r--r--  1 root root  19K Jul  1 10:48 login.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:48 login.css
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 login
+-rw-r--r--  1 root root  166 Jul  1 10:48 login_all-ie-only.css
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 login_changeuser.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:48 login_test.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 logintester.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:48 logout.cfm
+-rw-r--r--  1 root root  206 Jul  1 10:48 m2_test.cfm
+-rw-r--r--  1 root root 100K Jul  1 10:48 manage.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 manage_adsl.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 manage_adsl_actions.cfm
+-rw-r--r--  1 root root 9.0K Jul  1 10:48 manage_adsl_add.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 manage_adsl_edit.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:48 manage_adsl_main.cfm
+-rw-r--r--  1 root root  93K Jul  1 10:48 manage_bak.cfm
+-rw-r--r--  1 root root 8.9K Jul  1 10:48 manage_barchecks.cfm
+-rw-r--r--  1 root root  27K Jul  1 10:48 manage_ccrules.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 manage_faqs.cfm
+-rw-r--r--  1 root root  30K Jul  1 10:48 manage_identities.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:48 manage_insurance.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 manage_invoices.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:48 manage_landlines.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 manage_landlines_actions.cfm
+-rw-r--r--  1 root root 9.0K Jul  1 10:48 manage_landlines_add.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 manage_landlines_edit.cfm
+-rw-r--r--  1 root root  20K Jul  1 10:48 manage_landlines_main.cfm
+-rw-r--r--  1 root root  19K Jul  1 10:48 manage_landlines_main_20120625.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 manage_landlines_popup.cfm
+-rw-r--r--  1 root root  945 Jul  1 10:48 manage_leads.cfm
+-rw-r--r--  1 root root  60K Jul  1 10:48 manage_owi.cfm
+-rw-r--r--  1 root root  19K Jul  1 10:48 manage_owi_barring.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 manage_owi_edit.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:48 manage_owi_menu.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:48 manage_owi_menu_original.cfm
+-rw-r--r--  1 root root  82K Jul  1 10:48 manage_owi_popup.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 manage_owi_popup_fee.cfm
+-rw-r--r--  1 root root 8.7K Jul  1 10:48 manage_owi_psms.cfm
+-rw-r--r--  1 root root 2.3K Jul  1 10:48 manage_owi_reqlink.cfm
+-rw-r--r--  1 root root 1.8K Jul  1 10:48 manage_owi_reqlink_imei.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 manage_owi_xml.cfm
+-rw-r--r--  1 root root  31K Jul  1 10:48 manage_phones.cfm
+-rw-r--r--  1 root root 3.3K Jul  1 10:48 manage_phones_conn_link.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 manage_phones_conn_link.php
+-rw-r--r--  1 root root 6.9K Jul  1 10:48 manage_phones_csv.cfm
+-rw-r--r--  1 root root 2.1K Jul  1 10:48 manage_prevbalance.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:48 manage_qualify_address.cfm
+-rw-r--r--  1 root root 2.1K Jul  1 10:48 manage_quicks.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 manage_security.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:48 manage_statuses.cfm
+-rw-r--r--  1 root root 4.4K Jul  1 10:48 manage_stock.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:48 manage_suppCharges.cfm
+-rw-r--r--  1 root root  81K Jul  1 10:48 manage_test.cfm
+-rw-r--r--  1 root root  20K Jul  1 10:48 manage_tickets.cfm
+-rw-r--r--  1 root root 7.3K Jul  1 10:48 manage_tickets_board.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:48 manage_tio.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 manage_trans.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 manage_usagetotal.cfm
+-rw-r--r--  1 root root  19K Jul  1 10:48 manage_watchlists.cfm
+-rw-r--r--  1 root root  10K Jul  1 10:48 manage_wsg_xml.cfm
+-rw-r--r--  1 root root 1.4K Jul  1 10:48 management_tasks.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 management_tasks
+-rw-r--r--  1 root root 1.3K Jul  1 10:48 management_tasks_popup.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 marek_end_of_month.cfm
+-rw-r--r--  1 root root 1.6K Jul  1 10:48 mateemail.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 menu.cfm
+drwxr-xr-x  4 root root 4.0K Jul  1 10:48 menu
+-rw-r--r--  1 root root 3.8K Jul  1 10:48 merge.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 merge_display.cfm
+-rw-r--r--  1 root root 3.7K Jul  1 10:48 merge_sql1.cfm
+-rw-r--r--  1 root root 3.7K Jul  1 10:48 merge_sql2.cfm
+-rw-r--r--  1 root root 6.5K Jul  1 10:48 merge_tfr.cfm
+-rw-r--r--  1 root root 9.8K Jul  1 10:48 message_replace.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 messages.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:48 messages_delete.cfm
+-rw-r--r--  1 root root  19K Jul  1 10:48 modifyDataPlans.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 mur_viewer.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:48 nbn_serviceability_import.cfm
+-rwxr-xr-x  1 root root 1.2K Jul  1 10:48 newsearch.xml
+-rw-r--r--  1 root root  385 Jul  1 10:48 nohup.out
+-rw-r--r--  1 root root 5.1K Jul  1 10:48 notices.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:48 notices_display.cfm
+-rw-r--r--  1 root root 6.0K Jul  1 10:48 optusmaps.js
+-rw-r--r--  1 root root  41K Jul  1 10:48 overlimit.cfm
+-rw-r--r--  1 root root  37K Jul  1 10:48 overlimit_20120716.cfm
+drwxr-xr-x 12 root root 4.0K Jul  1 10:48 owi
+-rw-r--r--  1 root root 3.7K Jul  1 10:48 owi_cdr_counts.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:48 owi_cids.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:48 owi_cids_lc.cfm
+-rw-r--r--  1 root root 6.0K Jul  1 10:48 owi_msn_assign_manageonly.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 owi_msn_export.cfm
+-rw-r--r--  1 root root 4.9K Jul  1 10:48 owi_msn_import.cfm
+-rw-r--r--  1 root root  56K Jul  1 10:48 owi_msn_insert.cfm
+-rw-r--r--  1 root root 2.2K Jul  1 10:48 owi_msn_insert_range.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 owi_msn_snapshot_import.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:48 owi_notices.cfm
+-rw-r--r--  1 root root 2.7K Jul  1 10:48 owi_notices_view.cfm
+-rw-r--r--  1 root root  35K Jul  1 10:48 owi_plans.cfm
+-rw-r--r--  1 root root 5.5K Jul  1 10:48 owi_scp.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:48 owi_scp_batch.cfm
+-rw-r--r--  1 root root 7.7K Jul  1 10:48 owi_sims.cfm
+-rw-r--r--  1 root root 1.5K Jul  1 10:48 page_cookie.cfm
+-rw-r--r--  1 root root 4.5K Jul  1 10:48 page_surround.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:48 password.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:48 passwords.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 payment.cfm
+-rw-r--r--  1 root root 9.2K Jul  1 10:48 payment_overdue.cfm
+-rw-r--r--  1 root root 103K Jul  1 10:48 phone.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:48 phone_activate.cfm
+-rw-r--r--  1 root root  20K Jul  1 10:48 phone_changeplan_ll.cfm
+-rw-r--r--  1 root root 6.2K Jul  1 10:48 phone_limits.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 phone_upd_prorata.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:48 phone_update_check_fee.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:48 phone_update_select_network.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:48 phone_update_select_plan.cfm
+-rw-r--r--  1 root root 5.2K Jul  1 10:48 phones_conn.cfm
+-rw-r--r--  1 root root 8.9K Jul  1 10:48 phones_conn_action.cfm
+-rw-r--r--  1 root root 4.2K Jul  1 10:48 phonetest.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 plan_reconcile.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:48 plan_reconcile_export.cfm
+-rw-r--r--  1 root root  29K Jul  1 10:48 plans.cfc
+-rw-r--r--  1 root root  92K Jul  1 10:48 plans.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 plans_ll_display.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 plans_mobile_display.cfm
+-rw-r--r--  1 root root 3.0K Jul  1 10:48 plans_offset.cfm
+-rw-r--r--  1 root root 3.9K Jul  1 10:48 plans_popup.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 plans_radius_setting.cfm
+-rw-r--r--  1 root root  72K Jul  1 10:48 plans_v2.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 pni
+-rw-r--r--  1 root root  44K Jul  1 10:48 primo_cron.txt
+-rw-r--r--  1 root root  34K Jul  1 10:48 primo_test.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:48 query_check_vaya.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 query_check_vaya_abk.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 queue
+-rw-r--r--  1 root root 7.4K Jul  1 10:48 rbt_cdr_upload.cfm
+-rw-r--r--  1 root root 6.7K Jul  1 10:48 rbt_itemisation.cfm
+lrwxrwxrwx  1 root root   11 Jul  1 10:48 rbtcdr -> /nfs/rbtcdr
+-rw-r--r--  1 root root  327 Jul  1 10:48 reasoncode_include.cfm
+-rw-r--r--  1 root root  225 Jul  1 10:48 rec_download.cfm
+-rw-r--r--  1 root root 4.8K Jul  1 10:48 rec_upload.php
+lrwxrwxrwx  1 root root   16 Jul  1 10:48 recordings -> /nfs/recordings/
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 report_12_bolton.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:48 report_accounting.cfm
+-rw-r--r--  1 root root 8.0K Jul  1 10:48 report_accounting_calc.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 report_accounting_calc_bill.cfm
+-rw-r--r--  1 root root 7.8K Jul  1 10:48 report_accounting_calc_bolton.cfm
+-rw-r--r--  1 root root 5.9K Jul  1 10:48 report_accounting_calc_landline.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 report_accounting_calc_mobile.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:48 report_accounting_calc_total.cfm
+-rw-r--r--  1 root root  52K Jul  1 10:48 report_accounting_receivables.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:48 report_accounting_receivables_adj1.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:48 report_accounting_receivables_adj2.cfm
+-rw-r--r--  1 root root 9.8K Jul  1 10:48 report_accounting_receivables_adj_item.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 report_accounting_receivables_cal2.cfm
+-rw-r--r--  1 root root 3.0K Jul  1 10:48 report_accounting_receivables_cal2_script.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:48 report_accounting_receivables_comms.cfm
+-rw-r--r--  1 root root 6.2K Jul  1 10:48 report_accounting_receivables_pay1.cfm
+-rw-r--r--  1 root root 3.7K Jul  1 10:48 report_accounting_receivables_pay2.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:48 report_accounting_receivables_pay_item.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:48 report_airtime.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 report_apd.cfm
+-rw-r--r--  1 root root  10K Jul  1 10:48 report_apd_new.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:48 report_arpu.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 report_avarage_spend_by_plan.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:48 report_average_rpu_and_payments.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_bad_debt.cfm
+-rw-r--r--  1 root root 4.8K Jul  1 10:48 report_balance_checks.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:48 report_barred.cfm
+-rw-r--r--  1 root root 5.5K Jul  1 10:48 report_bill_extras.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_adsl_ll.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_avg_trans.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:48 report_bill_run_bill_log.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:48 report_bill_run_cdrs_not_billed.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 report_bill_run_expensive_bill.cfm
+-rw-r--r--  1 root root 9.3K Jul  1 10:48 report_bill_run_main.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_mobile_adsl.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_mobile_excess.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_mobile_ll.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_rand_mmc.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 report_bill_run_recon_c1.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 report_bill_run_recon_c2.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bill_run_retail_less_2_months.cfm
+-rw-r--r--  1 root root 3.3K Jul  1 10:48 report_bill_run_smallest_bill.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 report_billing.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_billing_splitup.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 report_bolton_active.cfm
+-rw-r--r--  1 root root 8.0K Jul  1 10:48 report_call_aves.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 report_calltype.cfm
+-rw-r--r--  1 root root 4.9K Jul  1 10:48 report_cc_dishonours.cfm
+-rw-r--r--  1 root root 6.7K Jul  1 10:48 report_cc_incomplete.cfm
+-rw-r--r--  1 root root 1.5K Jul  1 10:48 report_client_bolton.cfm
+-rw-r--r--  1 root root 6.8K Jul  1 10:48 report_connected.cfm
+-rw-r--r--  1 root root 7.1K Jul  1 10:48 report_connected_daily.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:48 report_connected_daily_ll.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:48 report_connected_dealers.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:48 report_connected_disconnections.cfm
+-rw-r--r--  1 root root 4.1K Jul  1 10:48 report_connected_export.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_connected_lc.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_connected_list.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 report_connected_monthly.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:48 report_connected_ryantest.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:48 report_connected_ryantest.php
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_connected_sales.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:48 report_connected_sales_2nd.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 report_connected_sales_bak.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:48 report_connected_target.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 report_connected_zen.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 report_correction_needed.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_data_mb.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_data_mb_calc.cfm
+-rw-r--r--  1 root root 8.4K Jul  1 10:48 report_data_mb_test.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 report_data_tethered.cfm
+-rw-r--r--  1 root root 8.9K Jul  1 10:48 report_disconnected.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:48 report_disconnected_export.cfm
+-rw-r--r--  1 root root 8.4K Jul  1 10:48 report_ebill_log.cfm
+-rw-r--r--  1 root root  32K Jul  1 10:48 report_email_daily.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_email_daily_customer.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:48 report_email_daily_status.cfm
+-rw-r--r--  1 root root  22K Jul  1 10:48 report_flashFiles.cfm
+-rw-r--r--  1 root root 8.2K Jul  1 10:48 report_flash_data_bar.cfm
+drwxr-xr-x 26 root root 4.0K Jul  1 10:48 report_groups
+-rw-r--r--  1 root root  19K Jul  1 10:48 report_inventory.cfm
+-rw-r--r--  1 root root 4.9K Jul  1 10:48 report_inventory_export.cfm
+-rw-r--r--  1 root root 9.8K Jul  1 10:48 report_landline_billing.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:48 report_ll_overlimit.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_margins.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 report_msns.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:48 report_new_clients_01.cfm
+-rw-r--r--  1 root root 8.4K Jul  1 10:48 report_new_orders.cfm
+-rw-r--r--  1 root root 9.0K Jul  1 10:48 report_nontoll.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:48 report_nontoll_export.cfm
+-rw-r--r--  1 root root  41K Jul  1 10:48 report_overdue.cfm
+-rw-r--r--  1 root root 9.3K Jul  1 10:48 report_overdue3_on_guard.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 report_overdue_byplan.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:48 report_overdue_byuser.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 report_overdue_byuser_backup.cfm
+-rw-r--r--  1 root root 6.7K Jul  1 10:48 report_overdue_byuser_landline.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:48 report_overdue_export.cfm
+-rw-r--r--  1 root root 3.5K Jul  1 10:48 report_overdue_export_70days.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:48 report_overdue_export_zen.cfm
+-rw-r--r--  1 root root  41K Jul  1 10:48 report_overdue_landline.cfm
+-rw-r--r--  1 root root  28K Jul  1 10:48 report_overdue_percents_time.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:48 report_overdue_percents_time_landline.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 report_overdue_percents_time_test.cfm
+-rw-r--r--  1 root root 7.5K Jul  1 10:48 report_overdue_percents_time_user.cfm
+-rw-r--r--  1 root root  38K Jul  1 10:48 report_overdue_plan.cfm
+-rw-r--r--  1 root root  41K Jul  1 10:48 report_overdue_turnoff.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 report_overdue_zen.cfm
+-rw-r--r--  1 root root 9.0K Jul  1 10:48 report_overlimit.cfc
+-rw-r--r--  1 root root  27K Jul  1 10:48 report_overlimit.cfm
+-rw-r--r--  1 root root 4.8K Jul  1 10:48 report_overlimit_export.cfm
+-rw-r--r--  1 root root  26K Jul  1 10:48 report_overlimit_plan.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:48 report_overlimit_v2.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_owi_request.cfm
+-rw-r--r--  1 root root  20K Jul  1 10:48 report_owi_snapshot.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:48 report_payment_per_client.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:48 report_payments.cfm
+-rw-r--r--  1 root root 8.1K Jul  1 10:48 report_payments_new.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_pending.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:48 report_pending_export.cfm
+-rw-r--r--  1 root root 5.9K Jul  1 10:48 report_pending_payment.cfm
+-rw-r--r--  1 root root 9.9K Jul  1 10:48 report_phones_to_cancel.cfm
+-rw-r--r--  1 root root 6.7K Jul  1 10:48 report_phones_to_upgrade.cfm
+-rw-r--r--  1 root root 9.0K Jul  1 10:48 report_phones_to_upgrade_v2.cfm
+-rw-r--r--  1 root root 8.0K Jul  1 10:48 report_phonetotal.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 report_phonetotal_test.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 report_porting.cfm
+-rw-r--r--  1 root root 3.6K Jul  1 10:48 report_porting_export.cfm
+-rw-r--r--  1 root root 4.6K Jul  1 10:48 report_retail_vs_ws.cfm
+-rw-r--r--  1 root root 6.2K Jul  1 10:48 report_rpu_usage.cfm
+-rw-r--r--  1 root root 9.7K Jul  1 10:48 report_service_eligible.cfm
+-rw-r--r--  1 root root 4.3K Jul  1 10:48 report_service_eligible_export.cfm
+-rw-r--r--  1 root root 7.6K Jul  1 10:48 report_service_eligible_v2.cfm
+-rw-r--r--  1 root root 8.6K Jul  1 10:48 report_sms_received.cfm
+-rw-r--r--  1 root root 7.8K Jul  1 10:48 report_sms_usage.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 report_snapshot.cfm
+-rw-r--r--  1 root root  21K Jul  1 10:48 report_snapshot2.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:48 report_tablet_plans.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:48 report_thisbill.cfm
+-rw-r--r--  1 root root 6.6K Jul  1 10:48 report_thiswelcomebill.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:48 report_transactions.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_washed_msns.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 report_washed_msns_export.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:48 report_washing.cfm
+-rw-r--r--  1 root root  17K Jul  1 10:48 report_watchlist.cfm
+-rw-r--r--  1 root root  10K Jul  1 10:48 report_wholesale_to_upgrade.cfm
+-rw-r--r--  1 root root  12K Jul  1 10:48 report_wholesale_totals.cfm
+-rw-r--r--  1 root root 2.5K Jul  1 10:48 resorcefilesupload.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:48 resource_upload.cfm
+-rw-r--r--  1 root root 8.8K Jul  1 10:48 return.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 sch
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 sched
+-rw-r--r--  1 root root  21K Jul  1 10:48 schedule_phone_changeplan.cfm
+-rw-r--r--  1 root root 5.7K Jul  1 10:48 schedule_phone_changerateplan.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 schedule_view.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 scp
+-rw-r--r--  1 root root  591 Jul  1 10:48 scp_preprocess_form.cfm
+drwxr-xr-x  4 root root 4.0K Jul  1 10:48 scripts
+-rw-r--r--  1 root root 1.2K Jul  1 10:48 search.xml
+-rw-r--r--  1 root root 2.5K Jul  1 10:48 search_apd.cfm
+-rw-r--r--  1 root root  887 Jul  1 10:48 search_apd_1.cfm
+-rw-r--r--  1 root root  26K Jul  1 10:48 search_cancelled.cfm
+-rw-r--r--  1 root root 2.6K Jul  1 10:48 search_csr.cfm
+-rw-r--r--  1 root root 6.9K Jul  1 10:48 search_dealer.cfm
+-rw-r--r--  1 root root  37K Jul  1 10:48 search_display.cfm
+-rw-r--r--  1 root root  32K Jul  1 10:48 search_display_cancelled.cfm
+-rw-r--r--  1 root root 1.7K Jul  1 10:48 search_finalised.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:48 search_main.cfm
+-rw-r--r--  1 root root  833 Jul  1 10:48 search_referred.cfm
+-rw-r--r--  1 root root 2.0K Jul  1 10:48 search_simple.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 search_tio.cfm
+-rw-r--r--  1 root root  33K Jul  1 10:48 search_worker.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 search_worker_list.cfm
+-rw-r--r--  1 root root  451 Jul  1 10:48 searchredirect.cfm
+-rw-r--r--  1 root root  459 Jul  1 10:48 searchredirect2.cfm
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 securepay
+-rw-r--r--  1 root root 1.8K Jul  1 10:48 securepay_xml.cfm
+-rw-r--r--  1 root root 4.4K Jul  1 10:48 send_auto_verify.cfm
+-rw-r--r--  1 root root 2.4K Jul  1 10:48 send_email.cfm
+-rw-r--r--  1 root root  814 Jul  1 10:48 send_manualsms.cfm
+-rw-r--r--  1 root root 9.5K Jul  1 10:48 send_sms.cfm
+-rw-r--r--  1 root root 5.8K Jul  1 10:48 send_sms_MUR.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 services
+-rwxr-xr-x  1 root root 5.5K Jul  1 10:48 settings-vaya.cfc
+lrwxrwxrwx  1 root root   17 Jul  1 10:48 settings.cfc -> settings-vaya.cfc
+-rw-r--r--  1 root root  19K Jul  1 10:48 sms.cfm
+-rw-r--r--  1 root root 5.8K Jul  1 10:48 sms_alert_on-off.cfm
+-rw-r--r--  1 root root 4.7K Jul  1 10:48 sms_app.cfm
+-rw-r--r--  1 root root  11K Jul  1 10:48 sms_gateway.cfm
+-rw-r--r--  1 root root 9.1K Jul  1 10:48 sms_manage.cfm
+-rw-r--r--  1 root root 2.2K Jul  1 10:48 sms_message_popup.cfm
+-rw-r--r--  1 root root 8.7K Jul  1 10:48 sms_receive.cfm
+-rw-r--r--  1 root root 9.1K Jul  1 10:48 sms_receive_test.cfm
+-rw-r--r--  1 root root 5.2K Jul  1 10:48 sms_roaming.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 soap_receiver_auth.cfm
+-rw-r--r--  1 root root  485 Jul  1 10:48 soap_receiver_auth_copy_to_vaya.cfm
+-rw-r--r--  1 root root 2.1K Jul  1 10:48 soaperror.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 sql
+-rw-r--r--  1 root root  962 Jul  1 10:48 statuses_include.cfm
+drwxr-xr-x  4 root root 4.0K Jul  1 10:48 style
+-rw-r--r--  1 root root  17K Jul  1 10:48 styles.css
+-rw-r--r--  1 root root  17K Jul  1 10:48 styles_z.css
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 system_widgets
+drwxr-xr-x  3 root root  12K Jul  1 10:48 temp_scripts
+-rw-r--r--  1 root root 8.0K Jul  1 10:48 termfee_not_inbill.cfm
+drwxr-xr-x  4 root root 4.0K Jul  1 10:48 testModules
+-rw-r--r--  1 root root  24K Jul  1 10:48 testmur.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 text_format.cfm
+-rw-r--r--  1 root root 3.4K Jul  1 10:48 thankyou.php
+drwxr-xr-x  4 root root 4.0K Jul  1 10:48 themes
+-rw-r--r--  1 root root  25K Jul  1 10:48 ticketmanagement.cfc
+-rw-r--r--  1 root root 1.1K Jul  1 10:48 tinyeditor.cfm
+drwxr-xr-x  6 root root 4.0K Jul  1 10:48 ui
+-rw-r--r--  1 root root  14K Jul  1 10:48 unallocated.cfm
+-rw-r--r--  1 root root 1.3K Jul  1 10:48 unallocated_csv.cfm
+-rw-r--r--  1 root root 1.1K Jul  1 10:48 update_barintphones.cfm
+-rw-r--r--  1 root root 5.8K Jul  1 10:48 update_pending_payments.cfm
+-rw-r--r--  1 root root 4.5K Jul  1 10:48 update_phoneExpiry_temp.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 update_phone_finalised.cfm
+-rw-r--r--  1 root root 8.1K Jul  1 10:48 update_syncplans.cfm
+-rw-r--r--  1 root root  24K Jul  1 10:48 update_syncplans_new_test.cfm
+-rw-r--r--  1 root root  44K Jul  1 10:48 upgradeRatePlan.cfc
+-rw-r--r--  1 root root  20K Jul  1 10:48 upgrade_rate_plans.cfm
+drwxr-xr-x  6 root root 4.0K Jul  1 10:48 upload
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 upload_1
+drwxr-xr-x  6 root root 4.0K Jul  1 10:48 upload_2
+drwxr-xr-x  6 root root 4.0K Jul  1 10:48 upload_new
+drwxr-xr-x  3 root root 4.0K Jul  1 10:48 upload_old
+-rw-r--r--  1 root root  20K Jul  1 10:48 upload_paying_client.cfm
+-rw-r--r--  1 root root 4.7K Jul  1 10:48 upload_paying_client_download.cfm
+-rw-r--r--  1 root root 2.1K Jul  1 10:48 userautoallocate.cfm
+-rw-r--r--  1 root root  16K Jul  1 10:48 userpopup.cfm
+-rw-r--r--  1 root root 4.8K Jul  1 10:48 userprivilege.cfm
+-rw-r--r--  1 root root  34K Jul  1 10:48 users.cfm
+-rw-r--r--  1 root root 5.9K Jul  1 10:48 userstatus.cfm
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 vaya-services
+-rw-r--r--  1 root root  14K Jul  1 10:48 vaya_settings.cfm
+-rw-r--r--  1 root root 1.2K Jul  1 10:48 vayaico.ico
+-rw-r--r--  1 root root 8.7K Jul  1 10:48 verify_email.cfm
+-rw-r--r--  1 root root 3.2K Jul  1 10:48 verify_email_action.cfm
+-rw-r--r--  1 root root  18K Jul  1 10:48 viewfullreport.jpg
+-rw-r--r--  1 root root  611 Jul  1 10:48 viewwddx.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:48 voip_check.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:48 voip_check2.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:48 voip_check_moved_2_lc.cfm
+-rw-r--r--  1 root root 7.0K Jul  1 10:48 voip_check_v1.cfm
+-rw-r--r--  1 root root 5.6K Jul  1 10:48 voip_check_v2.cfm
+-rw-r--r--  1 root root  893 Jul  1 10:48 waiting_conections.cfm
+lrwxrwxrwx  1 root root   27 Jul  1 10:48 washed -> /nfs/ecgateway_files/washed
+-rw-r--r--  1 root root 3.9K Jul  1 10:48 washed.cfm
+-rw-r--r--  1 root root 2.9K Jul  1 10:48 washed_header.cfm
+-rw-r--r--  1 root root 3.0K Jul  1 10:48 washed_upload.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 write_off_overdues.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 wsg_address_check.cfm
+drwxr-xr-x  7 root root 4.0K Jul  1 10:48 wsg_b2b
+-rw-r--r--  1 root root  18K Jul  1 10:48 wsg_fuzzy_address_match.cfm
+-rw-r--r--  1 root root  52K Jul  1 10:48 wsg_manage.cfm
+-rw-r--r--  1 root root 2.8K Jul  1 10:48 wsg_manage_landlines.cfm
+-rw-r--r--  1 root root  30K Jul  1 10:48 wsg_manage_landlines_actions.cfm
+-rw-r--r--  1 root root  13K Jul  1 10:48 wsg_manage_landlines_add.cfm
+-rw-r--r--  1 root root  26K Jul  1 10:48 wsg_manage_landlines_edit.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 wsg_manage_landlines_main.cfm
+-rw-r--r--  1 root root  15K Jul  1 10:48 wsg_manage_menu.cfm
+-rw-r--r--  1 root root 5.4K Jul  1 10:48 wsg_manage_radius_setting.cfm
+-rw-r--r--  1 root root 5.3K Jul  1 10:48 wsg_manage_radius_settings.cfm
+-rw-r--r--  1 root root  36K Jul  1 10:48 wsg_manage_request.cfm
+-rw-r--r--  1 root root  28K Jul  1 10:48 wsg_manage_setting.cfm
+-rw-r--r--  1 root root  14K Jul  1 10:48 wsg_radius_request.cfm
+-rw-r--r--  1 root root 1.9K Jul  1 10:48 wsg_sync.cfm
+-rw-r--r--  1 root root 6.3K Jul  1 10:48 wsg_view_output.cfm
+drwxr-xr-x  5 root root 4.0K Jul  1 10:48 wysiwyg
+-rw-r--r--  1 root root 5.1K Jul  1 10:48 xhtml.js
+drwxr-xr-x  2 root root 4.0K Jul  1 10:48 xml
+[root@vaya-backend03 ecgateway_2015]# pwd
+/home/vaya/www/secure/ecgateway_temp/ecgateway_2015
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]# cd IPND
+[root@vaya-backend03 IPND]# ls
+ecwd_extract_IPND.cfm                    ecwd_extract_MANUAL_LIST.cfm           ecwd_process_IPND.cfm           inc_ecbill_itemisation_vars.cfm
+ecwd_extract_IPND_lc.cfm                 ecwd_process_check_from_our_data.cfm   files                           IPND_lc_extract_step1
+ecwd_extract_IPND - Ming-15-02-2012.cfm  ecwd_process_insert.cfm                inc_ecbill_itemisation_cap.cfm  IPND_vaya_extract_step1
+ecwd_extract_IPND_vaya.cfm               ecwd_process_insert_from_our_data.cfm  inc_ecbill_itemisation.cfm      owi_cids.cfm
+[root@vaya-backend03 IPND]# ls -l
+total 308
+-rw-r--r-- 1 root root 42253 Jul  1 10:47 ecwd_extract_IPND.cfm
+-rw-r--r-- 1 root root 42770 Jul  1 10:47 ecwd_extract_IPND_lc.cfm
+-rw-r--r-- 1 root root 41901 Jul  1 10:47 ecwd_extract_IPND - Ming-15-02-2012.cfm
+-rw-r--r-- 1 root root 42614 Jul  1 10:47 ecwd_extract_IPND_vaya.cfm
+-rw-r--r-- 1 root root 33712 Jul  1 10:47 ecwd_extract_MANUAL_LIST.cfm
+-rw-r--r-- 1 root root  2975 Jul  1 10:47 ecwd_process_check_from_our_data.cfm
+-rw-r--r-- 1 root root  8221 Jul  1 10:47 ecwd_process_insert.cfm
+-rw-r--r-- 1 root root  2471 Jul  1 10:47 ecwd_process_insert_from_our_data.cfm
+-rw-r--r-- 1 root root  6639 Jul  1 10:47 ecwd_process_IPND.cfm
+lrwxrwxrwx 1 root root    31 Jul  1 10:47 files -> /nfs/ecgateway_files/IPND/files
+-rw-r--r-- 1 root root 16796 Jul  1 10:47 inc_ecbill_itemisation_cap.cfm
+-rw-r--r-- 1 root root 12395 Jul  1 10:47 inc_ecbill_itemisation.cfm
+-rw-r--r-- 1 root root 11613 Jul  1 10:47 inc_ecbill_itemisation_vars.cfm
+-rwxr-xr-x 1 root root   798 Jul  1 10:47 IPND_lc_extract_step1
+-rwxr-xr-x 1 root root  1075 Jul  1 10:47 IPND_vaya_extract_step1
+-rw-r--r-- 1 root root  8518 Jul  1 10:47 owi_cids.cfm
+[root@vaya-backend03 IPND]#
+[root@vaya-backend03 IPND]#
+[root@vaya-backend03 IPND]#
+[root@vaya-backend03 IPND]#
+[root@vaya-backend03 IPND]# cd ../
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]# ls -l log
+lrwxrwxrwx 1 root root 24 Jul  1 10:48 log -> /nfs/ecgateway_files/log
+[root@vaya-backend03 ecgateway_2015]# ls -ld bill
+billboards/                      bill_checks.cfm                  billing_landline/                billing_scripts_lc/              bill_send_email.cfm
+bill_checks2.cfm                 bill_checks_lc.cfm               billing_landline_prov_files/     bill_log.cfm
+bill_checks2_connected_date.cfm  bill_export.cfm                  billing_lc/                      bill_print_ftp.cfm
+bill_checks2_lc.cfm              billing/                         billing_scripts/                 bill_sendbillnotpaid_email.cfm
+[root@vaya-backend03 ecgateway_2015]# ls -l billing_landline_prov_files
+lrwxrwxrwx 1 root root 48 Jul  1 10:47 billing_landline_prov_files -> /nfs/ecgateway_files/billing_landline_prov_files
+[root@vaya-backend03 ecgateway_2015]# ls -ld settings.cfc
+lrwxrwxrwx 1 root root 17 Jul  1 10:48 settings.cfc -> settings-vaya.cfc
+[root@vaya-backend03 ecgateway_2015]# ls -ld data
+lrwxrwxrwx 1 root root 25 Jul  1 10:47 data -> /nfs/ecgateway_files/data
+[root@vaya-backend03 ecgateway_2015]# ls -ld billing_landline
+lrwxrwxrwx 1 root root 37 Jul  1 10:47 billing_landline -> /nfs/ecgateway_files/billing_landline
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./billing/bills
+lrwxrwxrwx 1 root root 21 Jul  1 10:47 ./billing/bills -> /nfs/bills/bills_vaya
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./recordings
+lrwxrwxrwx 1 root root 16 Jul  1 10:48 ./recordings -> /nfs/recordings/
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./billing_lc/bills
+lrwxrwxrwx 1 root root 19 Jul  1 10:47 ./billing_lc/bills -> /nfs/bills/bills_lc
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./rbtcdr
+lrwxrwxrwx 1 root root 11 Jul  1 10:48 ./rbtcdr -> /nfs/rbtcdr
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./creditcheck
+lrwxrwxrwx 1 root root 32 Jul  1 10:47 ./creditcheck -> /nfs/ecgateway_files/creditcheck
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./pni/upload
+^[[Alrwxrwxrwx 1 root root 31 Jul  1 10:48 ./pni/upload -> /nfs/ecgateway_files/pni/upload
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./scripts/insertLog.cfm
+\lrwxrwxrwx 1 root root 16 Jul  1 10:48 ./scripts/insertLog.cfm -> ../insertLog.cfm
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./docs
+lrwxrwxrwx 1 root root 25 Jul  1 10:47 ./docs -> /nfs/ecgateway_files/docs
+[root@vaya-backend03 ecgateway_2015]# ls -ld ./washed
+lrwxrwxrwx 1 root root 27 Jul  1 10:48 ./washed -> /nfs/ecgateway_files/washed
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]# ^C
+[root@vaya-backend03 ecgateway_2015]# pwd
+/home/vaya/www/secure/ecgateway_temp/ecgateway_2015
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]#
+[root@vaya-backend03 ecgateway_2015]# cd ..
+[root@vaya-backend03 ecgateway_temp]# pwd
+/home/vaya/www/secure/ecgateway_temp
+[root@vaya-backend03 ecgateway_temp]# cd ../
+[root@vaya-backend03 secure]# pwd
+/home/vaya/www/secure
+[root@vaya-backend03 secure]# cd ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# md5sum *
+634075f6087c4d44438fd408cd1ff20f  accounts_add_payment_advanced.cfm
+033d6ac9a3c33a3dfb7d2b59301cdedf  accounts_cc.cfm
+819d05bdb3a5a68983c6ffd23140238d  accounts.cfm
+d1fdd0a9096f1563478f6945d840c6b8  accounts_reactiv.cfm
+406ea026b03744492ab98ea7877e6d05  acma_export2.cfm
+110572f9aa54ba074e26fa9b670d6bcd  acma_export3.cfm
+84864dca634a475862ba2c17c39f92be  acma_export.cfm
+b79c6b4404a41206129cc009605753cc  action_log.cfm
+e1c0a2798ebf597d0c7abb663fbc76ac  actions.cfm
+c9e8c61cf3ebbfe5996cfebde28a71cb  addcomment.cfm
+638760543f114bbf5ba758cfca377d03  address_checking.cfm
+d83452d7d063740a971f769563da2380  address_checking_prev.cfm
+406e57230badb7d37b3442ff21583bb2  adsl_view.cfm
+md5sum: api: Is a directory
+10e7f083ccbeed3e6237f2a92ce02cf0  Application.cfm
+98e3b212178e05e1f4c6ab1510091bbf  auth_error.cfm
+452e10c546a738f4d82589bb4665cb80  barcode.cfc
+md5sum: barcode_imgs: Is a directory
+b337d5a0130e9a4e5cd521e942752fdb  barred_out.cfm
+md5sum: bi: Is a directory
+115d917f177c5081bf6e3179a09036c0  bid_code_app.cfm
+md5sum: billboards: Is a directory
+65cdf65e69c9533868dfa399f2f76992  bill_checks2.cfm
+ddfbd3406c86d55f094d63243ca85426  bill_checks2_connected_date.cfm
+99fbfb8b1a9a213c5fff7e9de32845c4  bill_checks2_lc.cfm
+3f73ee5959502cf938963173ab220817  bill_checks.cfm
+78b2917d90032dc29c2f32a5b43d5387  bill_checks_lc.cfm
+e684fab8a0f5f647d73f8295a5a974cc  bill_export.cfm
+md5sum: billing: Is a directory
+md5sum: billing_landline: Is a directory
+md5sum: billing_landline_prov_files: Is a directory
+md5sum: billing_lc: Is a directory
+md5sum: billing_scripts: Is a directory
+md5sum: billing_scripts_lc: Is a directory
+64e56ddf2a0f88291b1e1ec01641e6ae  bill_log.cfm
+8057011539684c6374e1a14e3500f81b  bill_print_ftp.cfm
+5b2b8d3f28282433b4df400b621958d3  bill_sendbillnotpaid_email.cfm
+715dc1a67dc3b6ea4176f92128386a05  bill_send_email.cfm
+md5sum: bsbchecker: Is a directory
+fefbbff0f5a1e16c9cf66ac5cfe4db17  bulkdelete.cfm
+fd1431b6479c0c4d6aa9aeb286e98c47  CalendarPopup.js
+7a308c13b9a9e4f8d2e6ae6e7bce5586  CaseFormat.cfm
+83ec859619d1acc4ab7b60e9fc1f2719  cbox_test.cfm
+8540691bc2e6edbebe356e758bd24b6e  ccdaterange.cfm
+bd1057401f973eef16ba511702e652a2  ccheck_popup.cfm
+e919acd18256cbcf962515031d2799b3  ccheckview.cfm
+0605a5de3200aa34c2f4d77c4f06dca5  cc_reminder.cfm
+md5sum: certificates: Is a directory
+acf7ab5be2484e58c4650875909a334d  change_phone_user.cfm
+3107d379cdb3792581f301b37629496f  check_duplicate.cfm
+87be463a9af0114c5090c7c4b45055c9  check_plantype.cfm
+5af5a558b8223ff1e2e2673099547920  check_sp_payment.cfm
+eb417129f3e18e10de1bae5be9214ddf  check_sp_xml.cfm
+943c2d9bb54d4c4dfa75fbd6be8c39e9  client_addresses.cfm
+74b0755b1ddacd65c799392e516c637a  client_bup.cfm
+82e17bfd221496eec52db30c6aac8908  clientcc_comment.cfm
+56f230d2b0a8abd4f321e7803f8e9664  client.cfm
+c3a948db8c385846242f145bd79f53b8  client_credit_check.cfm
+478e04de4cae0e225dccc8780747f9ad  clientfiles_bak.cfm
+cae75fbc007a43130ee8aa95861b5cb0  clientfiles.cfm
+e085dcb335d7ee1d0c7860b5c4262cef  clientidentities.cfm
+fbe3c55073004223d0b46c47b14f7d56  clientid_floatbox.cfm
+1fdd4c1628da4fb246156df221f5301e  clientid_floatbox_test.cfm
+5cb7c6d93553b6e2cf0fdbd48e260372  client_noback.cfm
+d2c5cc8b88190b67723e4611110b3453  client_noback_ming.cfm
+04fbabc3bd89d48c1e1b57e7f67b9e9e  client_plan.cfm
+8f511262ba6572ecb21ceeead79b2a73  client_plan_test.cfm
+804ccb22f993c5b6fd153cad23bb79b1  client_test.cfm
+0e11313051f1928700eb1149645a0e09  connection_display.cfm
+98fd8163349801f456f45b62f00c4802  connection_display_total_active.cfm
+d799f14a3ba5686a73cf9859f710cb91  connect_manual.cfm
+0f7a968ba030f66834b19749c204cd4b  connexnet_export.cfm
+58f07e9cfad56798cdcc61912300ee0d  connex_no_acc_barred.cfm
+c7ecc1d95ce5667aa18bb28d2c260b4d  copy_to_vaya_xml_receiver.cfm
+983f4a21f31630e90f9b701988a560b0  coverage_check.cfm
+2e48c5adf2b8720107a47cba3048ef47  Coverage Maps.cfm
+md5sum: creditcheck: Is a directory
+dfa694eee81731d43a8b76127d8f7e00  creditcheck.cfm
+b67575a1c23ab13efdb576f0f6f7d5ff  creditcheck_dynamic.cfm
+af4781c5cbf1585858d25124538ffc0a  creditcheck_manual.cfm
+dabaa8bb05e8d635cd2d1e9d81fb3359  creditcheck_req_confirm.cfm
+9dcffbf882d01e9c2708e60fde109d42  creditcheck_req_confirm_veda.cfm
+1864625456f78542fefdb406806bf7ad  creditcheck_req_perform.cfm
+49bad6c52fce9b91041430c76a973336  creditcheck_req_perform_limited.cfm
+b9f53f0461dd566c63c40da802216b3b  creditcheck_req_perform_send.cfm
+dcfa3762e1ac0e7927c038fc448caf15  creditcheck_rsp.cfm
+424be2a66e89848bf8feaffd0e6a4e63  credit_check_table.cfm
+083715c06f5d96f1cffd4f4cb29f88a9  creditcheck_xml.cfm
+md5sum: css: Is a directory
+md5sum: custom_tags: Is a directory
+b387ab916779c374f0f597f87d2b02e8  dashboard_callbacks.cfm
+c55e153bc5f7960037eeaa8098c58950  dashboard.cfm
+8ece05bade25f15350aaef4817c17992  dashboard_conne
+3d028e9ea531960095883d265bcb2f8f  dashboard_connections.cfm
+c28da75b490b7d4bf0b46525a145c9c8  dashboard_connections_dealer.cfm
+b46f22fefb4f1c191e0a2cbd9bbd615f  dashboard_connections_lc_daily.cfm
+ffbc445c9de67ea1b15542847233f98c  dashboard_connections_vaya_daily.cfm
+75e696b0edadcc6cec854796be502854  dashboard_connections_zc_daily.cfm
+44e010c4dac0a19ec1d7d4b0285743d2  dashboard_resourcefiles.cfm
+568cd873c9d7c2cefb54e9ffae66c42c  dashboard_sms_log.cfm
+md5sum: data: Is a directory
+f29f3862ec052b4ad685188332f9eb1d  data.cfm
+82306c8ea7664a98d0a87d33f1f1881c  data_create.cfm
+d194ab54947134e5157615ba5e6a8a77  data_delete.cfm
+9c2e7c189a782aed631e9999448304f0  data_download.cfm
+99ab6acbe2632bf908fcfff9a42fe596  data_header.cfm
+da94885512997e178ac9d6e5a905b717  data_move_action.cfm
+c5247c2076179a47c44e36475f401c09  data_move.cfm
+856669d97ec5a81e007eda185ff9cf1d  data_upload.cfm
+e30faf4dfdb7443890e13fbb693f1cfa  data_upload_insert.cfm
+e19118edd32b7f0ab75cf1c19b9e10c6  DateFormat.cfm
+d763f2801171472ddbaa4c038eaef241  date_selects.cfm
+b99b2d905267c42c64a3d9ddb49393d8  DateTimeFormat.cfm
+18998163cb84a08264488386478f79bd  date_vars_arr.cfm
+d716b65df4d2d78da4ac44c1b9c035cc  date_vars.cfm
+dedfb462821c6d8807a24521db048601  date_vars_weekly.cfm
+cc2810b53de4c13d6d7b0e58972ce636  dealer
+134a8f008612073bff263a34065ed144  dealerfiles.cfm
+8e4a6476347fcf1a92c7b7ebedd9ea08  demo.js
+b567f8e861b5f07ea0b54f0c03441960  disconnect.cfm
+6c6d444788ff4d8df98ed936a6d2f822  display_connections2.cfm
+c70ebec133febf3c3051a69edbf97942  display_connections3.cfm
+71f683aeed1289f4528cdce225a898f3  display_connections4.cfm
+58375e54c7b0d159911b85a585a4ce38  display_connections_billboard2.cfm
+b2b130d872003925e718e0b9157064a6  display_connections_billboard3.cfm
+320cc1590b70429d27afd3734c3ced10  display_connections_billboard.cfm
+c57b1ac0bfaf6e0a5ad0d0a1c69f2917  display_connections.cfm
+2372d1ac703c9a71bb13fd96921bc24d  display_connections_only.cfm
+f16d4097fe3c354bb6b1526ea279fddc  display_connections_screen.cfm
+d224ff2d318d88419e08b72aab1a008a  display_connections_screen.html
+eef950164906ce61ed9bf10904f2b2f1  display_connections_test.cfm
+md5sum: DnB: Is a directory
+md5sum: DnB_clientpay: Is a directory
+md5sum: DNCR: Is a directory
+md5sum: docs: Is a directory
+33a1db20cf07370eea65fcb4606d6169  duplicate_client.cfm
+33c652182ec08d05dc0a082253305bbb  ecbill_billday_calc.cfm
+87d15b19a22615e89c289fa5b923b5ac  ecbill.cfm
+95f1b510ba0dfc64b25e60d901ad29b0  ecbill_dd_export.cfm
+8c2b8a2652a53770e3389751daeaf9bf  ecbill_dd_export_paymentONLY.cfm
+6538ab1d4df6e4dfbaea0f32d65e8515  ecbill_dd_footer.cfm
+100bad276eb218fe0aa4e72597897825  ecbill_dd_header.cfm
+3549804b407fd220cf36063832dc3928  ecbill_dd_header_with_nbsp.cfm
+d384d0d2dd7071f0c197cc898c293f82  ecbill_empty_log_payment.cfm
+230fb3ccb573c0f1734d01262090f7a7  ecbill_ezi_bpay_payments.cfm
+4fd260cb5174adbe3982773309371f43  ecbill_ezi_callback_payments.cfm
+d9f44befced161dd765ce029d805d6bd  ecbill_ezi_payments.cfm
+0b8337b68b8c0fb9a5b7100f87a3cbd0  ecbill_ezi_payments_overdue.cfm
+6138ff3bf80bf79e173f09690215910a  ecbill_ezi_temp_sms.cfm
+3c691b1fe111c9e8a08aa2e2e2daa60e  ecbill_ezi_update_pending_payments.cfm
+4e96b046581ac48e5a9ed4864ffe546a  ecbill_itemisation_csv.cfm
+ccca2280699f0dfe02ba4d132d6fc251  ecbill_payments.cfm
+3dde00574c88c4b0a5eb49dddb7d4f6c  ecbill_process_cc.cfm
+2a3339164d7b9eb6b30f796641de3d44  ecbill_process_cc_overdue.cfm
+d85932428680cce5f1587afc9b9d7a81  ecbill_process_cc_sched_bash.cfm
+75884b6cede22aafe46ab218f5471da4  ecbill_process_cc_std.cfm
+c60034cee4a45e38da9d260c918c68f4  ecbill_sched.cfm
+04ecbb82bfd62ceac4f717548c3dd14c  ecbill_test.cfm
+368dac2bbe9aa7c78e210f35400e343e  ec_dump2.cfm
+1e0a6dfd32e6f2abc4cc8a6f1031bf1f  ec_dump.cfm
+144582c6adc4168f0aed98f3b9e752a5  edit_notes.cfm
+9b06a97b96f8765a18bd44f8dfe228a5  email_auto_sender.cfm
+md5sum: email_campaign: Is a directory
+7e76ffa6b32a091db639deef5193b913  email_checker.cfm
+47b0c9dcd3e78b4505defd9032f1af2e  email_content_send.cfm
+e455352493f072b26b16c8b34db41bdb  emailer_send.cfm
+2a287f36137004aafb21cf362c3bc0d8  emailer_send_dealer.cfm
+a8e798f2a622ee6086db8d0126ed38fc  emailer_send_lc.cfm
+e289ce07843b17bc903ec1b9c93b797e  emailer_send_zen.cfm
+005c1d53450801f4a3b21df0a8c9d2eb  empty_sched_unbar.cfm
+c9ba6f4235c44e18c4e939469b00bb35  export_cdrs.cfm
+md5sum: eziDebitEx: Is a directory
+7db4e51360e5c4faef03bd5ac30eaf66  favicon4.png
+6129937c7050d459d42c9f8b7cd0d203  fblogint_getid.php
+md5sum: files: Is a directory
+0f9e57932593c5340caaefd099d1672c  finalised.cfm
+66c1e7a41e910c561706c2e05da09abc  finalised_check.cfm
+c9eab9572a5e674226b7c2b79a9d0247  finalised_export.cfm
+edbbe1b26e8d1e3a1ad88d39f523a408  FIX_auto_unbar.cfm
+7fa00f8a3cf7106fe19ebb7eee88dca3  FIX_bar-to-stay.cfm
+769004abc46e511457cd394a21a9c332  FIX_bar-to-unbar.cfm
+9388ee4699373598524216324c5bbcc5  FIX_Bulk_Send_Message_FORM.cfm
+d572924f4d5176ba0d6641bf44c0676e  fix_disconnected_calc_term_fees.cfm
+0319ea21f3358ecd15242c3b7647c9ed  fix_disconnected_calc_term_fees_include.cfm
+59b989debab15ba9908f7fbfeb23b109  FIX_ecbill_ezi_payments_delete.cfm
+1ac8aaa70dd2d0b11c19eaac5009519d  FIX_not-bar-dont-bar.cfm
+43dfbe252d2c7b8b710e07816ade28bb  FIX_not-bar-to-bar.cfm
+969dedf0ad7c92d5a4af5172d3c65af0  FIX_not-bar-to-bar-unbarred.cfm
+10b4ddd41a85fd89cb64c5277dcefd44  fix_phone_upd_prorata.cfm
+3da87bb78c4a3c2e6f92428c3e7933cf  fix_recreate_pdfs.cfm
+5fdbc337b10506f2d0ff4037f2bcf010  fix_trans.cfm
+2eec8ea7422165cc10becdbd619c6c6a  FIX_update_sc_monthly_list.cfm
+md5sum: flexigrid: Is a directory
+18f46c164782d0a1f4570fe7a19482e2  font.html
+1e54350a22a63d66b5689be2fba4e59f  for_editService.cfm
+cd113b4fcbe4d7f661c6abb4d6f7f6e7  form_validation.js
+87f2b46c229604e9ab9fe0ccdfa7fae2  func_changePlan.cfm
+3b36e82a51b086abc3f62f856ff3c6a7  functionsInvoiceNotifications.cfm
+4a87a164e0b9256e0552ff32dca9174c  generalFunctions.cfc
+1d879af47ea65d288027c0e40375c0d0  gen_validatorv2.js
+db12e067e0644aebdd92171693db2066  get_usage.cfm
+8e4a5d0a4e5ad0290f8d062bc61d7da7  gunzipFile.cfm
+md5sum: helpballoon: Is a directory
+49d814a9e40e30098442bf8824352993  help.html
+56bc0dc54b7cfb2cff3db003b11654bc  hpp_change.cfm
+cbfd1aa3b990447310954f81f9864610  htmlbox.colors.js
+45f0e8ebf0913bb16d05459c27489bb7  htmlbox.full.js
+df987b854d161b8b1d3ca24305675c2f  htmlbox.min.js
+dfb7455bd6b495bdb73a06f80015dace  htmlbox.styles.js
+fe85b1dfee96e01641145fa2305c0b84  htmlbox.syntax.js
+ad0701952f095d140e66f100bc503364  htmlbox.undoredomanager.js
+d401b7059643ed9bf546725188213cdc  htmlCompressFormat.cfm
+md5sum: images: Is a directory
+0798ff536e479a5817377971274a9cae  inc_activate_services.cfm
+c71368581cf1f7db3399fd7d524c3fae  inc_address_check_01.cfm
+09c4489a13a5c8c6aaf5066827194ad4  inc_address_check_02.cfm
+f9520fe5272525ba991245c050f30362  inc_address_check_03.cfm
+8e9b226dd10b8551fc8f0e98c6c17aca  inc_address_check_04.cfm
+3ba108d4525df03942a92449b51a5d1d  inc_address_check_copy_crnt_to_dlv.cfm
+683cf745c1d8337b9bdd16213ac80df7  inc_address_check_prev_01.cfm
+6ae060b2af22aaa21806a08c798b904c  inc_address_check_prev_02.cfm
+cf1d4c65bb58d72d3d88cb11fe6aeeaa  inc_address_check_prev_03.cfm
+77e258707a0c2cc0656f1ff9a9c9b7f5  inc_address_check_prev_04.cfm
+d349c9f1ae32240b33d28d9ada567dfa  inc_address_check_zero_address_data.cfm
+4fdd7a23d1d66277bf55ba17e05a17d3  inc_address_prefill_process.cfm
+a91429893d87f5067200f41843cac016  inc_autocomplete_ajax_msn.cfm
+0867a4966bfce8d2f0a72118d190b136  inc_autocomplete_ajax_street_types.cfm
+a075b6982ed44d6187d816e6ef65da71  inc_autocomplete_ajax_suburbs.cfm
+ae8684089854b96a1ee8e65b05800eb7  inc_autocomplete_js.cfm
+eb32d8a62db62c92a2ff2f3a58f6f585  inc_bill_email_notification.cfm
+3b262ce7d88bb23e4712c21b46ba3d44  inc_bill_notification.cfm
+147bc2f99536dafc964ff3b725856eb4  inc_bill_run_main.cfm
+2db95447fda9894d5439f7053debcd61  inc_charge_purchase.cfm
+293de0b9c1c0a9faf41a69058f69b8d1  inc_client_header.cfm
+0d56dabdec6828a1627d021e4579d4e8  inc_connection_type.cfm
+58c4629a7b3ac785feeecb5a3d74b4e6  inc_credit_checks_view.cfm
+4973b75352d3db1ad5ca07ec731ad200  inc_dateselect_form.cfm
+ce30110f879e4d3a68f4deeee8e2b838  inc_display_phonetotal.cfm
+11175bae7f860611984494d537554bab  inc_display_washed_result.cfm
+3a030308fc4a624ba484622cf8cca7ab  inc_ecbill_itemisation_calculate.cfm
+7f8a50d4e6ddc256d38ae5216a1a34bd  inc_ecbill_itemisation_cap.cfm
+2f46247ef1df8ba1db8225f754d4cf40  inc_ecbill_itemisation.cfm
+1d08661e09411a9897a9a831b72bac6b  inc_ecbill_itemisation_vars.cfm
+2e334f0a58843727f52a259670d0fb24  inc_error_dump.cfm
+0620a763e83623fc370c2948c31ee575  inc_error_dump_val_req.cfm
+384faf43d832d493ccc51a825ff77455  inc_form_changeplan.cfm
+2ac9b1a66c429d8173df62ce2fb13e5a  inc_form_upgradeplan.cfm
+2706c5601ccefb46ec4219c040add0dd  inc_input_cleanup.cfm
+c7e496dd96f00e200db5518dd4f0654b  inc_jquery_head_bak.cfm
+e90a55ce8d837fa72281baf419aa3364  inc_jquery_head.cfm
+c5fa7592aeda0f628973d961cb5dd15a  inc_landline_move.cfm
+c2e546f1f7862473d45321a597e7e5a0  inc_manage_services_roaming.cfm
+5bdb23c786e9c34bb568eea8211d5e43  inc_manage_tio_actions.cfm
+1863f173d51606239a798283f1462e2e  inc_manage_tio_form.cfm
+e278cefd5919f06c50ff30ad6aafb9e8  inc_manage_tio_list.cfm
+20d38d851a3955ab9835002862025a79  inc_msgvars_get.cfm
+3de9b56815b0b71dd227262a555b9e1c  inc_paf_barcode.cfm
+038b2a3d15e5b00c2ecd62576e0285ee  inc_phone_changeplan.cfm
+56071e908904cc95bb5cd73b7653a24f  inc_phone_move.cfm
+71259e8f6649fc9be0cdb7fa3b37dcc1  inc_phones_form3.cfm
+f140440d4a2866d55bf71578b0d1fdb0  inc_phones_form.cfm
+fae181e261af6d194f740d38033b63d8  inc_phones_search_msns.cfm
+b5630264d8f3c4ae88b78bb120b6a8ff  inc_phones_upgrades_2.cfm
+66d183ce2813c1e12f48dcf6547665ed  inc_phones_upgrades.cfm
+d4a50f75ed19da9135b3f1fc3b2e091f  inc_queries_report_overdue_70days.cfm
+a18b0b8f107d3e05b8e24f1c5bbd91f8  inc_queries_report_overdue_bak.cfm
+6cdea6d6af52c04e82b03c78a2837fd1  inc_queries_report_overdue.cfm
+1d003bae544b08282bd1ce364074eff9  inc_queries_report_overdue_zen.cfm
+8a3117f8fd2772f25eddb0838dc237ba  inc_queries_report_phones_to_cancel.cfm
+140e1af0f9bc3dff219437bc1e39c2f8  inc_queries_report_phones_to_upgrade.cfm
+5667a01a1f516e884935dfb3b88ed87b  inc_queries_report_phonetotal.cfm
+fa92e0a5222fe0096b8cddaf5a3d978d  inc_report_bad_debt_toolbar.cfm
+deb48c58deb3b19b7a70bd0eb03d589b  inc_report_new_clients_01_daily.cfm
+793ca7ba927b90caffef11256a8c129f  inc_report_new_clients_01_monthly.cfm
+e580e861dac9ea2ca933c3113181f374  inc_report_new_orders_daily.cfm
+749fdf7fae7716b4f2b8ad3115b20901  inc_report_new_orders_monthly.cfm
+be5069d346b9546bffd904ad08db4d44  inc_result_page_numbers.cfm
+be5069d346b9546bffd904ad08db4d44  inc_result_page_numbers_finalise.cfm
+cfc45aaf37c020a8a17f1f28830788ef  inc_result_page_numbers_with_param.cfm
+9ac3b569a949d0d7c3ac1dca8cb60130  inc_sms_manage_toolbar.cfm
+3eeeabe494b27258d2669910f19e8159  inc_smsmessage_replace.cfm
+1eedff331c6019bc5b0d83e9e347b5d8  inc_sms_slide.cfm
+2f23f754530242a17bb1a086a76a2e01  inc_sql_details.cfm
+2d877a1f2f5fc196d437f78dbd064dc2  inc_table_generator.cfm
+dfe2e171d7e429fb4917eb115edb8a59  inc_table_generator_xls.cfm
+626f582fc476d06beaee45a8770423b2  inc_table_report_acc_rec.cfm
+1289f26ec2011f562fe539a6773c5ef9  inc_tabs.cfm
+b80f8e137dac0925acfbe8c05b0edde0  inc_unallocated_toolbar.cfm
+053766ef19df628127a859c36e515a3e  inc_user_list_dealers.cfm
+1918ddaff17e6def6e396e87303f777c  index.cfm
+3467587dc0bc5f23c170eab264015be4  indicator.gif
+2b5ccbd945e9c95e94fc68713c4e812b  insertLog.cfm
+b92baad6f25a037192735b5b4f0e4a7d  invoice_.cfm
+842ed2742c519fe5b192f24daadb9084  invoice.cfm
+3c8473a3b883a964b1f4bf3fa7d68fdf  invoiceitem.cfm
+2d7a0cf9fa09455c80ca407c2fcd5c37  invoice_test.cfm
+md5sum: IPND: Is a directory
+bda55e27f947228c54c8bf0dc448e3cb  IPND_checks.cfm
+7021191c5dd70e95a9c026be6b9c05d5  jquery-1.4.2.js
+ddb596fb616c5d520d41c17094605bde  jquery.autocomplete.css
+fc2e01934fd8f26590b1fcd70bbc4f5a  jquery.autocomplete.js
+ddc911dc33a899456bed3a92a401b62d  jquery.iframe.js
+7d7978f1700fed8e9663999879474941  jquery.marquee.js
+c190cf82c62123de6a895ddf7b7e38b6  jquery-ui-1.8.5.custom.min.js
+md5sum: js: Is a directory
+222f5d08a4b378866a51c985e423334a  js_HtmlBox.cfm
+03ae750ac218e1f7af31473ae203676f  landline_view.cfm
+5fd4b9a0a8677c2f601f553e4d8bcb7a  layout.css
+c5baabec9abbe1969beb77afec55772c  layout_modules.css
+md5sum: LeadGen: Is a directory
+e747750d96f149ffeb41c939e558b511  leadgenreports.cfm
+7087aaa505ffa02ea72d785cdc6f9d2c  letter_send.cfm
+b600c2c2cbca5c26d218d6069dc9ba51  letter_send_lc.cfm
+5d35cc6a3404793feb503192c6ab3af3  letter_send_zen.cfm
+md5sum: library: Is a directory
+dc2685541a8b5c24f080d6cb731a9403  list_bills.cfm
+c8a5dd2ab02dcf165c019e26c2e6e62b  list_clients.cfm
+143549369de983046bdc6e3fbd7f5a1c  loading.swf
+md5sum: log: Is a directory
+e0ebcc70e456f740d3b7cb49be1787ce  log_checking_xml_4.cfm
+md5sum: login: Is a directory
+657f8340a5e762dbd42addc263a78cca  login_all-ie-only.css
+f5470cf1a300d1756716d152e647a906  login.cfm
+a9bbe82def4cc09d3d6b3f27cbaea4a7  login_changeuser.cfm
+3f545591933222400647108a5d3d746a  login.css
+27b953676612f59dcd12b4f2873e4efe  login_test.cfm
+a9ff3ea43c4ff771df0cc604998295a1  logintester.cfm
+f45f8919170b8a8a1b408adbe9c06988  logout.cfm
+ed1aa7c2c77c38fa662fb284c017c73e  m2_test.cfm
+e361863854157c84a14a1e5c5a66ca70  manage_adsl_actions.cfm
+fc04710b6f79f9c9133f215c6880cf2e  manage_adsl_add.cfm
+185888bfd9a7a19a13a960a421187446  manage_adsl.cfm
+ae0ef8b2af9595b7978ad013688af544  manage_adsl_edit.cfm
+10ffdaa4c9426f5ebe612ac4e2b219f5  manage_adsl_main.cfm
+db2567e146108fa8ff587fca5073d3e3  manage_bak.cfm
+9d1972af969eabf5f19befe108993560  manage_barchecks.cfm
+d7ecf0cb5703f0b74cbbb496dc6515d2  manage_ccrules.cfm
+e8833826daa426498f933e40368facb4  manage.cfm
+5758363cb47e85865ad58021f8546269  manage_faqs.cfm
+bf70e0a780e1fce2ce5e270b25659d6a  manage_identities.cfm
+91ff9390ce200e47965401408590e0c0  manage_insurance.cfm
+21d57f5fddbd556b7b613dd2aeae1883  manage_invoices.cfm
+e2fd345f39c9bcad8ef63c16cb71838e  manage_landlines_actions.cfm
+e50bcabc58ae001ec2addfed8ba17d76  manage_landlines_add.cfm
+7f24a49ef518ea54cc3657581d7e095a  manage_landlines.cfm
+46fd5f2365bc22fa839b73c65d4a1bf0  manage_landlines_edit.cfm
+465e565977149d83bd8ae0d28e11c7fb  manage_landlines_main_20120625.cfm
+069b49b0c524187637c58868c7436db0  manage_landlines_main.cfm
+b08c2c886c815ad260825c651b8195b3  manage_landlines_popup.cfm
+d806589b025cfa26da68c1f5d21bce51  manage_leads.cfm
+md5sum: management_tasks: Is a directory
+f54f31b78b75a12d58f9b5a34c884fa0  management_tasks.cfm
+5df04ac7a0009b7950d3a5e0554a3630  management_tasks_popup.cfm
+7a76fd1912466ede8ebe92e1817f338e  manage_owi_barring.cfm
+6f46030e27d27f8a4f68e6e4b3a4b018  manage_owi.cfm
+02cc3971594470f2357a31d25614ab5a  manage_owi_edit.cfm
+e0c68dbcb63a21c75157fd1b84f60226  manage_owi_menu.cfm
+e041601791b39956fe8d4698d2f22d3f  manage_owi_menu_original.cfm
+9055c8a349c05e371c7d9743c699f99d  manage_owi_popup.cfm
+02173f325ad51961c475efa5363bfe22  manage_owi_popup_fee.cfm
+dda7015056df67b6f6d123f0e54ffc4a  manage_owi_psms.cfm
+df22eb0650a39f4a9ca2021adabd7484  manage_owi_reqlink.cfm
+2636b0da2cbf60ab7b92b74cc1d884bf  manage_owi_reqlink_imei.cfm
+d1fc6dd1489a2e32c39684e1d3b0f02c  manage_owi_xml.cfm
+1184071e2b08be5aa225a44658991b6b  manage_phones.cfm
+b9e4c19164e710978fef992da05ecf20  manage_phones_conn_link.cfm
+20a4bb66b455f7537a3470d9cc70b039  manage_phones_conn_link.php
+17a0a0a166395123a4a72b1b370f2935  manage_phones_csv.cfm
+8b25caade58023e55c1305364b48d0ca  manage_prevbalance.cfm
+997dc3019a96afbf6a23f4b9397871a4  manage_qualify_address.cfm
+7bab6297ff59d16a138592a6beb7b7f6  manage_quicks.cfm
+aa909e5f38400a8dde459bcdf29f14c4  manage_security.cfm
+b8f00fd6922453b58da8b937807f05b4  manage_statuses.cfm
+eb065d77b182686a015945b13fe62e28  manage_stock.cfm
+71b6d5c526f287f254b58116b5d7a7e0  manage_suppCharges.cfm
+456363ff1f55ed8d9e95861bc3799dfd  manage_test.cfm
+40c9294687650ed5701d32460ca6c6b3  manage_tickets_board.cfm
+61023310651c7e7ffc890dd462771ef2  manage_tickets.cfm
+87472918ca76c5e994b8fc32fba87207  manage_tio.cfm
+7f2e89e8bec5e85fa1ace038950044ac  manage_trans.cfm
+e465ddc3a9b72b0c04c000951d489e67  manage_usagetotal.cfm
+1ee2ae5c54e8452658cb688ba8c696f3  manage_watchlists.cfm
+74e5d336fd9eaf6b084812e8ef52a2b8  manage_wsg_xml.cfm
+35edb784f60ab39249ff764ec339b48b  marek_end_of_month.cfm
+2b86aa775e98cc43ea032c9e091ff65d  mateemail.cfm
+md5sum: menu: Is a directory
+cb8d839df4dd107e336ad0c92247bded  menu.cfm
+2b57df34cca0d6dae6fd5f5f5edfad4c  merge.cfm
+b86f0e86c5709da96ade19cfb85c8c07  merge_display.cfm
+b48409e0a8b579bc51e2b64c1d9a9de4  merge_sql1.cfm
+f3148156a1340423d40c90c4b5fb5e65  merge_sql2.cfm
+d49860e5c2b692bfedeeb5ccdf4ccaae  merge_tfr.cfm
+c8c89aeaf3388e6832869196e9b385a2  message_replace.cfm
+ce6af5f066512f9de10f7f76959c555f  messages.cfm
+b9acfc7b07df553c1f564fc36aeafba2  messages_delete.cfm
+94dda8fd2e4d65ad9f0a571f99b5ce9f  modifyDataPlans.cfm
+8f08848985043da7e85e5df7971645c1  mur_viewer.cfm
+398374b8d8498c71a0d4e10a473e5280  nbn_serviceability_import.cfm
+85eb51d54ada3b0e267ca3970101ad46  newsearch.xml
+2eae26c8be225372b70c72b04d33cbd8  nohup.out
+cb06fbf09be0119cfc15015907301587  notices.cfm
+aad164452144f540fc5c5de551e3640d  notices_display.cfm
+5c1ce92b3b0eb7bc37a093d6e7211e8f  optusmaps.js
+8e11b50221515923a230a88ae4b977b3  overlimit_20120716.cfm
+56ffec4032db37024c84543a60c67e7f  overlimit.cfm
+md5sum: owi: Is a directory
+cd2525bf6d008100c75a7f223304c6db  owi_cdr_counts.cfm
+3791ad5d6a013162b74c2387ed959a28  owi_cids.cfm
+6085a6674e81633815b38a95e275eb87  owi_cids_lc.cfm
+4e307d40787105ac67117f0e96e6f0ef  owi_msn_assign_manageonly.cfm
+592b4d22037d1725bf586ff2a4854aae  owi_msn_export.cfm
+791b36510e35ed75f15224fc7f981aa3  owi_msn_import.cfm
+436999fb6b45e44f92335b721f90c99d  owi_msn_insert.cfm
+b59e08888821b382e98e30115606aac2  owi_msn_insert_range.cfm
+0e9c96dcd2f2c85b7b2c8c8350497aca  owi_msn_snapshot_import.cfm
+0d28b5e77e90151000ebc05028e47d54  owi_notices.cfm
+eb291fcf2b8412334b2bfd6443311848  owi_notices_view.cfm
+85bc6b54336fb28be6ae54929d7fc883  owi_plans.cfm
+95b6409aeb0751ca06be7eeb6407b2ef  owi_scp_batch.cfm
+e0308df5774ea180f53f0ba0c340328d  owi_scp.cfm
+03eca3c2871bcec2843acc83097d3698  owi_sims.cfm
+e9a3e84e74813aa87ad8158f829ee3ca  page_cookie.cfm
+3c34f4afcad8fc230a06e0754fe8b8a8  page_surround.cfm
+7eb9a7194a85d8bc728e0ce5c85ed478  password.cfm
+7487a1d356e78b093beb50d06e57d207  passwords.cfm
+0e1fd44a2f87781f1e7029366e685db4  payment.cfm
+0ba8962c8dfa81ea0e0dfd0b0943754e  payment_overdue.cfm
+md5sum: payments: Is a directory
+8d7e052eab2d24fb91c269e415dbb077  phone_activate.cfm
+f086afa2c89db5d30d0df1cd1a6847a8  phone.cfm
+56004a43eaba20064c08fe71920df541  phone_changeplan_ll.cfm
+53b69fee62fd14ed71b0162bdd09dd96  PhoneFormat.cfm
+47b0382ecadf2e66c6b47222d434d17e  phone_limits.cfm
+63641dfaed8cb14c633bcc79bda777db  phones_conn_action.cfm
+f2c219f0336ff0b74764e4a1bc94e16f  phones_conn.cfm
+466cbcb085290559ade3d51dd9f26f43  phonetest.cfm
+c1e003925db521ef4db3454b6164c005  phone_update_check_fee.cfm
+6026344bff294b6c07c12abc23192f3c  phone_update_select_network.cfm
+d4e8daf445bd6ebec159f6cb2061a74e  phone_update_select_plan.cfm
+9011be9447175001a7cc7f17b3d7542a  phone_upd_prorata.cfm
+979a74c58a92501512ca4a77daa3a3f1  plan_reconcile.cfm
+7552a4db143a8615ae03a008ca537bfa  plan_reconcile_export.cfm
+a598abe30c32d660886a8306e1e8daed  plans.cfc
+794809278daa17f0c551208f400e748a  plans.cfm
+0561a75ba7f7c0e18ae49df4100f616a  plans_ll_display.cfm
+79b17ff62d1a1ec5c557f70b2222d7de  plans_mobile_display.cfm
+426360fbf799cf456f5ee7c38043b0f9  plans_offset.cfm
+799b671d83e019f575b086027972672f  plans_popup.cfm
+fb183267f207fa6dc9dd1f4b7efd0181  plans_radius_setting.cfm
+577ce05d14dc841939ffb94eee72aa7b  plans_v2.cfm
+md5sum: pni: Is a directory
+9ecbdfb7568f6e839e800357103d12d5  primo_cron.txt
+7fb0510b5e8306436808620bbaca5c5b  primo_test.cfm
+bdc7ccb79069e0b114f7c3e50ce07e0b  query_check_vaya_abk.cfm
+97b5907fa6484ed5921378fa921d5c18  query_check_vaya.cfm
+md5sum: queue: Is a directory
+md5sum: rbtcdr: Is a directory
+6f425b86e2cea11b241314a2f070ce5a  rbt_cdr_upload.cfm
+234ed251931d3cb8dfa7077104486c26  rbt_itemisation.cfm
+0961469f3f3f13b7aa722ce5da60c3c2  reasoncode_include.cfm
+419e420ba59716ca297c3989f26f70fd  rec_download.cfm
+md5sum: recordings: Is a directory
+80e110877803be6ad92e34ef3a518a62  rec_upload.php
+ba17c9bfe3002f4738cae5a7ed0459f9  report_12_bolton.cfm
+c2a0816e11a10f5b39cf9a92539f7c3e  report_accounting_calc_bill.cfm
+0fa1f130145b31962698f977ca19b3fa  report_accounting_calc_bolton.cfm
+67a3f64acb26b353ddf20fb0e6be391d  report_accounting_calc.cfm
+a2bdf03fb1936d28138691af38d00632  report_accounting_calc_landline.cfm
+17acc74e0e2e34ad2657b95cbf98f38d  report_accounting_calc_mobile.cfm
+1891886b345199f53e4758167b6bbeb1  report_accounting_calc_total.cfm
+1cd1c13d3e4c3976f18f1f31adacd1a9  report_accounting.cfm
+a43b594d0490337136de73e8ab8c32b5  report_accounting_receivables_adj1.cfm
+21bb3b1aaaffee2779bd5550f2b6de59  report_accounting_receivables_adj2.cfm
+20e232ca2b67e16aed428323ededffee  report_accounting_receivables_adj_item.cfm
+0ef1576e2db03f83816e3d42beb35416  report_accounting_receivables_cal2.cfm
+d11b348ae41898a877eafb1d4bbbb116  report_accounting_receivables_cal2_script.cfm
+1a45a2d440725779321e20b3ade557e1  report_accounting_receivables.cfm
+37731bbb6d6e951a219383d5b936ff95  report_accounting_receivables_comms.cfm
+938a0ac210ae26f1ee0977051474fab4  report_accounting_receivables_pay1.cfm
+95a15ba0f9c07096a9443be315184d62  report_accounting_receivables_pay2.cfm
+578384cb134c65c24f7673a591a41bb1  report_accounting_receivables_pay_item.cfm
+726daedd89d1b6c12bdbc61b62b61583  report_airtime.cfm
+27381739cf6ec3a06987b460753de8e9  report_apd.cfm
+ffae319a6e704465bebd5f059bf27a76  report_apd_new.cfm
+204f91c1e46067080b085ef418dde77b  report_arpu.cfm
+279ca268a923ef647e95b29d0fba4bdd  report_avarage_spend_by_plan.cfm
+c4da5601f69995114af73973f8542d3e  report_average_rpu_and_payments.cfm
+16371781fd36ea90ed52e4cf3501ec0f  report_bad_debt.cfm
+5ee2662226e904c3677746837e2b4c56  report_balance_checks.cfm
+c20127f3c51d894bf49354b8ca9365f6  report_barred.cfm
+716572be8ecc44e8d292a6c0ddb0f126  report_bill_extras.cfm
+0be41466cf51ec618f665c141ba671ed  report_billing.cfm
+cf37c6b13dac96069442f0fc3660f7a4  report_billing_splitup.cfm
+c3515a3dafd51533dbbbe64993f3bec8  report_bill_run_adsl_ll.cfm
+38d629d8bc166aa70a91ca616399938e  report_bill_run_avg_trans.cfm
+a8f4d3cd7be49740760df6e96cd6cbef  report_bill_run_bill_log.cfm
+e39dc065d557112640cc3fbf4f99e913  report_bill_run_cdrs_not_billed.cfm
+1893c6dff590fff4cd3b5ee9aa7693e4  report_bill_run_expensive_bill.cfm
+c28e9dff767bdcbdea5df85ecb93ff88  report_bill_run_main.cfm
+7c893bd10500ce573639c12bfa615f78  report_bill_run_mobile_adsl.cfm
+730efb130c7cb27ea1358babb24c1ac3  report_bill_run_mobile_excess.cfm
+62996d5e6c5502065899cadd684c0e88  report_bill_run_mobile_ll.cfm
+b9dfd462c035424182c7c7ef37c9d941  report_bill_run_rand_mmc.cfm
+bfbb50a41f9b532aa9f4e4cb2b6a44f5  report_bill_run_recon_c1.cfm
+85cfc4a2e13e865153b95a0c0b8ed783  report_bill_run_recon_c2.cfm
+e5dcda05a701288e0728cee06d664888  report_bill_run_retail_less_2_months.cfm
+6bc69e9adc89adff8e7730005c238add  report_bill_run_smallest_bill.cfm
+b8abe39b245a016ac5a14745133bf213  report_bolton_active.cfm
+c9272c899d5aaed53672ef01c383dc24  report_call_aves.cfm
+1cf9b5e1d0e50d5f8df297df546658ba  report_calltype.cfm
+2ea5a3bf2b00f6ef13e55c8a9558dbd8  report_cc_dishonours.cfm
+f647c585689d6779259fac2887fb7e99  report_cc_incomplete.cfm
+25c6612df11cb866bc912b28caf576b8  report_client_bolton.cfm
+0e2b0054a52b001aa9818495c27880db  report_connected.cfm
+7ec470525ec28941da7374e289ab13bd  report_connected_daily.cfm
+da234dd0e67303563b92991c6666695d  report_connected_daily_ll.cfm
+98dda45ab08e9afa10cdbd66839353cd  report_connected_dealers.cfm
+a8b642141553673047cc3967a68e8c26  report_connected_disconnections.cfm
+4f3d9651a8b1486b54598c3701d13c1a  report_connected_export.cfm
+816ecdbf68923e1ba13dba62fa479c0f  report_connected_lc.cfm
+7180c947df978ec2422862fbdb5868a6  report_connected_list.cfm
+1dd5407ec0f56e5a2e6233d2054992f9  report_connected_monthly.cfm
+5fa5bc05aab4aa8a553c02d506a47495  report_connected_ryantest.cfm
+6d352fa194ca755b787ff3eba0441820  report_connected_ryantest.php
+bf143d5fcffb33ca551409131636a797  report_connected_sales_2nd.cfm
+b292dbc2c7cbe49527522913473413d0  report_connected_sales_bak.cfm
+39b29250c3a5ad9c9d3cec1918bfd069  report_connected_sales.cfm
+bc2c4631c67196b486e131cd177512b6  report_connected_target.cfm
+42b8be320a55724b64ce0a4c00a9ab88  report_connected_zen.cfm
+a08a0754494f1fd579d4bd68ff6c13ad  report_correction_needed.cfm
+f34f5e073624a99cdf9214b985c3024e  report_data_mb_calc.cfm
+db56836d833df52e253ded0c02111114  report_data_mb.cfm
+ef4d7f12b610d8302df1e52f8f22ac80  report_data_mb_test.cfm
+571b7dfa70ea754427388337d6e45ab2  report_data_tethered.cfm
+0ce2cdd2ed594372b3ff50ca7aeb7cd6  report_disconnected.cfm
+cf13efeb5cc065d6ea76e0aa1b21eb64  report_disconnected_export.cfm
+cff85d90bf5878bab66fce4ff7421d10  report_ebill_log.cfm
+2e338e77820886991919a4ab6a9b861e  report_email_daily.cfm
+ca4aa63dc238e218a29f0ca3903bcdb4  report_email_daily_customer.cfm
+b5ac0113cb64a78480ebe7357d0d2eb6  report_email_daily_status.cfm
+34ef109da4572e36d06370a199ee0aea  report_flash_data_bar.cfm
+dacfcd0c5401ed0f0527b93228d9813d  report_flashFiles.cfm
+md5sum: report_groups: Is a directory
+70de4075cddd22b7a181ac0cbdbb6cb5  report_inventory.cfm
+ee0c5c06dd1f79f18ca6b373d5dc7d5e  report_inventory_export.cfm
+c03cf8d4f39846b9aee345322f29c3a4  report_landline_billing.cfm
+c5607228108012a4395ede559f356b69  report_ll_overlimit.cfm
+cdc7529c62a71ff9b6e18beb65170578  report_margins.cfm
+0b2a3203cecc4e65c26b1459c7e9f912  report_msns.cfm
+71c7a9ae10efb27ff4e601eaf5c8c8bb  report_new_clients_01.cfm
+e9410173e73ff68a73eba1fe3534ef6e  report_new_orders.cfm
+efd1c23218ef5681f7f837871e4e4104  report_nontoll.cfm
+c9bc7db3e992c8e9a225394d9b794ef5  report_nontoll_export.cfm
+620202c31a0d678fc8d23d2496c76f90  report_overdue3_on_guard.cfm
+44a7f5e5290ac593c892e6489bd45487  report_overdue_byplan.cfm
+04064b8cdf21f55bdfe24a55e67533ca  report_overdue_byuser_backup.cfm
+87b5bc1474b55dbc4ed98accb86c5980  report_overdue_byuser.cfm
+32dc06434a4e46a4e3519fcf788c9e1d  report_overdue_byuser_landline.cfm
+91ca75d23f2ea773a82b6cda70326fa9  report_overdue.cfm
+c87a9614935ade0540aa3ef3c5884f9f  report_overdue_export_70days.cfm
+25de927aa5ba357ed414dec83c5e1da1  report_overdue_export.cfm
+7bc46f384b48f1fba62af32aebc3270f  report_overdue_export_zen.cfm
+357625cfc59b85a94f0356a516597894  report_overdue_landline.cfm
+6e54c9d3747d34fdc123276110d4c9c4  report_overdue_percents_time.cfm
+62d66edb04c41875deb8dd4c6184f4f3  report_overdue_percents_time_landline.cfm
+5b7bd5a56d79cba12014773d20ae91ff  report_overdue_percents_time_test.cfm
+66ba2dc286dfafc17c1e4b98e5fe0d3b  report_overdue_percents_time_user.cfm
+faee05cd32968db325da282732e49624  report_overdue_plan.cfm
+0b0244c3e031d84c6bb74c02fd894936  report_overdue_turnoff.cfm
+85902d93a52368d0740c49f626dd5ad4  report_overdue_zen.cfm
+7ec803b129d2c94638460f0c7b81e0e0  report_overlimit.cfc
+9bd6a4f1c15ed4bec85f36f6e2a7e19d  report_overlimit.cfm
+81c2b3e6d860bf1669694f769438bb33  report_overlimit_export.cfm
+bda45465b01e37e125fe53855cea9cd1  report_overlimit_plan.cfm
+717661e8706590838023d93c1900e4f9  report_overlimit_v2.cfm
+144090ac2704f14e5521afa6556928d8  report_owi_request.cfm
+1d29d4b689e7884513306c51e5d4b883  report_owi_snapshot.cfm
+9ca6ce456eb7203841c84477c2e6c459  report_payment_per_client.cfm
+aabb7d2b0b8cfcedea95d50d6ad04603  report_payments.cfm
+61f957ad94b05cd42980c37773c8118f  report_payments_new.cfm
+b0a641202c300806d0bb597760a9ce4f  report_pending.cfm
+8a3beaa633f2ad3d4272f3c7e44fbe67  report_pending_export.cfm
+bc457505a1b98c8665de176b809e85eb  report_pending_payment.cfm
+cc6e3d51dcedd3086f1e4d3e1527dfdb  report_phones_to_cancel.cfm
+33786fc1e62b4f48e1e63ea735a38a89  report_phones_to_upgrade.cfm
+a6673d37983c476c1b035d70c9067d2c  report_phones_to_upgrade_v2.cfm
+cefc9e6f89c098565ae169c5c5fd056d  report_phonetotal.cfm
+79e5506cb47d6cd06fe6b39308220205  report_phonetotal_test.cfm
+de1c5a9cba71d0b56a4525c297d8d1de  report_porting.cfm
+d46a47338938366f0f834ef5b7475cff  report_porting_export.cfm
+2945f17af02912e766a0fc4d46e555f0  report_retail_vs_ws.cfm
+a2b6e04527fc727fc3be735e90ab24b3  report_rpu_usage.cfm
+9dbe9254db2380d2eb58d52589df48c4  report_service_eligible.cfm
+303cac491842b8b7c6423045a04e2845  report_service_eligible_export.cfm
+72fc9122cc9c5d38dc8fef7c1e3b21bf  report_service_eligible_v2.cfm
+89767a47e0bb6c7bab103e120a04ea80  report_sms_received.cfm
+d143b4bf70f5b307d4d727f6f0de4f0f  report_sms_usage.cfm
+1664d634cb586a19e55d6dbbba640e78  report_snapshot2.cfm
+0b082abd65be610542b90141b427264f  report_snapshot.cfm
+f4b5837e09bbf3e6ce6db31cf2eee348  report_tablet_plans.cfm
+96c6710cbd6871eb9078fda38f8354a9  report_thisbill.cfm
+c554781eac6a1467213ff6551530d8ef  report_thiswelcomebill.cfm
+0bfc65f769562193aa827a046b69d169  report_transactions.cfm
+05372aed23920353f1a792f2a996b046  report_washed_msns.cfm
+14c8562ceb9cb7f859b9aa56cbb15624  report_washed_msns_export.cfm
+5d7ad87d2804505c0ccb1566d142afac  report_washing.cfm
+dea1763dd2a5f3a45ae9965e482ed9ff  report_watchlist.cfm
+f4d79b47154ba56f65e79c665c6a2a39  report_wholesale_totals.cfm
+0b8a48b0fc24336e4bee11e4ee153501  report_wholesale_to_upgrade.cfm
+9a81e515d5fc85f25e26e15596f18d93  resorcefilesupload.cfm
+4624319555664b419ccf8dbb75369284  resource_upload.cfm
+f49a09ed6e06efda070542af9c488d74  return.cfm
+md5sum: sch: Is a directory
+md5sum: sched: Is a directory
+0b313785109b878accb0999b7494d497  schedule_phone_changeplan.cfm
+acc98383928fb641040a2c5bae72c6a9  schedule_phone_changerateplan.cfm
+612c33bc4a5931a3e4f9eb1fe520392e  schedule_view.cfm
+md5sum: scp: Is a directory
+2d3b0750f4d0bca3510562fe96a28d32  scp_preprocess_form.cfm
+md5sum: scripts: Is a directory
+e6eb6870eda64ea22df5394e0c73a705  search_apd_1.cfm
+05a882179123df3cfad67d67c67db76e  search_apd.cfm
+6226b3ea596cad626d5b2b845cbde54e  search_cancelled.cfm
+81271c09dc76dd282494aec6009b8f9d  search_csr.cfm
+329a3c990efedddea57e59cdfa9218ee  search_dealer.cfm
+4ddff12062b95d4674d50a88012e562a  search_display_cancelled.cfm
+6a169d0149e8b54f2f7fc26a196eec8e  search_display.cfm
+311f584de3d13d7dcf8b24a45350db10  search_finalised.cfm
+6640f7b154bb2de57f54651b1c0e195f  search_main.cfm
+29a608becea7a2447b9d88291e4ae33a  searchredirect2.cfm
+4225a0da026ec161c6916d72e830aedc  searchredirect.cfm
+b85e8d8cfd1ef79e8d56adc9ba1b4a44  search_referred.cfm
+768ac7087e1be711a025aa833276e22f  search_simple.cfm
+aef88a94e72aec978c0bc5e3439a624d  search_tio.cfm
+e78e1fb401f4a61d0bf88aed4aaf7621  search_worker.cfm
+400adcb7cad701413409eef80ac2ae91  search_worker_list.cfm
+3033dfdbcb5a52dfb618545fc2fc5ff9  search.xml
+md5sum: securepay: Is a directory
+3dc29770a5443a18b0bcaa679238fa6f  securepay_xml.cfm
+40b3dbc52d60d546118b5296b080f63d  send_auto_verify.cfm
+fa53d12046d02a3b0f71306c4f92bbd4  send_email.cfm
+cd1c43aa964f2589c9d55660f6fea26c  send_manualsms.cfm
+0ca6eacb7ce3d199ad451992f5cf1829  send_sms.cfm
+afd5356973cf002eb93084e18ef19cfa  send_sms_MUR.cfm
+md5sum: services: Is a directory
+bbc54a20cea4da1225b79d40464e0d5d  SessionTracker.cfm
+6fca29398d1687194b77925437d961a3  settings.cfc
+6fca29398d1687194b77925437d961a3  settings-vaya.cfc
+bed701cbc7d4c2247a6a2ccf5ab5f1ff  show_response_sp.xml
+9b59600a855251ced60419e6777e5e23  sms_alert_on-off.cfm
+c12be445ed3885f6e50e6e296c951e6b  sms_app.cfm
+d651d0db54427c38250725c33f5c9e8d  sms.cfm
+ada3f569f42a4820545a029d8cc53c87  sms_gateway.cfm
+887bcfb97632e371f558ba884bf3f71e  sms_manage.cfm
+d065b3b041a006e5948eb008bcffb8e5  sms_message_popup.cfm
+b4c56468cec36aad67002e548fc6e0d7  sms_receive.cfm
+a2582c3b31aab28e3e93bb45b44f4c15  sms_receive_test.cfm
+20c870bac5c21b73e3a299337b1556bc  sms_roaming.cfm
+43d249d26ab9dc44cd1f984b6ed1f212  soaperror.cfm
+90aeb71453bc7bb51eada0a7a462a37c  soap_receiver_auth.cfm
+bb018c7b643dcbe89bd53a4775064c82  soap_receiver_auth_copy_to_vaya.cfm
+md5sum: sql: Is a directory
+md5sum: SQLScripts: Is a directory
+b747371427059e0d2be886a3ba88a603  statuses_include.cfm
+md5sum: style: Is a directory
+2b970d56fb22afc1a0499d9b14326564  styles.css
+4aadd81e53edfe729af9f48040d1ce44  styles_z.css
+md5sum: system_widgets: Is a directory
+md5sum: temp_scripts: Is a directory
+92647b3b8d4a0a210d0655ea4d2804aa  termfee_not_inbill.cfm
+md5sum: testModules: Is a directory
+5bbcf7655d38cc8d366797e3c1b1a710  testmur.cfm
+0bfaa8eb2ae2d731708ca6bcb5909487  text_format.cfm
+98b8c6ae411773ecf08e199e6e93c73b  thankyou.php
+md5sum: themes: Is a directory
+8cc62e0815d2f30320c849b31cfc71ea  ticketmanagement.cfc
+485fe6dec373f90888bbcd3fce2915a5  tinyeditor.cfm
+47f311bc5b5702dd42014eaf6f5ed859  TrueFalseFormat.cfm
+md5sum: ui: Is a directory
+f678e65958f1746c5dc03ed69aee6347  unallocated.cfm
+3bddfc8a31c00160b14b06ac610a3230  unallocated_csv.cfm
+707b2f551fdb91dc83c9004a5aeb8cae  update_barintphones.cfm
+7003f0952f16afb5876adc2f165e1921  update_pending_payments.cfm
+c6c82eadb1c4d805125cdef818d0d3d7  update_phoneExpiry_temp.cfm
+e7214d3a4b6cd8191444f05e5a8b05c7  update_phone_finalised.cfm
+506e6956e6945c9e92be00188af8a3b3  update_syncplans.cfm
+9200cae0e4c87fd21caca2be2ce99572  update_syncplans_new_test.cfm
+3a843f116ece1ad365c7fc30de11f6c1  upgradeRatePlan.cfc
+2957c25d8f6760f1b713e6674682e18f  upgrade_rate_plans.cfm
+md5sum: upload: Is a directory
+md5sum: upload_1: Is a directory
+md5sum: upload_2: Is a directory
+md5sum: upload_new: Is a directory
+md5sum: upload_old: Is a directory
+df31ad96fa6842ee4ed1d55c0d6dfdf4  upload_paying_client.cfm
+9217847f1a563b37d24899c1b7eb74c2  upload_paying_client_download.cfm
+fd2f7dd22d3339deb0730bbcd5c99e5b  userautoallocate.cfm
+fd35eb13f21dc2a9c740bc25156575c3  userpopup.cfm
+0c8fb789914f3ac23c3801b9670b96d0  userprivilege.cfm
+684a751ffed4cdbf3e4de1b8d560888b  users.cfm
+f782150a2a27db0bb4f5127e58b14d01  userstatus.cfm
+3968b6e38d32c8aa77496814e7379ef4  vayaico.ico
+md5sum: vaya-services: Is a directory
+edf8fb5c4e3fd899fdce1dee1876c022  vaya_settings.cfm
+8ed0075161a13eaf691b10c885329fca  verify_email_action.cfm
+bd4ea67003db7b6c0ac99fedd97e1b4a  verify_email.cfm
+53f49df961fe875cd0a78fe0f423910d  viewfullreport.jpg
+96e4163f2de0741071e62a66d5cf6032  viewwddx.cfm
+f9abe27f8ea1f767c44285d16e4c152c  voip_check2.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check_moved_2_lc.cfm
+1522d80acf2cd2b55c242dcd9ba79f7e  voip_check_v1.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check_v2.cfm
+3285d8d1fd82aa3d34f2060a9d80f057  waiting_conections.cfm
+md5sum: washed: Is a directory
+3b53ace2d00fe314931e88ff75631d70  washed.cfm
+be0f80aae8bb4f77325bac4d4e4bb38a  washed_header.cfm
+4558501b7929695027c08ce3039982de  washed_upload.cfm
+add5633822f38655b156fd26b47981e8  write_off_overdues.cfm
+f9b8688ae8ae6178c95dbc344d3db539  wsg_address_check.cfm
+md5sum: wsg_b2b: Is a directory
+0c834dfc4ee91fe72ebd91010e79c9b0  wsg_fuzzy_address_match.cfm
+20169c0f05793e401f66d16f23aaa9d3  wsg_manage.cfm
+e3277619ce3e04832a14bad33b4dc9fb  wsg_manage_landlines_actions.cfm
+5fa1e976f815a676d923f7f71a084971  wsg_manage_landlines_add.cfm
+4902dc9d82e0ae9c7259600af6dd2306  wsg_manage_landlines.cfm
+509d4d88cf3a81e49b21a3b075462893  wsg_manage_landlines_edit.cfm
+ef4b5608dd238c23b472ac92eec0bff8  wsg_manage_landlines_main.cfm
+b840053df4b9736bae02e10374a1cce0  wsg_manage_menu.cfm
+92c3e902a18a6539c23a77e7e9b513aa  wsg_manage_radius_setting.cfm
+f31f9ba4e5984abd4d8b1c9501b77474  wsg_manage_radius_settings.cfm
+f6166adce4375ef403a6e2b93bb2c119  wsg_manage_request.cfm
+fac0323dbaa3124affc77bd588f386b6  wsg_manage_setting.cfm
+b108c817b3c54a6c31a1e4d748657d96  wsg_radius_request.cfm
+d155c63f7fd8c34f3c575488e67fc417  wsg_sync.cfm
+7881dc5273a5a3b6ed2924d8f055be9f  wsg_view_output.cfm
+md5sum: wysiwyg: Is a directory
+f1aedd64f9f6d4710073e7665f7c68ec  xhtml.js
+md5sum: xml: Is a directory
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# df -h /var/tmp/
+Filesystem                  Size  Used Avail Use% Mounted on
+/dev/mapper/rootvg-root_lv   15G  2.6G   12G  19% /
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# md5sum * >> /var/tmp/prodecgateway
+md5sum: api: Is a directory
+md5sum: barcode_imgs: Is a directory
+md5sum: bi: Is a directory
+md5sum: billboards: Is a directory
+md5sum: billing: Is a directory
+md5sum: billing_landline: Is a directory
+md5sum: billing_landline_prov_files: Is a directory
+md5sum: billing_lc: Is a directory
+md5sum: billing_scripts: Is a directory
+md5sum: billing_scripts_lc: Is a directory
+md5sum: bsbchecker: Is a directory
+md5sum: certificates: Is a directory
+md5sum: creditcheck: Is a directory
+md5sum: css: Is a directory
+md5sum: custom_tags: Is a directory
+md5sum: data: Is a directory
+md5sum: DnB: Is a directory
+md5sum: DnB_clientpay: Is a directory
+md5sum: DNCR: Is a directory
+md5sum: docs: Is a directory
+md5sum: email_campaign: Is a directory
+md5sum: eziDebitEx: Is a directory
+md5sum: files: Is a directory
+md5sum: flexigrid: Is a directory
+md5sum: helpballoon: Is a directory
+md5sum: images: Is a directory
+md5sum: IPND: Is a directory
+md5sum: js: Is a directory
+md5sum: LeadGen: Is a directory
+md5sum: library: Is a directory
+md5sum: log: Is a directory
+md5sum: login: Is a directory
+md5sum: management_tasks: Is a directory
+md5sum: menu: Is a directory
+md5sum: owi: Is a directory
+md5sum: payments: Is a directory
+md5sum: pni: Is a directory
+md5sum: queue: Is a directory
+md5sum: rbtcdr: Is a directory
+md5sum: recordings: Is a directory
+md5sum: report_groups: Is a directory
+md5sum: sch: Is a directory
+md5sum: sched: Is a directory
+md5sum: scp: Is a directory
+md5sum: scripts: Is a directory
+md5sum: securepay: Is a directory
+md5sum: services: Is a directory
+md5sum: sql: Is a directory
+md5sum: SQLScripts: Is a directory
+md5sum: style: Is a directory
+md5sum: system_widgets: Is a directory
+md5sum: temp_scripts: Is a directory
+md5sum: testModules: Is a directory
+md5sum: themes: Is a directory
+md5sum: ui: Is a directory
+md5sum: upload: Is a directory
+md5sum: upload_1: Is a directory
+md5sum: upload_2: Is a directory
+md5sum: upload_new: Is a directory
+md5sum: upload_old: Is a directory
+md5sum: vaya-services: Is a directory
+md5sum: washed: Is a directory
+md5sum: wsg_b2b: Is a directory
+md5sum: wysiwyg: Is a directory
+md5sum: xml: Is a directory
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cat /var/tmp/prodecgateway
+634075f6087c4d44438fd408cd1ff20f  accounts_add_payment_advanced.cfm
+033d6ac9a3c33a3dfb7d2b59301cdedf  accounts_cc.cfm
+819d05bdb3a5a68983c6ffd23140238d  accounts.cfm
+d1fdd0a9096f1563478f6945d840c6b8  accounts_reactiv.cfm
+406ea026b03744492ab98ea7877e6d05  acma_export2.cfm
+110572f9aa54ba074e26fa9b670d6bcd  acma_export3.cfm
+84864dca634a475862ba2c17c39f92be  acma_export.cfm
+b79c6b4404a41206129cc009605753cc  action_log.cfm
+e1c0a2798ebf597d0c7abb663fbc76ac  actions.cfm
+c9e8c61cf3ebbfe5996cfebde28a71cb  addcomment.cfm
+638760543f114bbf5ba758cfca377d03  address_checking.cfm
+d83452d7d063740a971f769563da2380  address_checking_prev.cfm
+406e57230badb7d37b3442ff21583bb2  adsl_view.cfm
+10e7f083ccbeed3e6237f2a92ce02cf0  Application.cfm
+98e3b212178e05e1f4c6ab1510091bbf  auth_error.cfm
+452e10c546a738f4d82589bb4665cb80  barcode.cfc
+b337d5a0130e9a4e5cd521e942752fdb  barred_out.cfm
+115d917f177c5081bf6e3179a09036c0  bid_code_app.cfm
+65cdf65e69c9533868dfa399f2f76992  bill_checks2.cfm
+ddfbd3406c86d55f094d63243ca85426  bill_checks2_connected_date.cfm
+99fbfb8b1a9a213c5fff7e9de32845c4  bill_checks2_lc.cfm
+3f73ee5959502cf938963173ab220817  bill_checks.cfm
+78b2917d90032dc29c2f32a5b43d5387  bill_checks_lc.cfm
+e684fab8a0f5f647d73f8295a5a974cc  bill_export.cfm
+64e56ddf2a0f88291b1e1ec01641e6ae  bill_log.cfm
+8057011539684c6374e1a14e3500f81b  bill_print_ftp.cfm
+5b2b8d3f28282433b4df400b621958d3  bill_sendbillnotpaid_email.cfm
+715dc1a67dc3b6ea4176f92128386a05  bill_send_email.cfm
+fefbbff0f5a1e16c9cf66ac5cfe4db17  bulkdelete.cfm
+fd1431b6479c0c4d6aa9aeb286e98c47  CalendarPopup.js
+7a308c13b9a9e4f8d2e6ae6e7bce5586  CaseFormat.cfm
+83ec859619d1acc4ab7b60e9fc1f2719  cbox_test.cfm
+8540691bc2e6edbebe356e758bd24b6e  ccdaterange.cfm
+bd1057401f973eef16ba511702e652a2  ccheck_popup.cfm
+e919acd18256cbcf962515031d2799b3  ccheckview.cfm
+0605a5de3200aa34c2f4d77c4f06dca5  cc_reminder.cfm
+acf7ab5be2484e58c4650875909a334d  change_phone_user.cfm
+3107d379cdb3792581f301b37629496f  check_duplicate.cfm
+87be463a9af0114c5090c7c4b45055c9  check_plantype.cfm
+5af5a558b8223ff1e2e2673099547920  check_sp_payment.cfm
+eb417129f3e18e10de1bae5be9214ddf  check_sp_xml.cfm
+943c2d9bb54d4c4dfa75fbd6be8c39e9  client_addresses.cfm
+74b0755b1ddacd65c799392e516c637a  client_bup.cfm
+82e17bfd221496eec52db30c6aac8908  clientcc_comment.cfm
+56f230d2b0a8abd4f321e7803f8e9664  client.cfm
+c3a948db8c385846242f145bd79f53b8  client_credit_check.cfm
+478e04de4cae0e225dccc8780747f9ad  clientfiles_bak.cfm
+cae75fbc007a43130ee8aa95861b5cb0  clientfiles.cfm
+e085dcb335d7ee1d0c7860b5c4262cef  clientidentities.cfm
+fbe3c55073004223d0b46c47b14f7d56  clientid_floatbox.cfm
+1fdd4c1628da4fb246156df221f5301e  clientid_floatbox_test.cfm
+5cb7c6d93553b6e2cf0fdbd48e260372  client_noback.cfm
+d2c5cc8b88190b67723e4611110b3453  client_noback_ming.cfm
+04fbabc3bd89d48c1e1b57e7f67b9e9e  client_plan.cfm
+8f511262ba6572ecb21ceeead79b2a73  client_plan_test.cfm
+804ccb22f993c5b6fd153cad23bb79b1  client_test.cfm
+0e11313051f1928700eb1149645a0e09  connection_display.cfm
+98fd8163349801f456f45b62f00c4802  connection_display_total_active.cfm
+d799f14a3ba5686a73cf9859f710cb91  connect_manual.cfm
+0f7a968ba030f66834b19749c204cd4b  connexnet_export.cfm
+58f07e9cfad56798cdcc61912300ee0d  connex_no_acc_barred.cfm
+c7ecc1d95ce5667aa18bb28d2c260b4d  copy_to_vaya_xml_receiver.cfm
+983f4a21f31630e90f9b701988a560b0  coverage_check.cfm
+2e48c5adf2b8720107a47cba3048ef47  Coverage Maps.cfm
+dfa694eee81731d43a8b76127d8f7e00  creditcheck.cfm
+b67575a1c23ab13efdb576f0f6f7d5ff  creditcheck_dynamic.cfm
+af4781c5cbf1585858d25124538ffc0a  creditcheck_manual.cfm
+dabaa8bb05e8d635cd2d1e9d81fb3359  creditcheck_req_confirm.cfm
+9dcffbf882d01e9c2708e60fde109d42  creditcheck_req_confirm_veda.cfm
+1864625456f78542fefdb406806bf7ad  creditcheck_req_perform.cfm
+49bad6c52fce9b91041430c76a973336  creditcheck_req_perform_limited.cfm
+b9f53f0461dd566c63c40da802216b3b  creditcheck_req_perform_send.cfm
+dcfa3762e1ac0e7927c038fc448caf15  creditcheck_rsp.cfm
+424be2a66e89848bf8feaffd0e6a4e63  credit_check_table.cfm
+083715c06f5d96f1cffd4f4cb29f88a9  creditcheck_xml.cfm
+b387ab916779c374f0f597f87d2b02e8  dashboard_callbacks.cfm
+c55e153bc5f7960037eeaa8098c58950  dashboard.cfm
+8ece05bade25f15350aaef4817c17992  dashboard_conne
+3d028e9ea531960095883d265bcb2f8f  dashboard_connections.cfm
+c28da75b490b7d4bf0b46525a145c9c8  dashboard_connections_dealer.cfm
+b46f22fefb4f1c191e0a2cbd9bbd615f  dashboard_connections_lc_daily.cfm
+ffbc445c9de67ea1b15542847233f98c  dashboard_connections_vaya_daily.cfm
+75e696b0edadcc6cec854796be502854  dashboard_connections_zc_daily.cfm
+44e010c4dac0a19ec1d7d4b0285743d2  dashboard_resourcefiles.cfm
+568cd873c9d7c2cefb54e9ffae66c42c  dashboard_sms_log.cfm
+f29f3862ec052b4ad685188332f9eb1d  data.cfm
+82306c8ea7664a98d0a87d33f1f1881c  data_create.cfm
+d194ab54947134e5157615ba5e6a8a77  data_delete.cfm
+9c2e7c189a782aed631e9999448304f0  data_download.cfm
+99ab6acbe2632bf908fcfff9a42fe596  data_header.cfm
+da94885512997e178ac9d6e5a905b717  data_move_action.cfm
+c5247c2076179a47c44e36475f401c09  data_move.cfm
+856669d97ec5a81e007eda185ff9cf1d  data_upload.cfm
+e30faf4dfdb7443890e13fbb693f1cfa  data_upload_insert.cfm
+e19118edd32b7f0ab75cf1c19b9e10c6  DateFormat.cfm
+d763f2801171472ddbaa4c038eaef241  date_selects.cfm
+b99b2d905267c42c64a3d9ddb49393d8  DateTimeFormat.cfm
+18998163cb84a08264488386478f79bd  date_vars_arr.cfm
+d716b65df4d2d78da4ac44c1b9c035cc  date_vars.cfm
+dedfb462821c6d8807a24521db048601  date_vars_weekly.cfm
+cc2810b53de4c13d6d7b0e58972ce636  dealer
+134a8f008612073bff263a34065ed144  dealerfiles.cfm
+8e4a6476347fcf1a92c7b7ebedd9ea08  demo.js
+b567f8e861b5f07ea0b54f0c03441960  disconnect.cfm
+6c6d444788ff4d8df98ed936a6d2f822  display_connections2.cfm
+c70ebec133febf3c3051a69edbf97942  display_connections3.cfm
+71f683aeed1289f4528cdce225a898f3  display_connections4.cfm
+58375e54c7b0d159911b85a585a4ce38  display_connections_billboard2.cfm
+b2b130d872003925e718e0b9157064a6  display_connections_billboard3.cfm
+320cc1590b70429d27afd3734c3ced10  display_connections_billboard.cfm
+c57b1ac0bfaf6e0a5ad0d0a1c69f2917  display_connections.cfm
+2372d1ac703c9a71bb13fd96921bc24d  display_connections_only.cfm
+f16d4097fe3c354bb6b1526ea279fddc  display_connections_screen.cfm
+d224ff2d318d88419e08b72aab1a008a  display_connections_screen.html
+eef950164906ce61ed9bf10904f2b2f1  display_connections_test.cfm
+33a1db20cf07370eea65fcb4606d6169  duplicate_client.cfm
+33c652182ec08d05dc0a082253305bbb  ecbill_billday_calc.cfm
+87d15b19a22615e89c289fa5b923b5ac  ecbill.cfm
+95f1b510ba0dfc64b25e60d901ad29b0  ecbill_dd_export.cfm
+8c2b8a2652a53770e3389751daeaf9bf  ecbill_dd_export_paymentONLY.cfm
+6538ab1d4df6e4dfbaea0f32d65e8515  ecbill_dd_footer.cfm
+100bad276eb218fe0aa4e72597897825  ecbill_dd_header.cfm
+3549804b407fd220cf36063832dc3928  ecbill_dd_header_with_nbsp.cfm
+d384d0d2dd7071f0c197cc898c293f82  ecbill_empty_log_payment.cfm
+230fb3ccb573c0f1734d01262090f7a7  ecbill_ezi_bpay_payments.cfm
+4fd260cb5174adbe3982773309371f43  ecbill_ezi_callback_payments.cfm
+d9f44befced161dd765ce029d805d6bd  ecbill_ezi_payments.cfm
+0b8337b68b8c0fb9a5b7100f87a3cbd0  ecbill_ezi_payments_overdue.cfm
+6138ff3bf80bf79e173f09690215910a  ecbill_ezi_temp_sms.cfm
+3c691b1fe111c9e8a08aa2e2e2daa60e  ecbill_ezi_update_pending_payments.cfm
+4e96b046581ac48e5a9ed4864ffe546a  ecbill_itemisation_csv.cfm
+ccca2280699f0dfe02ba4d132d6fc251  ecbill_payments.cfm
+3dde00574c88c4b0a5eb49dddb7d4f6c  ecbill_process_cc.cfm
+2a3339164d7b9eb6b30f796641de3d44  ecbill_process_cc_overdue.cfm
+d85932428680cce5f1587afc9b9d7a81  ecbill_process_cc_sched_bash.cfm
+75884b6cede22aafe46ab218f5471da4  ecbill_process_cc_std.cfm
+c60034cee4a45e38da9d260c918c68f4  ecbill_sched.cfm
+04ecbb82bfd62ceac4f717548c3dd14c  ecbill_test.cfm
+368dac2bbe9aa7c78e210f35400e343e  ec_dump2.cfm
+1e0a6dfd32e6f2abc4cc8a6f1031bf1f  ec_dump.cfm
+144582c6adc4168f0aed98f3b9e752a5  edit_notes.cfm
+9b06a97b96f8765a18bd44f8dfe228a5  email_auto_sender.cfm
+7e76ffa6b32a091db639deef5193b913  email_checker.cfm
+47b0c9dcd3e78b4505defd9032f1af2e  email_content_send.cfm
+e455352493f072b26b16c8b34db41bdb  emailer_send.cfm
+2a287f36137004aafb21cf362c3bc0d8  emailer_send_dealer.cfm
+a8e798f2a622ee6086db8d0126ed38fc  emailer_send_lc.cfm
+e289ce07843b17bc903ec1b9c93b797e  emailer_send_zen.cfm
+005c1d53450801f4a3b21df0a8c9d2eb  empty_sched_unbar.cfm
+c9ba6f4235c44e18c4e939469b00bb35  export_cdrs.cfm
+7db4e51360e5c4faef03bd5ac30eaf66  favicon4.png
+6129937c7050d459d42c9f8b7cd0d203  fblogint_getid.php
+0f9e57932593c5340caaefd099d1672c  finalised.cfm
+66c1e7a41e910c561706c2e05da09abc  finalised_check.cfm
+c9eab9572a5e674226b7c2b79a9d0247  finalised_export.cfm
+edbbe1b26e8d1e3a1ad88d39f523a408  FIX_auto_unbar.cfm
+7fa00f8a3cf7106fe19ebb7eee88dca3  FIX_bar-to-stay.cfm
+769004abc46e511457cd394a21a9c332  FIX_bar-to-unbar.cfm
+9388ee4699373598524216324c5bbcc5  FIX_Bulk_Send_Message_FORM.cfm
+d572924f4d5176ba0d6641bf44c0676e  fix_disconnected_calc_term_fees.cfm
+0319ea21f3358ecd15242c3b7647c9ed  fix_disconnected_calc_term_fees_include.cfm
+59b989debab15ba9908f7fbfeb23b109  FIX_ecbill_ezi_payments_delete.cfm
+1ac8aaa70dd2d0b11c19eaac5009519d  FIX_not-bar-dont-bar.cfm
+43dfbe252d2c7b8b710e07816ade28bb  FIX_not-bar-to-bar.cfm
+969dedf0ad7c92d5a4af5172d3c65af0  FIX_not-bar-to-bar-unbarred.cfm
+10b4ddd41a85fd89cb64c5277dcefd44  fix_phone_upd_prorata.cfm
+3da87bb78c4a3c2e6f92428c3e7933cf  fix_recreate_pdfs.cfm
+5fdbc337b10506f2d0ff4037f2bcf010  fix_trans.cfm
+2eec8ea7422165cc10becdbd619c6c6a  FIX_update_sc_monthly_list.cfm
+18f46c164782d0a1f4570fe7a19482e2  font.html
+1e54350a22a63d66b5689be2fba4e59f  for_editService.cfm
+cd113b4fcbe4d7f661c6abb4d6f7f6e7  form_validation.js
+87f2b46c229604e9ab9fe0ccdfa7fae2  func_changePlan.cfm
+3b36e82a51b086abc3f62f856ff3c6a7  functionsInvoiceNotifications.cfm
+4a87a164e0b9256e0552ff32dca9174c  generalFunctions.cfc
+1d879af47ea65d288027c0e40375c0d0  gen_validatorv2.js
+db12e067e0644aebdd92171693db2066  get_usage.cfm
+8e4a5d0a4e5ad0290f8d062bc61d7da7  gunzipFile.cfm
+49d814a9e40e30098442bf8824352993  help.html
+56bc0dc54b7cfb2cff3db003b11654bc  hpp_change.cfm
+cbfd1aa3b990447310954f81f9864610  htmlbox.colors.js
+45f0e8ebf0913bb16d05459c27489bb7  htmlbox.full.js
+df987b854d161b8b1d3ca24305675c2f  htmlbox.min.js
+dfb7455bd6b495bdb73a06f80015dace  htmlbox.styles.js
+fe85b1dfee96e01641145fa2305c0b84  htmlbox.syntax.js
+ad0701952f095d140e66f100bc503364  htmlbox.undoredomanager.js
+d401b7059643ed9bf546725188213cdc  htmlCompressFormat.cfm
+0798ff536e479a5817377971274a9cae  inc_activate_services.cfm
+c71368581cf1f7db3399fd7d524c3fae  inc_address_check_01.cfm
+09c4489a13a5c8c6aaf5066827194ad4  inc_address_check_02.cfm
+f9520fe5272525ba991245c050f30362  inc_address_check_03.cfm
+8e9b226dd10b8551fc8f0e98c6c17aca  inc_address_check_04.cfm
+3ba108d4525df03942a92449b51a5d1d  inc_address_check_copy_crnt_to_dlv.cfm
+683cf745c1d8337b9bdd16213ac80df7  inc_address_check_prev_01.cfm
+6ae060b2af22aaa21806a08c798b904c  inc_address_check_prev_02.cfm
+cf1d4c65bb58d72d3d88cb11fe6aeeaa  inc_address_check_prev_03.cfm
+77e258707a0c2cc0656f1ff9a9c9b7f5  inc_address_check_prev_04.cfm
+d349c9f1ae32240b33d28d9ada567dfa  inc_address_check_zero_address_data.cfm
+4fdd7a23d1d66277bf55ba17e05a17d3  inc_address_prefill_process.cfm
+a91429893d87f5067200f41843cac016  inc_autocomplete_ajax_msn.cfm
+0867a4966bfce8d2f0a72118d190b136  inc_autocomplete_ajax_street_types.cfm
+a075b6982ed44d6187d816e6ef65da71  inc_autocomplete_ajax_suburbs.cfm
+ae8684089854b96a1ee8e65b05800eb7  inc_autocomplete_js.cfm
+eb32d8a62db62c92a2ff2f3a58f6f585  inc_bill_email_notification.cfm
+3b262ce7d88bb23e4712c21b46ba3d44  inc_bill_notification.cfm
+147bc2f99536dafc964ff3b725856eb4  inc_bill_run_main.cfm
+2db95447fda9894d5439f7053debcd61  inc_charge_purchase.cfm
+293de0b9c1c0a9faf41a69058f69b8d1  inc_client_header.cfm
+0d56dabdec6828a1627d021e4579d4e8  inc_connection_type.cfm
+58c4629a7b3ac785feeecb5a3d74b4e6  inc_credit_checks_view.cfm
+4973b75352d3db1ad5ca07ec731ad200  inc_dateselect_form.cfm
+ce30110f879e4d3a68f4deeee8e2b838  inc_display_phonetotal.cfm
+11175bae7f860611984494d537554bab  inc_display_washed_result.cfm
+3a030308fc4a624ba484622cf8cca7ab  inc_ecbill_itemisation_calculate.cfm
+7f8a50d4e6ddc256d38ae5216a1a34bd  inc_ecbill_itemisation_cap.cfm
+2f46247ef1df8ba1db8225f754d4cf40  inc_ecbill_itemisation.cfm
+1d08661e09411a9897a9a831b72bac6b  inc_ecbill_itemisation_vars.cfm
+2e334f0a58843727f52a259670d0fb24  inc_error_dump.cfm
+0620a763e83623fc370c2948c31ee575  inc_error_dump_val_req.cfm
+384faf43d832d493ccc51a825ff77455  inc_form_changeplan.cfm
+2ac9b1a66c429d8173df62ce2fb13e5a  inc_form_upgradeplan.cfm
+2706c5601ccefb46ec4219c040add0dd  inc_input_cleanup.cfm
+c7e496dd96f00e200db5518dd4f0654b  inc_jquery_head_bak.cfm
+e90a55ce8d837fa72281baf419aa3364  inc_jquery_head.cfm
+c5fa7592aeda0f628973d961cb5dd15a  inc_landline_move.cfm
+c2e546f1f7862473d45321a597e7e5a0  inc_manage_services_roaming.cfm
+5bdb23c786e9c34bb568eea8211d5e43  inc_manage_tio_actions.cfm
+1863f173d51606239a798283f1462e2e  inc_manage_tio_form.cfm
+e278cefd5919f06c50ff30ad6aafb9e8  inc_manage_tio_list.cfm
+20d38d851a3955ab9835002862025a79  inc_msgvars_get.cfm
+3de9b56815b0b71dd227262a555b9e1c  inc_paf_barcode.cfm
+038b2a3d15e5b00c2ecd62576e0285ee  inc_phone_changeplan.cfm
+56071e908904cc95bb5cd73b7653a24f  inc_phone_move.cfm
+71259e8f6649fc9be0cdb7fa3b37dcc1  inc_phones_form3.cfm
+f140440d4a2866d55bf71578b0d1fdb0  inc_phones_form.cfm
+fae181e261af6d194f740d38033b63d8  inc_phones_search_msns.cfm
+b5630264d8f3c4ae88b78bb120b6a8ff  inc_phones_upgrades_2.cfm
+66d183ce2813c1e12f48dcf6547665ed  inc_phones_upgrades.cfm
+d4a50f75ed19da9135b3f1fc3b2e091f  inc_queries_report_overdue_70days.cfm
+a18b0b8f107d3e05b8e24f1c5bbd91f8  inc_queries_report_overdue_bak.cfm
+6cdea6d6af52c04e82b03c78a2837fd1  inc_queries_report_overdue.cfm
+1d003bae544b08282bd1ce364074eff9  inc_queries_report_overdue_zen.cfm
+8a3117f8fd2772f25eddb0838dc237ba  inc_queries_report_phones_to_cancel.cfm
+140e1af0f9bc3dff219437bc1e39c2f8  inc_queries_report_phones_to_upgrade.cfm
+5667a01a1f516e884935dfb3b88ed87b  inc_queries_report_phonetotal.cfm
+fa92e0a5222fe0096b8cddaf5a3d978d  inc_report_bad_debt_toolbar.cfm
+deb48c58deb3b19b7a70bd0eb03d589b  inc_report_new_clients_01_daily.cfm
+793ca7ba927b90caffef11256a8c129f  inc_report_new_clients_01_monthly.cfm
+e580e861dac9ea2ca933c3113181f374  inc_report_new_orders_daily.cfm
+749fdf7fae7716b4f2b8ad3115b20901  inc_report_new_orders_monthly.cfm
+be5069d346b9546bffd904ad08db4d44  inc_result_page_numbers.cfm
+be5069d346b9546bffd904ad08db4d44  inc_result_page_numbers_finalise.cfm
+cfc45aaf37c020a8a17f1f28830788ef  inc_result_page_numbers_with_param.cfm
+9ac3b569a949d0d7c3ac1dca8cb60130  inc_sms_manage_toolbar.cfm
+3eeeabe494b27258d2669910f19e8159  inc_smsmessage_replace.cfm
+1eedff331c6019bc5b0d83e9e347b5d8  inc_sms_slide.cfm
+2f23f754530242a17bb1a086a76a2e01  inc_sql_details.cfm
+2d877a1f2f5fc196d437f78dbd064dc2  inc_table_generator.cfm
+dfe2e171d7e429fb4917eb115edb8a59  inc_table_generator_xls.cfm
+626f582fc476d06beaee45a8770423b2  inc_table_report_acc_rec.cfm
+1289f26ec2011f562fe539a6773c5ef9  inc_tabs.cfm
+b80f8e137dac0925acfbe8c05b0edde0  inc_unallocated_toolbar.cfm
+053766ef19df628127a859c36e515a3e  inc_user_list_dealers.cfm
+1918ddaff17e6def6e396e87303f777c  index.cfm
+3467587dc0bc5f23c170eab264015be4  indicator.gif
+2b5ccbd945e9c95e94fc68713c4e812b  insertLog.cfm
+b92baad6f25a037192735b5b4f0e4a7d  invoice_.cfm
+842ed2742c519fe5b192f24daadb9084  invoice.cfm
+3c8473a3b883a964b1f4bf3fa7d68fdf  invoiceitem.cfm
+2d7a0cf9fa09455c80ca407c2fcd5c37  invoice_test.cfm
+bda55e27f947228c54c8bf0dc448e3cb  IPND_checks.cfm
+7021191c5dd70e95a9c026be6b9c05d5  jquery-1.4.2.js
+ddb596fb616c5d520d41c17094605bde  jquery.autocomplete.css
+fc2e01934fd8f26590b1fcd70bbc4f5a  jquery.autocomplete.js
+ddc911dc33a899456bed3a92a401b62d  jquery.iframe.js
+7d7978f1700fed8e9663999879474941  jquery.marquee.js
+c190cf82c62123de6a895ddf7b7e38b6  jquery-ui-1.8.5.custom.min.js
+222f5d08a4b378866a51c985e423334a  js_HtmlBox.cfm
+03ae750ac218e1f7af31473ae203676f  landline_view.cfm
+5fd4b9a0a8677c2f601f553e4d8bcb7a  layout.css
+c5baabec9abbe1969beb77afec55772c  layout_modules.css
+e747750d96f149ffeb41c939e558b511  leadgenreports.cfm
+7087aaa505ffa02ea72d785cdc6f9d2c  letter_send.cfm
+b600c2c2cbca5c26d218d6069dc9ba51  letter_send_lc.cfm
+5d35cc6a3404793feb503192c6ab3af3  letter_send_zen.cfm
+dc2685541a8b5c24f080d6cb731a9403  list_bills.cfm
+c8a5dd2ab02dcf165c019e26c2e6e62b  list_clients.cfm
+143549369de983046bdc6e3fbd7f5a1c  loading.swf
+e0ebcc70e456f740d3b7cb49be1787ce  log_checking_xml_4.cfm
+657f8340a5e762dbd42addc263a78cca  login_all-ie-only.css
+f5470cf1a300d1756716d152e647a906  login.cfm
+a9bbe82def4cc09d3d6b3f27cbaea4a7  login_changeuser.cfm
+3f545591933222400647108a5d3d746a  login.css
+27b953676612f59dcd12b4f2873e4efe  login_test.cfm
+a9ff3ea43c4ff771df0cc604998295a1  logintester.cfm
+f45f8919170b8a8a1b408adbe9c06988  logout.cfm
+ed1aa7c2c77c38fa662fb284c017c73e  m2_test.cfm
+e361863854157c84a14a1e5c5a66ca70  manage_adsl_actions.cfm
+fc04710b6f79f9c9133f215c6880cf2e  manage_adsl_add.cfm
+185888bfd9a7a19a13a960a421187446  manage_adsl.cfm
+ae0ef8b2af9595b7978ad013688af544  manage_adsl_edit.cfm
+10ffdaa4c9426f5ebe612ac4e2b219f5  manage_adsl_main.cfm
+db2567e146108fa8ff587fca5073d3e3  manage_bak.cfm
+9d1972af969eabf5f19befe108993560  manage_barchecks.cfm
+d7ecf0cb5703f0b74cbbb496dc6515d2  manage_ccrules.cfm
+e8833826daa426498f933e40368facb4  manage.cfm
+5758363cb47e85865ad58021f8546269  manage_faqs.cfm
+bf70e0a780e1fce2ce5e270b25659d6a  manage_identities.cfm
+91ff9390ce200e47965401408590e0c0  manage_insurance.cfm
+21d57f5fddbd556b7b613dd2aeae1883  manage_invoices.cfm
+e2fd345f39c9bcad8ef63c16cb71838e  manage_landlines_actions.cfm
+e50bcabc58ae001ec2addfed8ba17d76  manage_landlines_add.cfm
+7f24a49ef518ea54cc3657581d7e095a  manage_landlines.cfm
+46fd5f2365bc22fa839b73c65d4a1bf0  manage_landlines_edit.cfm
+465e565977149d83bd8ae0d28e11c7fb  manage_landlines_main_20120625.cfm
+069b49b0c524187637c58868c7436db0  manage_landlines_main.cfm
+b08c2c886c815ad260825c651b8195b3  manage_landlines_popup.cfm
+d806589b025cfa26da68c1f5d21bce51  manage_leads.cfm
+f54f31b78b75a12d58f9b5a34c884fa0  management_tasks.cfm
+5df04ac7a0009b7950d3a5e0554a3630  management_tasks_popup.cfm
+7a76fd1912466ede8ebe92e1817f338e  manage_owi_barring.cfm
+6f46030e27d27f8a4f68e6e4b3a4b018  manage_owi.cfm
+02cc3971594470f2357a31d25614ab5a  manage_owi_edit.cfm
+e0c68dbcb63a21c75157fd1b84f60226  manage_owi_menu.cfm
+e041601791b39956fe8d4698d2f22d3f  manage_owi_menu_original.cfm
+9055c8a349c05e371c7d9743c699f99d  manage_owi_popup.cfm
+02173f325ad51961c475efa5363bfe22  manage_owi_popup_fee.cfm
+dda7015056df67b6f6d123f0e54ffc4a  manage_owi_psms.cfm
+df22eb0650a39f4a9ca2021adabd7484  manage_owi_reqlink.cfm
+2636b0da2cbf60ab7b92b74cc1d884bf  manage_owi_reqlink_imei.cfm
+d1fc6dd1489a2e32c39684e1d3b0f02c  manage_owi_xml.cfm
+1184071e2b08be5aa225a44658991b6b  manage_phones.cfm
+b9e4c19164e710978fef992da05ecf20  manage_phones_conn_link.cfm
+20a4bb66b455f7537a3470d9cc70b039  manage_phones_conn_link.php
+17a0a0a166395123a4a72b1b370f2935  manage_phones_csv.cfm
+8b25caade58023e55c1305364b48d0ca  manage_prevbalance.cfm
+997dc3019a96afbf6a23f4b9397871a4  manage_qualify_address.cfm
+7bab6297ff59d16a138592a6beb7b7f6  manage_quicks.cfm
+aa909e5f38400a8dde459bcdf29f14c4  manage_security.cfm
+b8f00fd6922453b58da8b937807f05b4  manage_statuses.cfm
+eb065d77b182686a015945b13fe62e28  manage_stock.cfm
+71b6d5c526f287f254b58116b5d7a7e0  manage_suppCharges.cfm
+456363ff1f55ed8d9e95861bc3799dfd  manage_test.cfm
+40c9294687650ed5701d32460ca6c6b3  manage_tickets_board.cfm
+61023310651c7e7ffc890dd462771ef2  manage_tickets.cfm
+87472918ca76c5e994b8fc32fba87207  manage_tio.cfm
+7f2e89e8bec5e85fa1ace038950044ac  manage_trans.cfm
+e465ddc3a9b72b0c04c000951d489e67  manage_usagetotal.cfm
+1ee2ae5c54e8452658cb688ba8c696f3  manage_watchlists.cfm
+74e5d336fd9eaf6b084812e8ef52a2b8  manage_wsg_xml.cfm
+35edb784f60ab39249ff764ec339b48b  marek_end_of_month.cfm
+2b86aa775e98cc43ea032c9e091ff65d  mateemail.cfm
+cb8d839df4dd107e336ad0c92247bded  menu.cfm
+2b57df34cca0d6dae6fd5f5f5edfad4c  merge.cfm
+b86f0e86c5709da96ade19cfb85c8c07  merge_display.cfm
+b48409e0a8b579bc51e2b64c1d9a9de4  merge_sql1.cfm
+f3148156a1340423d40c90c4b5fb5e65  merge_sql2.cfm
+d49860e5c2b692bfedeeb5ccdf4ccaae  merge_tfr.cfm
+c8c89aeaf3388e6832869196e9b385a2  message_replace.cfm
+ce6af5f066512f9de10f7f76959c555f  messages.cfm
+b9acfc7b07df553c1f564fc36aeafba2  messages_delete.cfm
+94dda8fd2e4d65ad9f0a571f99b5ce9f  modifyDataPlans.cfm
+8f08848985043da7e85e5df7971645c1  mur_viewer.cfm
+398374b8d8498c71a0d4e10a473e5280  nbn_serviceability_import.cfm
+85eb51d54ada3b0e267ca3970101ad46  newsearch.xml
+2eae26c8be225372b70c72b04d33cbd8  nohup.out
+cb06fbf09be0119cfc15015907301587  notices.cfm
+aad164452144f540fc5c5de551e3640d  notices_display.cfm
+5c1ce92b3b0eb7bc37a093d6e7211e8f  optusmaps.js
+8e11b50221515923a230a88ae4b977b3  overlimit_20120716.cfm
+56ffec4032db37024c84543a60c67e7f  overlimit.cfm
+cd2525bf6d008100c75a7f223304c6db  owi_cdr_counts.cfm
+3791ad5d6a013162b74c2387ed959a28  owi_cids.cfm
+6085a6674e81633815b38a95e275eb87  owi_cids_lc.cfm
+4e307d40787105ac67117f0e96e6f0ef  owi_msn_assign_manageonly.cfm
+592b4d22037d1725bf586ff2a4854aae  owi_msn_export.cfm
+791b36510e35ed75f15224fc7f981aa3  owi_msn_import.cfm
+436999fb6b45e44f92335b721f90c99d  owi_msn_insert.cfm
+b59e08888821b382e98e30115606aac2  owi_msn_insert_range.cfm
+0e9c96dcd2f2c85b7b2c8c8350497aca  owi_msn_snapshot_import.cfm
+0d28b5e77e90151000ebc05028e47d54  owi_notices.cfm
+eb291fcf2b8412334b2bfd6443311848  owi_notices_view.cfm
+85bc6b54336fb28be6ae54929d7fc883  owi_plans.cfm
+95b6409aeb0751ca06be7eeb6407b2ef  owi_scp_batch.cfm
+e0308df5774ea180f53f0ba0c340328d  owi_scp.cfm
+03eca3c2871bcec2843acc83097d3698  owi_sims.cfm
+e9a3e84e74813aa87ad8158f829ee3ca  page_cookie.cfm
+3c34f4afcad8fc230a06e0754fe8b8a8  page_surround.cfm
+7eb9a7194a85d8bc728e0ce5c85ed478  password.cfm
+7487a1d356e78b093beb50d06e57d207  passwords.cfm
+0e1fd44a2f87781f1e7029366e685db4  payment.cfm
+0ba8962c8dfa81ea0e0dfd0b0943754e  payment_overdue.cfm
+8d7e052eab2d24fb91c269e415dbb077  phone_activate.cfm
+f086afa2c89db5d30d0df1cd1a6847a8  phone.cfm
+56004a43eaba20064c08fe71920df541  phone_changeplan_ll.cfm
+53b69fee62fd14ed71b0162bdd09dd96  PhoneFormat.cfm
+47b0382ecadf2e66c6b47222d434d17e  phone_limits.cfm
+63641dfaed8cb14c633bcc79bda777db  phones_conn_action.cfm
+f2c219f0336ff0b74764e4a1bc94e16f  phones_conn.cfm
+466cbcb085290559ade3d51dd9f26f43  phonetest.cfm
+c1e003925db521ef4db3454b6164c005  phone_update_check_fee.cfm
+6026344bff294b6c07c12abc23192f3c  phone_update_select_network.cfm
+d4e8daf445bd6ebec159f6cb2061a74e  phone_update_select_plan.cfm
+9011be9447175001a7cc7f17b3d7542a  phone_upd_prorata.cfm
+979a74c58a92501512ca4a77daa3a3f1  plan_reconcile.cfm
+7552a4db143a8615ae03a008ca537bfa  plan_reconcile_export.cfm
+a598abe30c32d660886a8306e1e8daed  plans.cfc
+794809278daa17f0c551208f400e748a  plans.cfm
+0561a75ba7f7c0e18ae49df4100f616a  plans_ll_display.cfm
+79b17ff62d1a1ec5c557f70b2222d7de  plans_mobile_display.cfm
+426360fbf799cf456f5ee7c38043b0f9  plans_offset.cfm
+799b671d83e019f575b086027972672f  plans_popup.cfm
+fb183267f207fa6dc9dd1f4b7efd0181  plans_radius_setting.cfm
+577ce05d14dc841939ffb94eee72aa7b  plans_v2.cfm
+9ecbdfb7568f6e839e800357103d12d5  primo_cron.txt
+7fb0510b5e8306436808620bbaca5c5b  primo_test.cfm
+bdc7ccb79069e0b114f7c3e50ce07e0b  query_check_vaya_abk.cfm
+97b5907fa6484ed5921378fa921d5c18  query_check_vaya.cfm
+6f425b86e2cea11b241314a2f070ce5a  rbt_cdr_upload.cfm
+234ed251931d3cb8dfa7077104486c26  rbt_itemisation.cfm
+0961469f3f3f13b7aa722ce5da60c3c2  reasoncode_include.cfm
+419e420ba59716ca297c3989f26f70fd  rec_download.cfm
+80e110877803be6ad92e34ef3a518a62  rec_upload.php
+ba17c9bfe3002f4738cae5a7ed0459f9  report_12_bolton.cfm
+c2a0816e11a10f5b39cf9a92539f7c3e  report_accounting_calc_bill.cfm
+0fa1f130145b31962698f977ca19b3fa  report_accounting_calc_bolton.cfm
+67a3f64acb26b353ddf20fb0e6be391d  report_accounting_calc.cfm
+a2bdf03fb1936d28138691af38d00632  report_accounting_calc_landline.cfm
+17acc74e0e2e34ad2657b95cbf98f38d  report_accounting_calc_mobile.cfm
+1891886b345199f53e4758167b6bbeb1  report_accounting_calc_total.cfm
+1cd1c13d3e4c3976f18f1f31adacd1a9  report_accounting.cfm
+a43b594d0490337136de73e8ab8c32b5  report_accounting_receivables_adj1.cfm
+21bb3b1aaaffee2779bd5550f2b6de59  report_accounting_receivables_adj2.cfm
+20e232ca2b67e16aed428323ededffee  report_accounting_receivables_adj_item.cfm
+0ef1576e2db03f83816e3d42beb35416  report_accounting_receivables_cal2.cfm
+d11b348ae41898a877eafb1d4bbbb116  report_accounting_receivables_cal2_script.cfm
+1a45a2d440725779321e20b3ade557e1  report_accounting_receivables.cfm
+37731bbb6d6e951a219383d5b936ff95  report_accounting_receivables_comms.cfm
+938a0ac210ae26f1ee0977051474fab4  report_accounting_receivables_pay1.cfm
+95a15ba0f9c07096a9443be315184d62  report_accounting_receivables_pay2.cfm
+578384cb134c65c24f7673a591a41bb1  report_accounting_receivables_pay_item.cfm
+726daedd89d1b6c12bdbc61b62b61583  report_airtime.cfm
+27381739cf6ec3a06987b460753de8e9  report_apd.cfm
+ffae319a6e704465bebd5f059bf27a76  report_apd_new.cfm
+204f91c1e46067080b085ef418dde77b  report_arpu.cfm
+279ca268a923ef647e95b29d0fba4bdd  report_avarage_spend_by_plan.cfm
+c4da5601f69995114af73973f8542d3e  report_average_rpu_and_payments.cfm
+16371781fd36ea90ed52e4cf3501ec0f  report_bad_debt.cfm
+5ee2662226e904c3677746837e2b4c56  report_balance_checks.cfm
+c20127f3c51d894bf49354b8ca9365f6  report_barred.cfm
+716572be8ecc44e8d292a6c0ddb0f126  report_bill_extras.cfm
+0be41466cf51ec618f665c141ba671ed  report_billing.cfm
+cf37c6b13dac96069442f0fc3660f7a4  report_billing_splitup.cfm
+c3515a3dafd51533dbbbe64993f3bec8  report_bill_run_adsl_ll.cfm
+38d629d8bc166aa70a91ca616399938e  report_bill_run_avg_trans.cfm
+a8f4d3cd7be49740760df6e96cd6cbef  report_bill_run_bill_log.cfm
+e39dc065d557112640cc3fbf4f99e913  report_bill_run_cdrs_not_billed.cfm
+1893c6dff590fff4cd3b5ee9aa7693e4  report_bill_run_expensive_bill.cfm
+c28e9dff767bdcbdea5df85ecb93ff88  report_bill_run_main.cfm
+7c893bd10500ce573639c12bfa615f78  report_bill_run_mobile_adsl.cfm
+730efb130c7cb27ea1358babb24c1ac3  report_bill_run_mobile_excess.cfm
+62996d5e6c5502065899cadd684c0e88  report_bill_run_mobile_ll.cfm
+b9dfd462c035424182c7c7ef37c9d941  report_bill_run_rand_mmc.cfm
+bfbb50a41f9b532aa9f4e4cb2b6a44f5  report_bill_run_recon_c1.cfm
+85cfc4a2e13e865153b95a0c0b8ed783  report_bill_run_recon_c2.cfm
+e5dcda05a701288e0728cee06d664888  report_bill_run_retail_less_2_months.cfm
+6bc69e9adc89adff8e7730005c238add  report_bill_run_smallest_bill.cfm
+b8abe39b245a016ac5a14745133bf213  report_bolton_active.cfm
+c9272c899d5aaed53672ef01c383dc24  report_call_aves.cfm
+1cf9b5e1d0e50d5f8df297df546658ba  report_calltype.cfm
+2ea5a3bf2b00f6ef13e55c8a9558dbd8  report_cc_dishonours.cfm
+f647c585689d6779259fac2887fb7e99  report_cc_incomplete.cfm
+25c6612df11cb866bc912b28caf576b8  report_client_bolton.cfm
+0e2b0054a52b001aa9818495c27880db  report_connected.cfm
+7ec470525ec28941da7374e289ab13bd  report_connected_daily.cfm
+da234dd0e67303563b92991c6666695d  report_connected_daily_ll.cfm
+98dda45ab08e9afa10cdbd66839353cd  report_connected_dealers.cfm
+a8b642141553673047cc3967a68e8c26  report_connected_disconnections.cfm
+4f3d9651a8b1486b54598c3701d13c1a  report_connected_export.cfm
+816ecdbf68923e1ba13dba62fa479c0f  report_connected_lc.cfm
+7180c947df978ec2422862fbdb5868a6  report_connected_list.cfm
+1dd5407ec0f56e5a2e6233d2054992f9  report_connected_monthly.cfm
+5fa5bc05aab4aa8a553c02d506a47495  report_connected_ryantest.cfm
+6d352fa194ca755b787ff3eba0441820  report_connected_ryantest.php
+bf143d5fcffb33ca551409131636a797  report_connected_sales_2nd.cfm
+b292dbc2c7cbe49527522913473413d0  report_connected_sales_bak.cfm
+39b29250c3a5ad9c9d3cec1918bfd069  report_connected_sales.cfm
+bc2c4631c67196b486e131cd177512b6  report_connected_target.cfm
+42b8be320a55724b64ce0a4c00a9ab88  report_connected_zen.cfm
+a08a0754494f1fd579d4bd68ff6c13ad  report_correction_needed.cfm
+f34f5e073624a99cdf9214b985c3024e  report_data_mb_calc.cfm
+db56836d833df52e253ded0c02111114  report_data_mb.cfm
+ef4d7f12b610d8302df1e52f8f22ac80  report_data_mb_test.cfm
+571b7dfa70ea754427388337d6e45ab2  report_data_tethered.cfm
+0ce2cdd2ed594372b3ff50ca7aeb7cd6  report_disconnected.cfm
+cf13efeb5cc065d6ea76e0aa1b21eb64  report_disconnected_export.cfm
+cff85d90bf5878bab66fce4ff7421d10  report_ebill_log.cfm
+2e338e77820886991919a4ab6a9b861e  report_email_daily.cfm
+ca4aa63dc238e218a29f0ca3903bcdb4  report_email_daily_customer.cfm
+b5ac0113cb64a78480ebe7357d0d2eb6  report_email_daily_status.cfm
+34ef109da4572e36d06370a199ee0aea  report_flash_data_bar.cfm
+dacfcd0c5401ed0f0527b93228d9813d  report_flashFiles.cfm
+70de4075cddd22b7a181ac0cbdbb6cb5  report_inventory.cfm
+ee0c5c06dd1f79f18ca6b373d5dc7d5e  report_inventory_export.cfm
+c03cf8d4f39846b9aee345322f29c3a4  report_landline_billing.cfm
+c5607228108012a4395ede559f356b69  report_ll_overlimit.cfm
+cdc7529c62a71ff9b6e18beb65170578  report_margins.cfm
+0b2a3203cecc4e65c26b1459c7e9f912  report_msns.cfm
+71c7a9ae10efb27ff4e601eaf5c8c8bb  report_new_clients_01.cfm
+e9410173e73ff68a73eba1fe3534ef6e  report_new_orders.cfm
+efd1c23218ef5681f7f837871e4e4104  report_nontoll.cfm
+c9bc7db3e992c8e9a225394d9b794ef5  report_nontoll_export.cfm
+620202c31a0d678fc8d23d2496c76f90  report_overdue3_on_guard.cfm
+44a7f5e5290ac593c892e6489bd45487  report_overdue_byplan.cfm
+04064b8cdf21f55bdfe24a55e67533ca  report_overdue_byuser_backup.cfm
+87b5bc1474b55dbc4ed98accb86c5980  report_overdue_byuser.cfm
+32dc06434a4e46a4e3519fcf788c9e1d  report_overdue_byuser_landline.cfm
+91ca75d23f2ea773a82b6cda70326fa9  report_overdue.cfm
+c87a9614935ade0540aa3ef3c5884f9f  report_overdue_export_70days.cfm
+25de927aa5ba357ed414dec83c5e1da1  report_overdue_export.cfm
+7bc46f384b48f1fba62af32aebc3270f  report_overdue_export_zen.cfm
+357625cfc59b85a94f0356a516597894  report_overdue_landline.cfm
+6e54c9d3747d34fdc123276110d4c9c4  report_overdue_percents_time.cfm
+62d66edb04c41875deb8dd4c6184f4f3  report_overdue_percents_time_landline.cfm
+5b7bd5a56d79cba12014773d20ae91ff  report_overdue_percents_time_test.cfm
+66ba2dc286dfafc17c1e4b98e5fe0d3b  report_overdue_percents_time_user.cfm
+faee05cd32968db325da282732e49624  report_overdue_plan.cfm
+0b0244c3e031d84c6bb74c02fd894936  report_overdue_turnoff.cfm
+85902d93a52368d0740c49f626dd5ad4  report_overdue_zen.cfm
+7ec803b129d2c94638460f0c7b81e0e0  report_overlimit.cfc
+9bd6a4f1c15ed4bec85f36f6e2a7e19d  report_overlimit.cfm
+81c2b3e6d860bf1669694f769438bb33  report_overlimit_export.cfm
+bda45465b01e37e125fe53855cea9cd1  report_overlimit_plan.cfm
+717661e8706590838023d93c1900e4f9  report_overlimit_v2.cfm
+144090ac2704f14e5521afa6556928d8  report_owi_request.cfm
+1d29d4b689e7884513306c51e5d4b883  report_owi_snapshot.cfm
+9ca6ce456eb7203841c84477c2e6c459  report_payment_per_client.cfm
+aabb7d2b0b8cfcedea95d50d6ad04603  report_payments.cfm
+61f957ad94b05cd42980c37773c8118f  report_payments_new.cfm
+b0a641202c300806d0bb597760a9ce4f  report_pending.cfm
+8a3beaa633f2ad3d4272f3c7e44fbe67  report_pending_export.cfm
+bc457505a1b98c8665de176b809e85eb  report_pending_payment.cfm
+cc6e3d51dcedd3086f1e4d3e1527dfdb  report_phones_to_cancel.cfm
+33786fc1e62b4f48e1e63ea735a38a89  report_phones_to_upgrade.cfm
+a6673d37983c476c1b035d70c9067d2c  report_phones_to_upgrade_v2.cfm
+cefc9e6f89c098565ae169c5c5fd056d  report_phonetotal.cfm
+79e5506cb47d6cd06fe6b39308220205  report_phonetotal_test.cfm
+de1c5a9cba71d0b56a4525c297d8d1de  report_porting.cfm
+d46a47338938366f0f834ef5b7475cff  report_porting_export.cfm
+2945f17af02912e766a0fc4d46e555f0  report_retail_vs_ws.cfm
+a2b6e04527fc727fc3be735e90ab24b3  report_rpu_usage.cfm
+9dbe9254db2380d2eb58d52589df48c4  report_service_eligible.cfm
+303cac491842b8b7c6423045a04e2845  report_service_eligible_export.cfm
+72fc9122cc9c5d38dc8fef7c1e3b21bf  report_service_eligible_v2.cfm
+89767a47e0bb6c7bab103e120a04ea80  report_sms_received.cfm
+d143b4bf70f5b307d4d727f6f0de4f0f  report_sms_usage.cfm
+1664d634cb586a19e55d6dbbba640e78  report_snapshot2.cfm
+0b082abd65be610542b90141b427264f  report_snapshot.cfm
+f4b5837e09bbf3e6ce6db31cf2eee348  report_tablet_plans.cfm
+96c6710cbd6871eb9078fda38f8354a9  report_thisbill.cfm
+c554781eac6a1467213ff6551530d8ef  report_thiswelcomebill.cfm
+0bfc65f769562193aa827a046b69d169  report_transactions.cfm
+05372aed23920353f1a792f2a996b046  report_washed_msns.cfm
+14c8562ceb9cb7f859b9aa56cbb15624  report_washed_msns_export.cfm
+5d7ad87d2804505c0ccb1566d142afac  report_washing.cfm
+dea1763dd2a5f3a45ae9965e482ed9ff  report_watchlist.cfm
+f4d79b47154ba56f65e79c665c6a2a39  report_wholesale_totals.cfm
+0b8a48b0fc24336e4bee11e4ee153501  report_wholesale_to_upgrade.cfm
+9a81e515d5fc85f25e26e15596f18d93  resorcefilesupload.cfm
+4624319555664b419ccf8dbb75369284  resource_upload.cfm
+f49a09ed6e06efda070542af9c488d74  return.cfm
+0b313785109b878accb0999b7494d497  schedule_phone_changeplan.cfm
+acc98383928fb641040a2c5bae72c6a9  schedule_phone_changerateplan.cfm
+612c33bc4a5931a3e4f9eb1fe520392e  schedule_view.cfm
+2d3b0750f4d0bca3510562fe96a28d32  scp_preprocess_form.cfm
+e6eb6870eda64ea22df5394e0c73a705  search_apd_1.cfm
+05a882179123df3cfad67d67c67db76e  search_apd.cfm
+6226b3ea596cad626d5b2b845cbde54e  search_cancelled.cfm
+81271c09dc76dd282494aec6009b8f9d  search_csr.cfm
+329a3c990efedddea57e59cdfa9218ee  search_dealer.cfm
+4ddff12062b95d4674d50a88012e562a  search_display_cancelled.cfm
+6a169d0149e8b54f2f7fc26a196eec8e  search_display.cfm
+311f584de3d13d7dcf8b24a45350db10  search_finalised.cfm
+6640f7b154bb2de57f54651b1c0e195f  search_main.cfm
+29a608becea7a2447b9d88291e4ae33a  searchredirect2.cfm
+4225a0da026ec161c6916d72e830aedc  searchredirect.cfm
+b85e8d8cfd1ef79e8d56adc9ba1b4a44  search_referred.cfm
+768ac7087e1be711a025aa833276e22f  search_simple.cfm
+aef88a94e72aec978c0bc5e3439a624d  search_tio.cfm
+e78e1fb401f4a61d0bf88aed4aaf7621  search_worker.cfm
+400adcb7cad701413409eef80ac2ae91  search_worker_list.cfm
+3033dfdbcb5a52dfb618545fc2fc5ff9  search.xml
+3dc29770a5443a18b0bcaa679238fa6f  securepay_xml.cfm
+40b3dbc52d60d546118b5296b080f63d  send_auto_verify.cfm
+fa53d12046d02a3b0f71306c4f92bbd4  send_email.cfm
+cd1c43aa964f2589c9d55660f6fea26c  send_manualsms.cfm
+0ca6eacb7ce3d199ad451992f5cf1829  send_sms.cfm
+afd5356973cf002eb93084e18ef19cfa  send_sms_MUR.cfm
+bbc54a20cea4da1225b79d40464e0d5d  SessionTracker.cfm
+6fca29398d1687194b77925437d961a3  settings.cfc
+6fca29398d1687194b77925437d961a3  settings-vaya.cfc
+bed701cbc7d4c2247a6a2ccf5ab5f1ff  show_response_sp.xml
+9b59600a855251ced60419e6777e5e23  sms_alert_on-off.cfm
+c12be445ed3885f6e50e6e296c951e6b  sms_app.cfm
+d651d0db54427c38250725c33f5c9e8d  sms.cfm
+ada3f569f42a4820545a029d8cc53c87  sms_gateway.cfm
+887bcfb97632e371f558ba884bf3f71e  sms_manage.cfm
+d065b3b041a006e5948eb008bcffb8e5  sms_message_popup.cfm
+b4c56468cec36aad67002e548fc6e0d7  sms_receive.cfm
+a2582c3b31aab28e3e93bb45b44f4c15  sms_receive_test.cfm
+20c870bac5c21b73e3a299337b1556bc  sms_roaming.cfm
+43d249d26ab9dc44cd1f984b6ed1f212  soaperror.cfm
+90aeb71453bc7bb51eada0a7a462a37c  soap_receiver_auth.cfm
+bb018c7b643dcbe89bd53a4775064c82  soap_receiver_auth_copy_to_vaya.cfm
+b747371427059e0d2be886a3ba88a603  statuses_include.cfm
+2b970d56fb22afc1a0499d9b14326564  styles.css
+4aadd81e53edfe729af9f48040d1ce44  styles_z.css
+92647b3b8d4a0a210d0655ea4d2804aa  termfee_not_inbill.cfm
+5bbcf7655d38cc8d366797e3c1b1a710  testmur.cfm
+0bfaa8eb2ae2d731708ca6bcb5909487  text_format.cfm
+98b8c6ae411773ecf08e199e6e93c73b  thankyou.php
+8cc62e0815d2f30320c849b31cfc71ea  ticketmanagement.cfc
+485fe6dec373f90888bbcd3fce2915a5  tinyeditor.cfm
+47f311bc5b5702dd42014eaf6f5ed859  TrueFalseFormat.cfm
+f678e65958f1746c5dc03ed69aee6347  unallocated.cfm
+3bddfc8a31c00160b14b06ac610a3230  unallocated_csv.cfm
+707b2f551fdb91dc83c9004a5aeb8cae  update_barintphones.cfm
+7003f0952f16afb5876adc2f165e1921  update_pending_payments.cfm
+c6c82eadb1c4d805125cdef818d0d3d7  update_phoneExpiry_temp.cfm
+e7214d3a4b6cd8191444f05e5a8b05c7  update_phone_finalised.cfm
+506e6956e6945c9e92be00188af8a3b3  update_syncplans.cfm
+9200cae0e4c87fd21caca2be2ce99572  update_syncplans_new_test.cfm
+3a843f116ece1ad365c7fc30de11f6c1  upgradeRatePlan.cfc
+2957c25d8f6760f1b713e6674682e18f  upgrade_rate_plans.cfm
+df31ad96fa6842ee4ed1d55c0d6dfdf4  upload_paying_client.cfm
+9217847f1a563b37d24899c1b7eb74c2  upload_paying_client_download.cfm
+fd2f7dd22d3339deb0730bbcd5c99e5b  userautoallocate.cfm
+fd35eb13f21dc2a9c740bc25156575c3  userpopup.cfm
+0c8fb789914f3ac23c3801b9670b96d0  userprivilege.cfm
+684a751ffed4cdbf3e4de1b8d560888b  users.cfm
+f782150a2a27db0bb4f5127e58b14d01  userstatus.cfm
+3968b6e38d32c8aa77496814e7379ef4  vayaico.ico
+edf8fb5c4e3fd899fdce1dee1876c022  vaya_settings.cfm
+8ed0075161a13eaf691b10c885329fca  verify_email_action.cfm
+bd4ea67003db7b6c0ac99fedd97e1b4a  verify_email.cfm
+53f49df961fe875cd0a78fe0f423910d  viewfullreport.jpg
+96e4163f2de0741071e62a66d5cf6032  viewwddx.cfm
+f9abe27f8ea1f767c44285d16e4c152c  voip_check2.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check_moved_2_lc.cfm
+1522d80acf2cd2b55c242dcd9ba79f7e  voip_check_v1.cfm
+bdcc2009c260f170140b2541b9e4cd74  voip_check_v2.cfm
+3285d8d1fd82aa3d34f2060a9d80f057  waiting_conections.cfm
+3b53ace2d00fe314931e88ff75631d70  washed.cfm
+be0f80aae8bb4f77325bac4d4e4bb38a  washed_header.cfm
+4558501b7929695027c08ce3039982de  washed_upload.cfm
+add5633822f38655b156fd26b47981e8  write_off_overdues.cfm
+f9b8688ae8ae6178c95dbc344d3db539  wsg_address_check.cfm
+0c834dfc4ee91fe72ebd91010e79c9b0  wsg_fuzzy_address_match.cfm
+20169c0f05793e401f66d16f23aaa9d3  wsg_manage.cfm
+e3277619ce3e04832a14bad33b4dc9fb  wsg_manage_landlines_actions.cfm
+5fa1e976f815a676d923f7f71a084971  wsg_manage_landlines_add.cfm
+4902dc9d82e0ae9c7259600af6dd2306  wsg_manage_landlines.cfm
+509d4d88cf3a81e49b21a3b075462893  wsg_manage_landlines_edit.cfm
+ef4b5608dd238c23b472ac92eec0bff8  wsg_manage_landlines_main.cfm
+b840053df4b9736bae02e10374a1cce0  wsg_manage_menu.cfm
+92c3e902a18a6539c23a77e7e9b513aa  wsg_manage_radius_setting.cfm
+f31f9ba4e5984abd4d8b1c9501b77474  wsg_manage_radius_settings.cfm
+f6166adce4375ef403a6e2b93bb2c119  wsg_manage_request.cfm
+fac0323dbaa3124affc77bd588f386b6  wsg_manage_setting.cfm
+b108c817b3c54a6c31a1e4d748657d96  wsg_radius_request.cfm
+d155c63f7fd8c34f3c575488e67fc417  wsg_sync.cfm
+7881dc5273a5a3b6ed2924d8f055be9f  wsg_view_output.cfm
+f1aedd64f9f6d4710073e7665f7c68ec  xhtml.js
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cat /var/tmp/prodecgateway^C
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]# ls -ld show_response_sp.xml
+-rw-r--r-- 1 nobody nobody 1058 Jul  1 10:58 show_response_sp.xml
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# cp show_response_sp.xml /var/tmp/prod_show_response_sp.xml
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# pwd
+/home/vaya/www/secure/ecgateway
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]#
+[root@vaya-backend03 ecgateway]# find . -name show_response_sp.xml
+./show_response_sp.xml
+^C
+[root@vaya-backend03 ecgateway]# find . -name deployment.cfc
+^C
+[root@vaya-backend03 ecgateway]# cd vaya-services/
+[root@vaya-backend03 vaya-services]# ls
+plans.cfc  promotion.cfc  promotion_codes.cfc  queue.cfc  user.cfc
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]# pwd
+/home/vaya/www/secure/ecgateway/vaya-services
+[root@vaya-backend03 vaya-services]# ls -la
+total 84
+drwxr-xr-x  2 root root  4096 Jun 15 13:32 .
+drwxrwxrwx 59 root root 45056 Jul  1 10:01 ..
+-rw-r--r--  1 root root  1328 Jun 15 13:32 plans.cfc
+-rw-r--r--  1 root root  2972 Jun  8 14:00 promotion.cfc
+-rw-r--r--  1 root root  4916 May  9 10:14 promotion_codes.cfc
+-rw-r--r--  1 root root  9209 May  4 12:00 queue.cfc
+-rw-r--r--  1 root root   509 May  9 10:14 user.cfc
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]# touch deploy.cfc
+[root@vaya-backend03 vaya-services]# vi deploy.cfc
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]# ls -la
+total 84
+drwxr-xr-x  2 root root  4096 Jul  1 11:11 .
+drwxrwxrwx 59 root root 45056 Jul  1 10:01 ..
+-rw-r--r--  1 root root     0 Jul  1 11:11 deploy.cfc
+-rw-r--r--  1 root root  1328 Jun 15 13:32 plans.cfc
+-rw-r--r--  1 root root  2972 Jun  8 14:00 promotion.cfc
+-rw-r--r--  1 root root  4916 May  9 10:14 promotion_codes.cfc
+-rw-r--r--  1 root root  9209 May  4 12:00 queue.cfc
+-rw-r--r--  1 root root   509 May  9 10:14 user.cfc
+[root@vaya-backend03 vaya-services]# rm deploy.cfc
+rm: remove regular empty file `deploy.cfc'? y
+[root@vaya-backend03 vaya-services]# pwd
+/home/vaya/www/secure/ecgateway/vaya-services
+[root@vaya-backend03 vaya-services]# ll
+total 32
+-rw-r--r-- 1 root root 1328 Jun 15 13:32 plans.cfc
+-rw-r--r-- 1 root root 2972 Jun  8 14:00 promotion.cfc
+-rw-r--r-- 1 root root 4916 May  9 10:14 promotion_codes.cfc
+-rw-r--r-- 1 root root 9209 May  4 12:00 queue.cfc
+-rw-r--r-- 1 root root  509 May  9 10:14 user.cfc
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 vaya-services]# cat deploy.cfc
+cat: deploy.cfc: No such file or directory
+[root@vaya-backend03 vaya-services]# cat > deploy.cfc
+<cfcomponent name="deploy" output="false" hint="deploys codebase to servers">
+
+        <cfscript>
+                this.scriptlocation = '/scripts/vaya_autodeploy.sh';
+                if (cgi.SERVER_NAME contains 'dev-ecc'){
+                        this.backupdirectory = '/tmp/backups';
+                }else{
+                        this.backupdirectory = '/home/vaya/www/secure/';
+                }
+
+        </cfscript>
+
+        <cffunction name="go" access="remote" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+                <cfargument name="deployment_tag" required="false" default="#dateformat(now(), 'yyyy-mm-dd')#" />
+                <cfargument name="refresh_frontend" required="false" default="false" />
+
+                <cftry>
+                        <cfscript>
+                                if (not security(arguments.token)){
+                                        return false;
+                                }
+
+                                var scriptResult = "";
+                        </cfscript>
+
+                        <cfexecute name="#this.scriptlocation#" variable="scriptResult" timeout="60" />
+
+                        <cfscript>
+                                logit(arguments.deployment_tag);
+
+                                if (arguments.refresh_frontend){
+                                        refresh_frontend(arguments.token);
+                                }
+
+                                return scriptResult;
+                        </cfscript>
+
+                        <cfcatch type="any">
+                                <cfdump var="#cfcatch#"><cfabort>
+                        </cfcatch>
+                </cftry>
+
+        </cffunction>
+
+        <cffunction name="list" access="remote" output="false" returntype="any" returnformat="json">
+                <cfargument name="token" required="true" />
+
+                <cfscript>
+                        var backups = "";
+
+                        if (not security(arguments.token)){
+                                return false;
+                        }
+                </cfscript>
+
+                <cftry>
+
+                        <cfdirectory action="list" directory="#this.backupdirectory#" filter="ecgateway.*" listinfo="name" name="backups" type="dir" />
+
+                        <cfcatch type="any">
+                                <cfdump var="#cfcatch#">
+                        </cfcatch>
+
+                </cftry>
+
+                <cfreturn backups />
+
+        </cffunction>
+
+        <!--- ROLLBACK TODO --->
+        <cffunction name="rollback" access="remote" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+                <cfargument name="version" required="true" />
+
+                <cfscript>
+                        if (not security(arguments.token)){
+                                return false;
+                        }
+                </cfscript>
+        </cffunction>
+
+        <cffunction name="refresh_frontend" access="private" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+
+                <cfhttp url="http://www.vaya.net.au/_application_restart.cfm?hitall_prod=1&token=#arguments.token#" />
+
+                <cfscript>
+                        return true;
+                </cfscript>
+
+        </cffunction>
+
+        <cffunction name="logit" access="private" output="false" returntype="any">
+                <cfargument name="deployment_tag" required="true" />
+
+                <cflog file="deployment" text="ecgateway deployment complete - #arguments.deployment_tag#" />
+
+                <cfscript>
+                        return true;
+                </cfscript>
+        </cffunction>
+
+        <cffunction name="security" access="private" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+
+                <cfscript>
+                        if (arguments.token neq '2127C6A1-0DC8-0807-BC7FB597104AE7F0'){
+                                return false;
+                        }else{
+                                return true;
+                        }
+                </cfscript>
+        </cffunction>
+
+</cfcomponent>
+[root@vaya-backend03 vaya-services]# cat deploy.cfc
+[root@vaya-backend03 vaya-services]# cat deploy.cfc
+<cfcomponent name="deploy" output="false" hint="deploys codebase to servers">
+
+        <cfscript>
+                this.scriptlocation = '/scripts/vaya_autodeploy.sh';
+                if (cgi.SERVER_NAME contains 'dev-ecc'){
+                        this.backupdirectory = '/tmp/backups';
+                }else{
+                        this.backupdirectory = '/home/vaya/www/secure/';
+                }
+
+        </cfscript>
+
+        <cffunction name="go" access="remote" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+                <cfargument name="deployment_tag" required="false" default="#dateformat(now(), 'yyyy-mm-dd')#" />
+                <cfargument name="refresh_frontend" required="false" default="false" />
+
+                <cftry>
+                        <cfscript>
+                                if (not security(arguments.token)){
+                                        return false;
+                                }
+
+                                var scriptResult = "";
+                        </cfscript>
+
+                        <cfexecute name="#this.scriptlocation#" variable="scriptResult" timeout="60" />
+
+                        <cfscript>
+                                logit(arguments.deployment_tag);
+
+                                if (arguments.refresh_frontend){
+                                        refresh_frontend(arguments.token);
+                                }
+
+                                return scriptResult;
+                        </cfscript>
+
+                        <cfcatch type="any">
+                                <cfdump var="#cfcatch#"><cfabort>
+                        </cfcatch>
+                </cftry>
+
+        </cffunction>
+
+        <cffunction name="list" access="remote" output="false" returntype="any" returnformat="json">
+                <cfargument name="token" required="true" />
+
+                <cfscript>
+                        var backups = "";
+
+                        if (not security(arguments.token)){
+                                return false;
+                        }
+                </cfscript>
+
+                <cftry>
+
+                        <cfdirectory action="list" directory="#this.backupdirectory#" filter="ecgateway.*" listinfo="name" name="backups" type="dir" />
+
+                        <cfcatch type="any">
+                                <cfdump var="#cfcatch#">
+                        </cfcatch>
+
+                </cftry>
+
+                <cfreturn backups />
+
+        </cffunction>
+
+        <!--- ROLLBACK TODO --->
+        <cffunction name="rollback" access="remote" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+                <cfargument name="version" required="true" />
+
+                <cfscript>
+                        if (not security(arguments.token)){
+                                return false;
+                        }
+                </cfscript>
+        </cffunction>
+
+        <cffunction name="refresh_frontend" access="private" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+
+                <cfhttp url="http://www.vaya.net.au/_application_restart.cfm?hitall_prod=1&token=#arguments.token#" />
+
+                <cfscript>
+                        return true;
+                </cfscript>
+
+        </cffunction>
+
+        <cffunction name="logit" access="private" output="false" returntype="any">
+                <cfargument name="deployment_tag" required="true" />
+
+                <cflog file="deployment" text="ecgateway deployment complete - #arguments.deployment_tag#" />
+
+                <cfscript>
+                        return true;
+                </cfscript>
+        </cffunction>
+
+        <cffunction name="security" access="private" output="false" returntype="any">
+                <cfargument name="token" required="true" />
+
+                <cfscript>
+                        if (arguments.token neq '2127C6A1-0DC8-0807-BC7FB597104AE7F0'){
+                                return false;
+                        }else{
+                                return true;
+                        }
+                </cfscript>
+        </cffunction>
+
+</cfcomponent>
+[root@vaya-backend03 vaya-services]#
+[root@vaya-backend03 ecgateway]# find -type f -exec md5sum "{}" + > /var/tmp/prod_checklist.chk

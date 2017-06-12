@@ -1,0 +1,155 @@
+
+##Live Connected IPND process
+15 00 * * * /scripts/IPND_lc_step1_upload.pl >> /tmp/ipnd_lc_log_step1.log 2>&1
+15 01 * * * /scripts/IPND_lc_step2_download.pl >> /tmp/ipnd_lc_log_step2.log 2>&1
+30 01 * * * /scripts/IPND_lc_step3_process_file.pl >> /tmp/ipnd_lc_log_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/lc/IPND/processed/ | tail
+-rw-r--r-- 1 lc   lc   1.5M Jun 24 10:01 IPNDUPLIVEC.0001680
+-rw-r--r-- 1 root root  69K Jun 25 01:15 IPNDUPLIVEC.0001680.err
+-rw-r--r-- 1 lc   lc   1.5M Jun 25 10:01 IPNDUPLIVEC.0001681
+-rw-r--r-- 1 root root  69K Jun 26 01:15 IPNDUPLIVEC.0001681.err
+-rw-r--r-- 1 lc   lc   1.5M Jun 26 10:01 IPNDUPLIVEC.0001682
+-rw-r--r-- 1 root root  69K Jun 27 01:15 IPNDUPLIVEC.0001682.err
+-rw-r--r-- 1 lc   lc   1.5M Jun 27 10:01 IPNDUPLIVEC.0001683
+-rw-r--r-- 1 root root  70K Jun 28 01:15 IPNDUPLIVEC.0001683.err
+-rw-r--r-- 1 lc   lc   1.5M Jun 28 10:01 IPNDUPLIVEC.0001684
+-rw-r--r-- 1 root root  70K Jun 29 01:17 IPNDUPLIVEC.0001684.err
+
+-rw-r--r-- 1 lc lc 1536576 Jun 29 10:01 /home/lc/IPNDUPLIVEC.0001685
+------------------------------------------------------------------------------------------------------------------------------------
+
+##Vaya IPND process
+30 05 * * * /scripts/IPND_vaya_step1_upload.pl >> /tmp/ipnd_vaya_step1.log 2>&1
+20 06 * * * /scripts/IPND_vaya_step2_download.pl  >> /tmp/ipnd_vaya_step2.log 2>&1
+45 06 * * * /scripts/IPND_vaya_step3_process_file.pl >> /tmp/ipnd_vaya_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/vaya/IPND/processed/ | tail
+-rw-r--r-- 1 vaya vaya  13K Jun 24 09:46 IPNDUPVAYAP.0001664
+-rw-r--r-- 1 root root  536 Jun 25 06:20 IPNDUPVAYAP.0001664.err
+-rw-r--r-- 1 vaya vaya  23K Jun 25 09:45 IPNDUPVAYAP.0001665
+-rw-r--r-- 1 root root  536 Jun 26 06:20 IPNDUPVAYAP.0001665.err
+-rw-r--r-- 1 vaya vaya  18K Jun 26 09:46 IPNDUPVAYAP.0001666
+-rw-r--r-- 1 root root  335 Jun 27 06:20 IPNDUPVAYAP.0001666.err
+-rw-r--r-- 1 vaya vaya  13K Jun 27 09:46 IPNDUPVAYAP.0001667
+-rw-r--r-- 1 root root  268 Jun 28 06:20 IPNDUPVAYAP.0001667.err
+-rw-r--r-- 1 vaya vaya 245K Jun 28 09:45 IPNDUPVAYAP.0001668
+-rw-r--r-- 1 root root  13K Jun 29 06:20 IPNDUPVAYAP.0001668.err
+
+-rw-r--r-- 1 vaya vaya 17214 Jun 29 09:46 /home/vaya/IPNDUPVAYAP.0001669
+------------------------------------------------------------------------------------------------------------------------------------
+
+##Startel IPND process
+#30 10 * * * /scripts/IPND_startel_step0_get.sh >> /tmp/ipnd_startel0_step1.log 2>&1
+00 19 * * * /scripts/IPND_startel_step1_upload.pl >> /tmp/ipnd_startel_step1.log 2>&1
+00 20 * * * /scripts/IPND_startel_step2_download.pl >> /tmp/ipnd_startel_step2.log 2>&1
+20 20 * * * /scripts/IPND_startel_step3_process_file.pl >> /tmp/ipnd_startel_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/startel/IPND/processed/ | tail
+-rw-r--r-- 1 startel startel 228K Jun 24 09:45 IPNDUPSTART.0001685
+-rw-r--r-- 1 root    root     14K Jun 24 20:00 IPNDUPSTART.0001685.err
+-rw-r--r-- 1 startel startel 228K Jun 25 09:45 IPNDUPSTART.0001686
+-rw-r--r-- 1 root    root     14K Jun 25 20:02 IPNDUPSTART.0001686.err
+-rw-r--r-- 1 startel startel 228K Jun 26 09:45 IPNDUPSTART.0001687
+-rw-r--r-- 1 root    root     14K Jun 26 20:02 IPNDUPSTART.0001687.err
+-rw-r--r-- 1 startel startel 228K Jun 27 09:45 IPNDUPSTART.0001688
+-rw-r--r-- 1 root    root     14K Jun 27 20:00 IPNDUPSTART.0001688.err
+-rw-r--r-- 1 startel startel 228K Jun 28 09:45 IPNDUPSTART.0001689
+-rw-r--r-- 1 root    root     14K Jun 28 20:00 IPNDUPSTART.0001689.err
+
+-rw-r--r-- 1 startel startel 232842 Jun 29 09:45 /home/startel/IPNDUPSTART.0001690
+------------------------------------------------------------------------------------------------------------------------------------
+
+##Jeenee/CCA
+00 07 * * * /scripts/IPND_jeenee_step1_upload.pl >> /tmp/ipnd_jeenee_log_step1.log 2>&1
+00 08 * * * /scripts/IPND_jeenee_step2_download.pl >> /tmp/ipnd_jeenee_log_step2.log 2>&1
+15 08 * * * /scripts/IPND_jeenee_step3_process_file.pl >> /tmp/ipnd_jeenee_log_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/jeenee/IPND/processed/ | tail
+-rw-r--r-- 1 jeenee jeenee  64K Jun 24 09:43 IPNDUPCOMCO.0000998
+-rw-r--r-- 1 root   root    670 Jun 25 08:00 IPNDUPCOMCO.0000998.err
+-rw-r--r-- 1 jeenee jeenee  66K Jun 25 09:43 IPNDUPCOMCO.0000999
+-rw-r--r-- 1 root   root    871 Jun 26 08:00 IPNDUPCOMCO.0000999.err
+-rw-r--r-- 1 jeenee jeenee  29K Jun 26 09:43 IPNDUPCOMCO.0001000
+-rw-r--r-- 1 root   root    335 Jun 27 08:00 IPNDUPCOMCO.0001000.err
+-rw-r--r-- 1 jeenee jeenee  13K Jun 27 09:43 IPNDUPCOMCO.0001001
+-rw-r--r-- 1 root   root    335 Jun 28 08:00 IPNDUPCOMCO.0001001.err
+-rw-r--r-- 1 jeenee jeenee  80K Jun 28 09:43 IPNDUPCOMCO.0001002
+-rw-r--r-- 1 root   root   1.3K Jun 29 08:00 IPNDUPCOMCO.0001002.err
+
+-rw-r--r-- 1 jeenee jeenee 73386 Jun 29 09:45 /home/jeenee/IPNDUPCOMCO.0001003
+------------------------------------------------------------------------------------------------------------------------------------
+
+##Compass IPND process
+30 16 * * * /scripts/IPND_compass_step1_upload.pl >> /tmp/ipnd_compass_step1.log 2>&1
+45 17 * * * /scripts/IPND_compass_step2_download.pl >> /tmp/ipnd_compass_step2.log 2>&1
+00 18 * * * /scripts/IPND_compass_step3_process_file.pl >> /tmp/ipnd_compass_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/compass/IPND/processed/ | tail
+-rw-r--r-- 1 compass compass 1.4M Jun 24 09:47 IPNDUPCOMPA.0002033
+-rw-r--r-- 1 root    root     18K Jun 24 17:45 IPNDUPCOMPA.0002033.err
+-rw-r--r-- 1 compass compass 1.5M Jun 25 09:47 IPNDUPCOMPA.0002034
+-rw-r--r-- 1 root    root     15K Jun 25 17:45 IPNDUPCOMPA.0002034.err
+-rw-r--r-- 1 compass compass 933K Jun 26 09:46 IPNDUPCOMPA.0002035
+-rw-r--r-- 1 root    root     13K Jun 26 17:45 IPNDUPCOMPA.0002035.err
+-rw-r--r-- 1 compass compass 773K Jun 27 09:46 IPNDUPCOMPA.0002036
+-rw-r--r-- 1 root    root    6.4K Jun 27 17:45 IPNDUPCOMPA.0002036.err
+-rw-r--r-- 1 compass compass 2.0M Jun 28 09:47 IPNDUPCOMPA.0002037
+-rw-r--r-- 1 root    root     20K Jun 28 17:45 IPNDUPCOMPA.0002037.err
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+##Yomojo IPND process
+15 02 * * * /scripts/IPND_yatango_step1_upload.pl >> /tmp/ipnd_yatango_log_step1.log 2>&1
+15 03 * * * /scripts/IPND_yatango_step2_download.pl >> /tmp/ipnd_yatango_log_step2.log 2>&1
+30 03 * * * /scripts/IPND_yatango_step3_process_file.pl >> /tmp/ipnd_yatango_log_step3.log 2>&1
+
+[root@wf-ipnd ~]# ls -ltrh /home/yatango/IPND/processed/ | tail
+-rw-r--r-- 1 yatango yatango  20K Jun 24 09:45 IPNDUPECCON.0000111
+-rw-r--r-- 1 root    root    1.7K Jun 25 03:15 IPNDUPECCON.0000111.err
+-rw-r--r-- 1 yatango yatango  16K Jun 25 09:45 IPNDUPECCON.0000112
+-rw-r--r-- 1 root    root    1005 Jun 26 03:15 IPNDUPECCON.0000112.err
+-rw-r--r-- 1 yatango yatango 9.8K Jun 26 09:45 IPNDUPECCON.0000113
+-rw-r--r-- 1 root    root     670 Jun 27 03:15 IPNDUPECCON.0000113.err
+-rw-r--r-- 1 yatango yatango  11K Jun 27 09:45 IPNDUPECCON.0000114
+-rw-r--r-- 1 root    root     871 Jun 28 03:15 IPNDUPECCON.0000114.err
+-rw-r--r-- 1 yatango yatango  75K Jun 28 09:45 IPNDUPECCON.0000115
+-rw-r--r-- 1 root    root    1.8K Jun 29 03:15 IPNDUPECCON.0000115.err
+
+-rw-r--r-- 1 yatango yatango 18120 Jun 29 09:45 /home/yatango/IPNDUPECCON.0000116
+
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+
+[root@wf-ipnd ~]# ls -ltrh /home/lc/IPND/processed/ | tail
+-rw-r--r-- 1 lc   lc   1.5M Jun 29 10:01 IPNDUPLIVEC.0001685
+-rw-r--r-- 1 root root  71K Jun 30 01:15 IPNDUPLIVEC.0001685.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 lc lc 1549260 Jun 30 10:03 IPNDUPLIVEC.0001686
+
+[root@wf-ipnd ~]# ls -ltrh /home/vaya/IPND/processed/ | tail
+-rw-r--r-- 1 vaya vaya  17K Jun 29 09:46 IPNDUPVAYAP.0001669
+-rw-r--r-- 1 root root  335 Jun 30 06:20 IPNDUPVAYAP.0001669.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 vaya vaya 25368 Jun 30 09:46 IPNDUPVAYAP.0001670
+
+[root@wf-ipnd ~]# ls -ltrh /home/startel/IPND/processed/ | tail
+-rw-r--r-- 1 startel startel 228K Jun 29 09:45 IPNDUPSTART.0001690
+-rw-r--r-- 1 root    root     14K Jun 29 20:00 IPNDUPSTART.0001690.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 startel startel 232842 Jun 30 09:45 IPNDUPSTART.0001691
+
+[root@wf-ipnd ~]# ls -ltrh /home/jeenee/IPND/processed/ | tail
+-rw-r--r-- 1 jeenee jeenee  72K Jun 29 09:45 IPNDUPCOMCO.0001003
+-rw-r--r-- 1 root   root   1.4K Jun 30 08:00 IPNDUPCOMCO.0001003.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 jeenee jeenee 79728 Jun 30 09:45 IPNDUPCOMCO.0001004
+
+[root@wf-ipnd ~]# ls -ltrh /home/compass/IPND/processed/ | tail
+-rw-r--r-- 1 compass compass 1.8M Jun 29 09:47 IPNDUPCOMPA.0002038
+-rw-r--r-- 1 root    root     21K Jun 29 17:45 IPNDUPCOMPA.0002038.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 compass compass 1558320 Jun 30 09:47 IPNDUPCOMPA.0002039
+
+[root@wf-ipnd ~]# ls -ltrh /home/yatango/IPND/processed/ | tail
+-rw-r--r-- 1 yatango yatango  18K Jun 29 09:45 IPNDUPECCON.0000116
+-rw-r--r-- 1 root    root    1.3K Jun 30 03:15 IPNDUPECCON.0000116.err
+TODAY (30.Jun.2016) : -rw-r--r-- 1 yatango yatango 12684 Jun 30 09:45 IPNDUPECCON.0000117

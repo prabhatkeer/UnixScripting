@@ -1,0 +1,318 @@
+[pkeer@vaya-backend01 ~]$ more /scripts/rolling_restart.sh
+#!/bin/bash
+#Rolling restart
+#       /scripts/rolling_restart.sh
+#Restart a particular host
+#       /scripts/rolling_restart.sh vaya-backend02
+
+server=$1
+server_list="vaya-backend01 vaya-backend02 vaya-backend07 vaya-backend08"
+you=`whoami`
+if [ -z $server ]; then
+        for i in $server_list; do echo "Restart $i..."; ssh "$you"@salt.ecconnect.com.au -t "sudo salt \"${i}\" cmd.run '/nfs/scripts_admin/CF-restart-pound.sh'"; done
+else
+        echo "Restart $server..."
+        ssh "$you"@salt.ecconnect.com.au -t "sudo salt \"${server}\" cmd.run '/nfs/scripts_admin/CF-restart-pound.sh'"
+fi
+[pkeer@vaya-backend01 ~]$
+
+[pkeer@vaya-backend01 ~]$ /scripts/rolling_restart.sh
+Restart vaya-backend01...
+pkeer@salt.ecconnect.com.au's password:
+vaya-backend01:
+    Check url 1: http://10.11.1.31/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 2: http://10.11.1.159/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 3: http://10.11.1.160/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Service OK
+    === Stopping httpd
+    Stopping httpd:                                        [  OK  ]
+    === Stopping coldfusion
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === cleaning up poi-ooxml
+    Restarting ColdFusion 9...
+    Stopping ColdFusion 9, please wait
+    Jun 17, 2016 11:52:03 +1000 [13241 1] com.newrelic INFO: New Relic Agent: Loading configuration file "/data/coldfusion9/newrelic/./newrelic.yml"
+    Jun 17, 2016 11:52:03 +1000 [13241 1] com.newrelic INFO: New Relic Agent: Writing to log file: /data/coldfusion9/newrelic/logs/newrelic_agent.log
+    Stopping coldfusion server...stopped
+    The ColdFusion 9 server seems to be hanging, will stop non-gracefully
+    ColdFusion 9 has been stopped
+    Starting ColdFusion 9...
+    The ColdFusion 9 server is starting up and will be available shortly.
+    ======================================================================
+    ColdFusion 9 has been started.
+    ColdFusion 9 will write logs to /data/coldfusion9/logs/cfserver.log
+    ======================================================================
+    === Coldfusion still not up, waiting 10 sec more... Try: 0
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 1
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 2
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 3
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 4
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 5
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 6
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 7
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 8
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 9
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 10
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 11
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 12
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 13
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 14
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 15
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 16
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 17
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 18
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 19
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 20
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 21
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 22
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 23
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 24
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 25
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 26
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 27
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 28
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 29
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 30
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Starting http
+    Starting httpd: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
+                                                           [  OK  ]
+    /bin/mv: cannot stat `/tmp/cfmail/*': No such file or directory
+Connection to salt.ecconnect.com.au closed.
+Restart vaya-backend02...
+pkeer@salt.ecconnect.com.au's password:
+Connection closed by 178.33.181.100
+Restart vaya-backend07...
+pkeer@salt.ecconnect.com.au's password:
+vaya-backend07:
+    Check url 1: http://10.11.1.31/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 2: http://10.11.1.30/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 3: http://10.11.1.160/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Service OK
+    === Stopping httpd
+    Stopping httpd: [  OK  ]
+    === Stopping coldfusion
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === cleaning up poi-ooxml
+    Restarting ColdFusion 9...
+    Stopping ColdFusion 9, please wait
+    Jun 17, 2016 12:16:05 +1000 [26392 1] com.newrelic INFO: New Relic Agent: Loading configuration file "/data/coldfusion9/newrelic/./newrelic.yml"
+    Jun 17, 2016 12:16:05 +1000 [26392 1] com.newrelic INFO: New Relic Agent: Writing to log file: /data/coldfusion9/newrelic/logs/newrelic_agent.log
+    Stopping coldfusion server..stopped
+    The ColdFusion 9 server seems to be hanging, will stop non-gracefully
+    ColdFusion 9 has been stopped
+    Starting ColdFusion 9...
+    The ColdFusion 9 server is starting up and will be available shortly.
+    ======================================================================
+    ColdFusion 9 has been started.
+    ColdFusion 9 will write logs to /data/coldfusion9/logs/cfserver.log
+    ======================================================================
+    === Coldfusion still not up, waiting 10 sec more... Try: 0
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 1
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 2
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 3
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 4
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 5
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 6
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 7
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 8
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 9
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 10
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 11
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Starting http
+    Starting httpd: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
+    [  OK  ]
+    /bin/mv: cannot stat `/tmp/cfmail/*': No such file or directory
+Connection to salt.ecconnect.com.au closed.
+Restart vaya-backend08...
+pkeer@salt.ecconnect.com.au's password:
+vaya-backend08:
+    Check url 1: http://10.11.1.30/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 2: http://10.11.1.31/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 3: http://10.11.1.159/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Service OK
+    === Stopping httpd
+    Stopping httpd:                                        [  OK  ]
+    === Stopping coldfusion
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === cleaning up poi-ooxml
+    Restarting ColdFusion 9...
+    Stopping ColdFusion 9, please wait
+    Jun 17, 2016 12:19:21 +1000 [18583 1] com.newrelic INFO: New Relic Agent: Loading configuration file "/data/coldfusion9/newrelic/./newrelic.yml"
+    Jun 17, 2016 12:19:22 +1000 [18583 1] com.newrelic INFO: New Relic Agent: Writing to log file: /data/coldfusion9/newrelic/logs/newrelic_agent.log
+    Stopping coldfusion server........stopped
+    The ColdFusion 9 server seems to be hanging, will stop non-gracefully
+    ColdFusion 9 has been stopped
+    Starting ColdFusion 9...
+    The ColdFusion 9 server is starting up and will be available shortly.
+    ======================================================================
+    ColdFusion 9 has been started.
+    ColdFusion 9 will write logs to /data/coldfusion9/logs/cfserver.log
+    ======================================================================
+    === Coldfusion still not up, waiting 10 sec more... Try: 0
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 1
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 2
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 3
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 4
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 5
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 6
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 7
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 8
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 9
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 10
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 11
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 12
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 13
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Starting http
+    Starting httpd: httpd: Could not reliably determine the server's fully qualified domain name, using 103.1.216.160 for ServerName
+                                                           [  OK  ]
+    /bin/mv: cannot stat `/tmp/cfmail/*': No such file or directory
+Connection to salt.ecconnect.com.au closed.
+[pkeer@vaya-backend01 ~]$ /scripts/rolling_restart.sh vaya-backend02
+Restart vaya-backend02...
+pkeer@salt.ecconnect.com.au's password:
+vaya-backend02:
+    Check url 1: http://10.11.1.30/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 2: http://10.11.1.159/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Check url 3: http://10.11.1.160/ecgateway/owi/webservices/ecgw_webservice.cfc?wsdl
+    Service OK
+    === Stopping httpd
+    Stopping httpd:                                        [  OK  ]
+    === Stopping coldfusion
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === cleaning up poi-ooxml
+    Restarting ColdFusion 9...
+    Stopping ColdFusion 9, please wait
+    Jun 17, 2016 12:23:43 +1000 [17448 1] com.newrelic INFO: New Relic Agent: Loading configuration file "/data/coldfusion9/newrelic/./newrelic.yml"
+    Jun 17, 2016 12:23:44 +1000 [17448 1] com.newrelic INFO: New Relic Agent: Writing to log file: /data/coldfusion9/newrelic/logs/newrelic_agent.log
+    Stopping coldfusion server...stopped
+    The ColdFusion 9 server seems to be hanging, will stop non-gracefully
+    ColdFusion 9 has been stopped
+    Starting ColdFusion 9...
+    The ColdFusion 9 server is starting up and will be available shortly.
+    ======================================================================
+    ColdFusion 9 has been started.
+    ColdFusion 9 will write logs to /data/coldfusion9/logs/cfserver.log
+    ======================================================================
+    === Coldfusion still not up, waiting 10 sec more... Try: 0
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 1
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 2
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 3
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 4
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 5
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 6
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 7
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 8
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 9
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 10
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 11
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 12
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 13
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 14
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 15
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 16
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 17
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 18
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 19
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 20
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 21
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 22
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 23
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 24
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 25
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 26
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 27
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 28
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Coldfusion still not up, waiting 10 sec more... Try: 29
+    /bin/mv: cannot stat `/data/coldfusion9/Mail/Spool/*': No such file or directory
+    === Starting http
+    Starting httpd: httpd: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1 for ServerName
+                                                           [  OK  ]
+    /bin/mv: cannot stat `/tmp/cfmail/*': No such file or directory
+Connection to salt.ecconnect.com.au closed.
+[pkeer@vaya-backend01 ~]$ ^C

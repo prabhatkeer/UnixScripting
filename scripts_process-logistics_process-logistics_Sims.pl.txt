@@ -1,0 +1,647 @@
+[root@eap-worker01 ~]# cat /scripts/process-logistics/process-logistics_Sims
+#!/usr/bin/perl -I /scripts_apps/
+#Application:   Ecconnect Processing Script
+#Licensee:      GNU General Public License
+#Developer:     Marcin Szumski <marcin@ecconnect.com.au> http://www.ecconnect.com.au
+my $Version = "3.0.0";
+#Dependencies Centos: perl-DBI perl-SOAP-Lite perl-Config-Tiny
+#Dependencies Debian: libdbi-perl libsoap-lite-perl libconfig-tiny-perl
+#Copyright:     Appscorp PTY LTD T/A ECConnect ACN 122 532 076 ABN 91 122 532 076 C 2010.
+#License:       The licensee as listed above may contract Appscorp or any other party to
+#               maintain, modify, improve or develop the application. The licensee may
+#               not sell, transfer or licence all or any part of the application and must
+#               ensure that the application is not sold, licensed or used by any party engaged
+#               by or on behalf of the licensee.
+#
+#PURPOSE / USGAE / EXAMPLES / DESCRIPTION:
+#--------------------------------------------------------------------------------------------------
+#
+#   See documentation: http://confluence.ecconnect.com.au:8090/display/EAP/%5BEAP%5D+Logistics+Process+Scrpits
+#
+#CHANGE LOG:
+#--------------------------------------------------------------------------------------------------
+#[DATE]    [INITIALS]                           [ACTION]
+# [MS 31 Oct 2014] Major changes in ini readin concept
+# [MS 31 Oct 2014] Added -debug option, use log(3,"your message") to print only in debug mode
+# [TL 29 Oct 2010] Update sim numbers to phones from file received from logistics
+# [BA 19 Aug 2014] Added in the argument for the datasource / SP
+
+
+#CSV Files for logistics
+#Date,ID,Name,Address Line 1,Address Line 2,City,State,Postcode,Barcode,DPID,TemplateID,Value,ICCID,Despatch Date
+#27/10/2010,354_2010102711,Pat000 Test000,12 Smith Rd,,ARTARMON,NSW,2064,1301012220202221002122321312013111013,86687078,0,0,1234567891234,27/10/2010
+#27/10/2010,358_2010102711,Zebra Zeuss,Artarmon Rd,,ARTARMON,NSW,2064,1301012102111211022220321133001032013,72454286,0,0,1234567891235,27/10/2010
+
+use strict;
+use warnings;
+use English qw( -no_match_vars );
+use DBI;
+use POSIX qw( strftime );
+use File::Basename;
+use File::Temp;
+use File::Copy;
+use IO::Dir;
+use SOAP::Lite;
+use Data::Dumper;
+use Sys::Syslog qw(:standard :macros);
+use Getopt::Long;
+use Config::Tiny;
+use Switch;
+use MIME::Base64;
+use File::Basename;
+#==================== G L O B A L S  =========================
+my  %PARAMS = ();
+my  $LOCAL_HOST = `uname -n`;
+my  $SCRIPT = "process-logistics_Sims";
+our $start_unix_time = time();
+# pointer to hashes with config ini parameters
+my $config_ini;
+my $dbconfig_ini;
+my $sp_config_ini;
+
+my $soap;
+#==================== S T A R T  =========================
+parse_entry();
+#==================== F U N C T I O N S ================
+
+## Main parsing function
+sub parse_entry{
+    if ( $#ARGV == -1 ) { print_usage(); } #if
+
+    GetOptions( 'c|config=s'            => \$PARAMS{'configfile'},
+                'dbs|dbsection=s'       => \$PARAMS{'dbsection'},
+                'cs|csection=s'         => \$PARAMS{'csection'},
+                'sp|spsection=s'         => \$PARAMS{'spsection'},
+                'jp|justprint'          => \$PARAMS{'justprintFLAG'},
+                'n|notify'              => \$PARAMS{'notify'},
+                'runfixscript'          => \$PARAMS{'runfixscript'},
+                'help|?'                => sub{ print_usage() },
+                'v|version'             => sub{ print_version() },
+                'debug'                 => \$PARAMS{'Debug'}
+              );
+
+    #Parameters logic
+    logM(3,"[".__LINE__."] parse_entry() validatign paramters logic");
+    if ( (!defined $PARAMS{'configfile'}) ) {
+        print ("Missing config file parameter. You need provide .ini file with database configuration\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'dbsection'}) ) {
+        print ("Missing dbsection parameter. You need to provide database section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'csection'}) ) {
+        print ("Missing csection parameter. You need to provide configuration section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    if ( (!defined $PARAMS{'spsection'}) ) {
+        print ("Missing spsection parameter. You need to provide configuration section name from configuration INI file\nTry $0 --help\n");
+        exit(1);
+    } #if
+
+    #Processing the parameters
+
+    # this variable contains the keyworks which are the parameters readed from the config ini file,
+    # Parameters from this array will be readed from ini file and placed in the returned array by
+    # readConfigFile(...) function
+    my @DB_IniDict     = ('Port','Host','User','Password','Eap_db');
+    my @Config_IniDict = ('URI','SecureLink','Mail','FixScript','FixScriptArgs','SimsInDir','SimsOutDir','SimsFailed','ResetAutoActivate','AutoActivateOffsetNew','AutoActivateOffsetPorting');
+    my @SP_Config_IniDict = ('SpConfigId','SoapUser','SoapPass');
+
+    #Geting pointer to master hash config ini
+    $dbconfig_ini = readConfigFile( $PARAMS{'configfile'}, $PARAMS{'dbsection'}, \@DB_IniDict );
+    $config_ini   = readConfigFile( $PARAMS{'configfile'}, $PARAMS{'csection'},  \@Config_IniDict );
+    $sp_config_ini= readConfigFile( $PARAMS{'configfile'}, $PARAMS{'spsection'}, \@SP_Config_IniDict );
+
+    # checking if u want only to print the configuration params
+    if ( defined $PARAMS{'justprintFLAG'} ) {
+        printIniConfig( $dbconfig_ini,"database connection",0); #last arg in the end says if you want to exit or continue;
+        printIniConfig( $config_ini,"configuration params",1); #last arg in the end says if you want to exit or continue;
+    } #if
+
+    #check if fix-script param is defined in case of runfixscript flag enabled
+    if ( defined $PARAMS{'runfixscript'} ){
+        if ( $config_ini->{'FixScript'} eq "" ){
+            logM(2,"Fix-Scipt flag is enabled but there is no FixScript defined for this section in the INI file");
+#        } else {#if
+#            `$config_ini->{'FixScript'} -c $PARAMS{'configfile'} -dbs $PARAMS{'dbsection'} -cs $PARAMS{'csection'} -sp $PARAMS{'spsection'}`;
+#            logM(2,"Fix-Scipt has been invoked. process-logistics_Sims has to be rerun");
+        }
+    } #if
+
+    program(); #starting main program code
+
+    exit(2); #this line shouldn't be reached
+}
+
+## Main program function
+sub program {
+    logM(3,"entering program()");
+    $soap  = createSOAPobject($config_ini->{'SecureLink'}, $config_ini->{'URI'});
+    ## Move 'em
+    process_dir( $config_ini->{'SimsInDir'},  $config_ini->{'SimsOutDir'} );
+
+
+    exit(0); #program ends
+}
+
+## This function establish SOAP connection to the wsdl server
+sub createSOAPobject{
+    my ($SecureLink,$URI) = @_;
+    logM(3,"entering createSOAPobject(".$SecureLink.",".$URI.")");
+    my $soap = SOAP::Lite->on_fault(
+            sub {
+                my $soap = shift;
+                my $res  = shift;
+                ref $res
+                    ? die( join "\n", '--- SOAP FAULT ---', $res->faultcode, $res->faultstring, '' )
+                    : die( join "\n", '--- TRANSPORT ERROR ---', $soap->transport->status, '' );
+                return new SOAP::SOM;
+            }
+        )->service($SecureLink.$URI);
+    logM(3,"\tcreateSOAPobject: soap object created");
+#    logM(3," setting up the soap header using: ". $config_ini->{'SOAP_user'} . " " . $config_ini->{'SOAP_pass'} );
+#    $config_ini->{'SOAP_authoriz'} = 'Basic ' . encode_base64('user:passwd');
+#    logM(3," authorization string is :" . $config_ini->{'SOAP_authoriz'});
+#    $soap->transport->http_request->headers->push_header('Authorization'=> $config_ini->{'SOAP_authoriz'} );
+    return $soap;
+}
+
+#base on this
+##http://search.cpan.org/dist/SOAP-Lite/lib/SOAP/Transport.pod#HTTP_BASIC_AUTHENTICATION
+sub SOAP::Transport::HTTP::Client::get_basic_credentials {
+        logM(3,"Running get_basic_credentials for soap");
+        return $sp_config_ini->{'SoapUser'} => $sp_config_ini->{'SoapPass'};
+}
+
+## Prints script usage
+sub print_usage{
+        print "Usage:\n";
+        print "\t$0 [options]\n";
+        print "\n\n-h,--help\t\tthis output";
+        print "\n-c,--config\t\tconfig ini file";
+        print "\n-dbs,--dbsection\tconfig ini database section name";
+        print "\n-cs,--csection\t\tconfig ini section with configuration parameters";
+        print "\n-runfixscript\t\tif flag is set will run fix-script defined in the connection section in case of critical issue";
+        print "\n-jp,--justprint\t\tif flag is set prints section from config file and exit(1)";
+        print "\n-n,--notify\t\tif flag is set script will notify aobut the issue";
+        print "\n-v,--version\t\tprint version and exit";
+        print "\n-debug\t\t\tenter debug mode";
+        print "\n";
+        exit(0);
+} #print_usage
+
+## Prints script version
+sub print_version{
+    print $0 . " version: " . $Version . "\n";
+    exit(0);
+}
+
+## This function just prints the configuration hash
+sub printIniConfig {
+    my ($hashPointer,$hashName,$exit) = @_;
+    #printing master config
+    print "======= $hashName ========\n";
+    while ( my ($k,$v) = each (%$hashPointer) ) {
+        if ( ! defined $v ) { $v = ""; } #don't want complaining about uninitialized value
+        print "\t$k = $v \n";
+    } #while
+
+    if ( $exit != 0 ) {
+        exit($exit);
+    } #if
+} #printIniConfig
+
+##Reads config ini file. Exits if file doesn't exists. Function retuns
+##the hash with the database configuration block
+sub readConfigFile {
+    my $ConfigIniFile = $_[0];
+    my $DatabaseID    = $_[1];
+    my @ConfigIniDict = @{$_[2]};
+    my %DB;
+
+    # print "file: $ConfigIniFile\n";
+    # print "sectionId: $DatabaseID\n";
+    # foreach ( @ConfigIniDict ) {
+    #     print "ConfigIniDict : ". $_ ."\n";
+    # }
+
+    $DB{'section_name'} = $DatabaseID;
+    #Check if file exists
+    if ( ! -e $ConfigIniFile ) {
+        logM(2,"Config file doesn't exists");
+        exit(2);
+    } #if
+    if ( ! -r $ConfigIniFile ) {
+        logM(2,"Cannot read config file. Permission denied");
+        exit(2);
+    } #if
+    my $Config = Config::Tiny->read( $ConfigIniFile );
+
+    # -- loading generic block to the %CONF_INI_PARAMS array
+    foreach ( @ConfigIniDict ) {
+        my $pname = $_;
+        $DB{$pname} = $Config->{generic}->{$pname};
+    } #foreach
+    # -- checking if section in configuration file exists
+    my $section = $Config->{$DatabaseID};
+    if ( ! defined $section ) {
+        logM(2,"Provided section doesn't exists in configuration file");
+    } #ifvim
+    # -- reloading database block to the %CONF_INI_PARAMS array
+    foreach ( @ConfigIniDict ) {
+        my $pname = $_;
+        if ( defined $Config->{$DatabaseID}->{$pname} ) {
+          $DB{$pname} = $Config->{$DatabaseID}->{$pname};
+        } #if
+    } #foreach
+   return \%DB;
+} #readConfigFile
+
+#Writes a message to the log.
+#       0 - info
+#       1 - warning
+#       2 - error
+#       3 - verbose/debug mode
+sub logM {
+        my ($level,$message) = @_;
+        if ( $level == 3 and ! defined $PARAMS{'Debug'} ) { return; }
+        my $prefix;
+        switch( $level ) {
+                case 0 { $prefix = "[Info]"; }
+                case 1 { $prefix = "[Warning]"; }
+                case 2 { $prefix = "[Error]"; }
+                case 3 { $prefix = "[Debug]"; }
+        } #switch
+        print $0 . $prefix . " " . $message . "\n";
+        switch( $level ) {
+                case 2 { exit(2) }
+        } #switch
+} #log
+
+
+## Complain about a bogus line of input
+sub invalid {
+    my ($content) = @_;
+    die "Invalid row at line $INPUT_LINE_NUMBER:\n$content";
+}
+
+## Loging - will die for priority critical.  See /etc/syslog.conf for message handling
+sub my_syslog {
+    my ( $pri, $fmt, @messages ) = @_;
+    logM(3,"running my_syslog(".$pri.")");
+    my $Mail          = $config_ini->{'Mail'};
+
+    my $FixCommand = "";
+    if ( defined $config_ini->{'FixScript'} ) {
+        logM(3,"Fix command defined: ". $config_ini->{'FixScript'});
+        $FixCommand = $config_ini->{'FixScript'};
+    } #if
+
+    if ( defined $config_ini->{'FixScriptArgs'} ) {
+        logM(3,"Fix command agrumnets defined ". $config_ini->{'FixScriptArgs'});
+        $FixCommand .= " " . $config_ini->{'FixScriptArgs'};
+    } #if
+
+        logM(3,"Full fix command: ". $FixCommand );
+
+    ## Syslog the message, assuming nothing
+    logM(3,"Opening log file");
+    openlog( 'process-logistics_Sims', 'ndelay,pid', LOG_LOCAL5 );
+    syslog( $pri, $fmt, @messages );
+    closelog();
+    logM(3,"Log file closed");
+
+    ## Die for the critical case
+    if ( $pri eq 'crit' ) {
+        if ( $fmt =~ "Sim not found for"){
+#                if ( defined $PARAMS{'runfixscript'} ){
+#                    system( $FixCommand );
+          system( "$config_ini->{'FixScript'} -c $PARAMS{'configfile'} -dbs $PARAMS{'dbsection'} -cs $PARAMS{'csection'} -sp $PARAMS{'spsection'}" );
+          logM(2,"Fix-Scipt has been invoked. process-logistics_Sims has to be rerun");
+          system( "echo \"Error(s) detected and Fix-Scipt has been invoked. process-logistics_Sims has to be rerun\" | /bin/mail -s \"Server Alert - $LOCAL_HOST - $SCRIPT - Errors when processing SIMs\" ".$Mail );
+
+#                } #if
+#          print "Error(s) detected and fixed. Please re-run this script to fix the problems\n";
+#               system( "echo \"Error(s) detected and fixed while processing SIMs. Please re-run the script $SCRIPT to fix the problems\" | /bin/mail -s \"Server Alert - $LOCAL_HOST - $SCRIPT - Errors when processing SIMs\" ".$Mail );
+        }
+        die sprintf "$fmt\n", @messages;
+    }
+}
+
+## Handle a single text file
+sub process_txt {
+    my ( $dbh, $filename, $out_dir ) = @_;
+    logM(3,"entering process_txt( ".$filename.")");
+    my $spid = $sp_config_ini->{'SpConfigId'};
+
+    #Set up our queries
+    ##get the clientid and the phonenumber
+    my $phone = $dbh->prepare("SELECT fkclientid, phonenumber, ported, sim, auto_activatedate, phonestatus FROM phones WHERE phoneid=?");
+
+    ##get the clients firstname
+    my $client = $dbh->prepare("SELECT p.firstname FROM clients c INNER JOIN client_to_person cp ON cp.FK_client_id = c.clientid INNER JOIN person p ON cp.FK_person_id = p.id WHERE clientid=?");
+
+    ##check whether the sim exists in the database with item_no is equal to value of column 13 in CSV file
+    my $check = $dbh->prepare("SELECT itemid FROM inventory WHERE item_no=? AND item_used=0");
+
+    ##update table phones: column sim is a mix of 896102 and value of column 13 in CSV file
+    ##condition: phoneid is equal to the first part of column 2 in CSV file
+    my $update_phone = $dbh->prepare("UPDATE phones SET sim=? WHERE phoneid=?");
+    my $update_phone2 = $dbh->prepare("UPDATE phones SET sim=?, sim_prev=? WHERE phoneid=?");
+    my $update_phone3 = $dbh->prepare("UPDATE phones SET auto_activatedate=Now()+INTERVAL ? DAY WHERE phoneid=?");
+
+    ##update table inventory: item_used is equal to 1
+    ##condition: itemid is equal to itemid collected in the SELECT query
+    my $update_inventory = $dbh->prepare("UPDATE inventory SET item_used=1 WHERE itemid=?");
+
+    ##insert into table phonetoinventory:
+    ##fkphoneid  is equal to the first part of column 2 in CSV file
+    ##fkitemid is equal to itemid collected in the SELECT query
+    my $insert_inventory = $dbh->prepare("INSERT INTO phonetoinventory (fkphoneid, fkitemid) VALUES (?, ?)");
+
+    ##insert into bill_log
+    my $insert_bill_log = $dbh->prepare("INSERT INTO bill_log (logtime, importstatus, importerror, fktaskid, exetime, rcount, logtype) VALUES (Now(), 'S', 'Process Sims Completed', 319, ?, ?, 7)");
+
+    my $date = strftime( '%Y-%m-%d %H:%M:%S', localtime );
+
+    ## Open the file
+    #open my $file, '<', $filename or die "open: $OS_ERROR!\n";
+    open my $file, '<', $filename
+        or my_syslog( 'crit', "open: $OS_ERROR" );
+
+    ## Example line
+    # 20/11/2010,1076_2010112029,Andy,Perreiter,0435994327,Level 6  17-19 Bridge St,,SYDNEY,NSW,2000,1.30101E+36,35837940,3,0,3110059000013
+
+    ## Process the single header row (always the first)
+    $_ = <$file>;
+    my ($headerflag) = split( m{ , }msix, $_, 2 );
+    #$headerflag eq 'Date' or invalid($_);
+    $headerflag eq 'Date'
+        or my_syslog( 'warning', 'Header flag is not in correct format:', $_ );
+
+    ## Handle any events
+    my $count = 0;
+    logM(3,"Ready for work");
+    my_syslog( 'debug', 'Ready for work...' );
+    while (<$file>) {
+
+        ## Fix line endings
+        s{ [\r\n\s]+ \Z }{}msix;
+
+        ## Extract the values we want
+        my @values        = split( m{ , }msix, $_ );
+        my $date          = $values[0];
+        my $id            = $values[1];
+        my $iccid         = $values[17];
+              $iccid                    =~ s/ //g;
+        my $check_item_no = 896102 . $iccid;
+
+        ##execute SELECT itemid FROM inventory WHERE item_no=$check_item_no AND item_used=0
+        $check->execute( $check_item_no );
+
+        logM(3,"Rows validation: " . $check->rows);
+        if ( $check->rows <= 0 ) {
+                        logM(3,"Errors in the file, moving file to " . $config_ini->{'SimsFailed'});
+                        close $file or my_syslog( 'crit', "close: $OS_ERROR" );
+                        move($filename, $config_ini->{'SimsFailed'} );
+                        my_syslog( 'crit', "Sim not found for $check_item_no" );
+              } #if
+
+        my @check_data;
+        my $itemid;
+        while ( @check_data = $check->fetchrow_array() ) {
+            $itemid = $check_data[0];
+        }
+
+        my ( $phoneid, $phone_date ) = split( '_', $id );
+        ##execute SELECT fkclientid, phonenumber, ported, sim FROM phones WHERE phoneid=$phoneid
+        $phone->execute( $phoneid );
+        my ( $fkclientid, $phonenumber, $ported, $sim, $auto_activatedate, $phonestatus );
+        $phone->bind_columns( \$fkclientid, \$phonenumber, \$ported, \$sim, \$auto_activatedate, \$phonestatus );
+        $phone->fetch();
+
+        ##If sim already exists (we are doing a sim swap), do the update with sim_prev field
+        if ( length ( $sim ) > 18 ) {
+            ##execute UPDATE phones SET sim=$check_item_no, sim_prev=$sim WHERE phoneid=$phoneid
+            $update_phone2->execute( $check_item_no, $sim, $phoneid );
+                  if ( $update_phone2->err ) {
+                        my_syslog('warning',"Update_phone2 ERROR -> sim=$check_item_no, sim_prev=$sim where phoneid=$phoneid returned: $update_phone2->err ($update_phone2->errstr) \n");
+                  }
+
+            #Log point
+            my_syslog(
+                'info',                         join q{ },
+                'Processing[1]: Update 2',             "sim=$check_item_no, sim_prev=$sim",
+                'Where',                               "phoneid=$phoneid"
+            );
+        } else {
+            ##execute UPDATE phones SET sim=$check_item_no WHERE phoneid=$phoneid
+            $update_phone->execute( $check_item_no, $phoneid );
+                  if ( $update_phone->err ) {
+                            my_syslog('warning',"Update_phone ERROR -> sim=$check_item_no, sim_prev=$sim where phoneid=$phoneid returned: $update_phone->err ($update_phone->errstr) \n");
+                  }
+
+            #Log point
+            my_syslog(
+               'info',                         join q{ },
+                'Processing[1]: Update ',              "sim=$check_item_no",
+                'Where',                               "phoneid=$phoneid"
+            );
+        }
+
+        #If the phone is waiting for activation and the auto activate date is already set, we'll update it
+        if ( ( $config_ini->{'ResetAutoActivate'} eq "Yes" ) && ( $phonestatus == 1 ) && ( length ( $auto_activatedate ) > 1 ) ) {
+            my $daystoadd;
+            if ($ported == 0) {
+                $daystoadd = $config_ini->{'AutoActivateOffsetNew'};
+            }
+            else {
+                $daystoadd = $config_ini->{'AutoActivateOffsetPorting'};
+            }
+
+            #execute UPDATE phones SET auto_activatedate=? WHERE phoneid=?
+            $update_phone3->execute( $daystoadd, $phoneid );
+            if ( $update_phone3->err ) {
+                my_syslog('warning',"Update_phone3 ERROR -> daystoadd=$daystoadd where phoneid=$phoneid returned: $update_phone3->err ($update_phone3->errstr) \n");
+            }
+
+            #Log point
+            my_syslog(
+               'info',                         join q{ },
+               'Processing[1]: Update 3',             "daystoadd=$daystoadd",
+               'Where',                               "phoneid=$phoneid"
+           );
+        }
+
+        #execute UPDATE inventory SET item_used=1 WHERE itemid=$itemid
+        $update_inventory->execute( $itemid );
+        #Log point
+        my_syslog(
+            'info',                         join q{ },
+            'Processing[2]: Update item_used=1 Where ',
+            "itemid=$itemid"
+        );
+
+        ##execute INSERT INTO phonetoinventory (fkphoneid, fkitemid) VALUES ($phoneid, $itemid)
+        $insert_inventory->execute( $phoneid, $itemid );
+        #Log point
+        my_syslog(
+            'info',                         join q{ },
+            'Processing[3]: Insert ',   "fkphoneid=$phoneid",
+            "fkitemid=$itemid"
+        );
+
+        $dbh->commit();
+
+        ##execute SELECT firstname FROM clients WHERE clientid=$fkclientid
+        $client->execute( $fkclientid );
+        my $firstname;
+        $client->bind_columns( \$firstname );
+        $client->fetch();
+
+        my $messageid;
+        if ($ported == 0) {
+            $messageid = 14312;
+        }
+        else {
+            $messageid = 14285;
+        }
+
+        ## Send the "sim sent" email to the client using the web service
+        my $soap_msg = $soap->sendMessage2(
+            SOAP::Data->value(
+                SOAP::Data->name( 'request_type' => 2 )->type('string'),
+                SOAP::Data->name( 'clientid'     => $fkclientid )->type('double'),
+                SOAP::Data->name( 'phoneid'      => $phoneid )->type('double'),
+                SOAP::Data->name( 'messageid'    => $messageid )->type('double'),
+                # ONLY FOR sendMessage NOT sendMessage2 SOAP::Data->name( 'repVars'      => "$phonenumber,$firstname,footer" ),
+                SOAP::Data->name( 'message'      => 0 )->type('string'),
+                SOAP::Data->name( 'spconfigID' => $spid )->type('double'),
+            ),
+        );
+        #Log point
+        my_syslog(
+            'info',                         join q{ },
+            'Processing[4]: Send email ',   "request_type=2",
+            "clientid=$fkclientid",         "phoneid=$phoneid",
+            'messageid=4025',               "repVars=$phonenumber,$firstname,footer",
+            'message=0'
+        );
+
+        print Dumper( \$soap_msg );
+
+        ## Add the "sim sent" status using the web service
+        my $soap_status = $soap->addStatuses(
+            SOAP::Data->value(
+                SOAP::Data->name( 'clientid'   => $fkclientid )->type('double'),
+                SOAP::Data->name( 'phoneid'    => $phoneid )->type('double'),
+                SOAP::Data->name( 'comment'    => '' )->type('string'),
+                SOAP::Data->name( 'statusid'   => 16 )->type('double'),
+                SOAP::Data->name( 'spconfigID' => $spid )->type('double'),
+            ),
+        );
+        #Log point
+        my_syslog(
+            'info',                         join q{ },
+            'Processing[5]: Add sim sent',   "clientid=$fkclientid",
+            "phoneid=$phoneid",              'statusid=16'
+        );
+
+        #Log point
+        my_syslog(
+            'info',                         join q{ },
+            'Processing[5]: Add sim sent',   "clientid=$fkclientid",
+            "phoneid=$phoneid",              'statusid=16'
+        );
+
+        ## Count number of rows processed
+        $count++;
+
+        print Dumper( \$soap_status );
+
+    }    # while loop
+
+    #close $file or die "close: $OS_ERROR!\n";
+    close $file
+        or my_syslog( 'crit', "close: $OS_ERROR" );
+
+    ##insert into bill_log
+    # INSERT INTO bill_log (logtime, importstatus, importerror, exetime, rcount, logtype) VALUES (Now(), 'S', 'Process Sims Completed', $current_unix_time - $start_unix_time, $count, 6)"
+    my $current_unix_time = time();
+    $insert_bill_log->execute( $current_unix_time - $start_unix_time, $count );
+
+    $dbh->commit();
+
+    ## We're done
+    #rename $filename, "$out_dir/" . basename($filename) or die "rename: $OS_ERROR!\n";
+    rename $filename, "$out_dir/" . basename($filename)
+        or my_syslog( 'crit', "rename: $OS_ERROR" );
+
+    return;
+}
+
+## Single pass of the directory
+sub process_dir {
+    my ( $in_dir, $out_dir ) = @_;
+    logM(3,"running process_dir(".$in_dir.",".$out_dir.")");
+
+
+    ## Connect to the database
+    #
+    logM(3,"Eap_db: ". $dbconfig_ini->{'Eap_db'} );
+    logM(3,"Host". $dbconfig_ini->{'Host'} );
+    logM(3,"Port:". $dbconfig_ini->{'Port'} );
+    logM(3,"User" .$dbconfig_ini->{'User'} );
+    logM(3,"Password" .$dbconfig_ini->{'Password'} );
+    my $connectionString = "DBI:mysql:".$dbconfig_ini->{'Eap_db'}.":".$dbconfig_ini->{'Host'}.":".$dbconfig_ini->{'Port'};
+    logM(3,"\tdb connection:\t".$connectionString);
+    my $dbh = DBI->connect($connectionString,
+                           $dbconfig_ini->{'User'},
+                           $dbconfig_ini->{'Password'},
+                           { PrintError => 1, AutoCommit => 0, RaiseError => 1 } )
+                    or my_syslog( 'crit', "database: $DBI::errstr" );
+    logM(3,"\tprocess_dir(): connected to database");
+    ## Let's go to our new home
+    #chdir $in_dir or die "chdir $in_dir: $OS_ERROR\n";
+    chdir $in_dir
+        or my_syslog( 'crit', "chdir $in_dir: $OS_ERROR" );
+
+    #my $dir = IO::Dir->new(q{.}) or die "opendir: $OS_ERROR!\n";
+    my $dir = IO::Dir->new(q{.})
+        or my_syslog( 'crit', "opendir: $OS_ERROR" );
+
+    my $count = 0;
+    my $insert_bill_log = $dbh->prepare("INSERT INTO bill_log (logtime, importstatus, importerror, fktaskid, exetime, rcount, logtype) VALUES (Now(), 'S', 'Process Sims Completed', 319, 0, ?, 7)");
+
+    ## Process each text file (older than 60 seconds)
+    while ( defined( my $filename = $dir->read() ) ) {
+        next if not -f $filename;                         # Regular files
+        next if not $filename =~ m{ \. csv \Z }msix;      # Check extension
+        #next if not time - ( stat $filename )[9] > 60;    # Not too new
+
+        eval {
+            process_txt( $dbh, $filename, $out_dir );
+            $count = 1;
+            ## NB: Commited for each row above
+            #$dbh->commit();
+        };
+        #if ($EVAL_ERROR) {
+        #    warn "Problem with $filename: $EVAL_ERROR";    ## no critic "RequireCarping"
+        #    eval { $dbh->rollback(); };
+        #}
+    }
+
+    if ( $count eq 0 ) {
+        $insert_bill_log->execute( $count );
+        $dbh->commit();
+    }
+
+    ## Disconnect from the database
+    $dbh->disconnect();
+    return;
+}
+[root@eap-worker01 ~]#

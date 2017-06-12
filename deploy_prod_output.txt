@@ -1,0 +1,194 @@
+[root@ecgw001 secure]# /bin/deploy_prod
+### Deploy git master to temporary dir /home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324
+Cloning into '/home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324'...
+remote: Counting objects: 6116, done.
+remote: Compressing objects: 100% (5445/5445), done.
+remote: Total 6116 (delta 2950), reused 2227 (delta 551)
+Receiving objects: 100% (6116/6116), 60.12 MiB | 715 KiB/s, done.
+Resolving deltas: 100% (2950/2950), done.
+### deploy exit code:0
+------------------- differences between old version and new version ---------------------
+Only in /home/jeenee/www/secure/ecgateway: data_bpay_processed
+Only in /home/jeenee/www/secure/ecgateway: data_bpay_unprocessed
+diff -r --exclude='*.git' /home/jeenee/www/secure/ecgateway/generalFunctions.cfc /home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324/generalFunctions.cfc
+121c121,125
+<                                               <p><a href="#txtEmailLink#">#txtEmailLink#</a></p>
+---
+>                                               <cfif (isDefined("application.settings.environment")) AND (application.settings.environment EQ "live")>
+>                                                       <p><a href="#txtEmailLink#">#txtEmailLink#</a></p>
+>                                               <cfelse>
+>                                                       <p>Link ONLY available in Live environment Ref:verify_#verifycode#</p>
+>                                               </cfif>
+162c166,170
+<                                               <p><a href="#txtEmailLink#">#txtEmailLink#</a></p>
+---
+>                                               <cfif (isDefined("application.settings.environment")) AND (application.settings.environment EQ "live")>
+>                                                       <p><a href="#txtEmailLink#">#txtEmailLink#</a></p>
+>                                               <cfelse>
+>                                                       <p>Link ONLY available in Live environment Ref:verify_#verifycode#</p>
+>                                               </cfif>
+637c645
+<
+---
+>
+1026c1034
+<
+---
+>
+1038c1046
+<
+---
+>
+1043c1051
+<
+---
+>
+1047c1055
+<
+---
+>
+1051,1052c1059,1060
+<                       , p.imsi
+<
+---
+>                       , p.imsi
+>
+1055,1056c1063,1064
+<
+<                       , c.clientid
+---
+>
+>                       , c.clientid
+1080,1081c1088,1089
+<
+<
+---
+>
+>
+diff -r --exclude='*.git' /home/jeenee/www/secure/ecgateway/owi/webservices/func_addClientOrder.cfm /home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324/owi/webservices/func_addClientOrder.cfm
+162a163,166
+>       <!--- SEND EMAIL VERIFICATION --->
+>     <cfobject name="objGeneralFunction" component="#request.componentroot#generalFunctions">
+>     <cfset email_verification_message = objGeneralFunction.verifyEmailAction(newclientid)>
+>
+181d184
+<
+205c208,210
+<
+---
+>                       <cfif isDefined("email_verification_message")>
+>                               <Email>#email_verification_message#</Email>
+>                       </cfif>
+diff -r --exclude='*.git' /home/jeenee/www/secure/ecgateway/report/report_billing_splitup.cfc /home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324/report/report_billing_splitup.cfc
+91a92,93
+>               <cfset var structTempPDFDownload = {} >
+>
+94c96,97
+<                       Print = {}
+---
+>                       Print = {},
+>                       Dload = {}
+108a112
+>
+111a116,118
+>                       <cfset local.structTempPDFDownload = getServerInvoices(sPathName & thisFolderName & "/dload")>
+>                       <cfset local.tempObj.Dload = local.structTempPDFDownload>
+>
+116c123,124
+<                               Print = {}
+---
+>                               Print = {},
+>                               Dload = {}
+diff -r --exclude='*.git' /home/jeenee/www/secure/ecgateway/report/report_billing_splitup.cfm /home/jeenee/www/secure/deploy_temp/ecgateway-git-201607041324/report/report_billing_splitup.cfm
+95c95,96
+<                       invoiceServerTotalPrint = 0
+---
+>                       invoiceServerTotalPrint = 0,
+>                       invoiceServerTotalDownload = 0
+118a120,121
+>                               <!--- 7. Total download on server --->
+>                               <td width="150" align="center" valign="top" class="tbl-style-4"><strong>On Server - Download</strong></td>
+128a132,133
+>                               <cfset ServerDownloadTotal = 0>
+>
+133a139
+>                                       <cfset ServerDownloadTotal = get_all_invoices.PDFINVOICEONSERVER[logicalMatchDate].dload.recordcount>
+136a143
+>
+146c153
+<                               <cfif DBTotal NEQ ServerEmailTotal + ServerPrintTotal>
+---
+>                               <cfif DBTotal NEQ ServerEmailTotal + ServerPrintTotal + ServerDownloadTotal>
+154c161,162
+<                               <cfset Month_total.invoiceServerTotal = Month_total.invoiceServerTotal + ServerEmailTotal + ServerPrintTotal>
+---
+>                               <cfset Month_total.invoiceServerTotal = Month_total.invoiceServerTotal + ServerEmailTotal + ServerPrintTotal  + ServerDownloadTotal>
+>
+156a165
+>                               <cfset Month_total.invoiceServerTotalDownload = Month_total.invoiceServerTotalDownload + ServerDownloadTotal>
+173c182
+<                                       <td align="center" valign="top" class="tbl-style-4" <cfif error_color> style="background-color: ##ff0000;color:white;" </cfif>>#ServerEmailTotal + ServerPrintTotal#</td>
+---
+>                                       <td align="center" valign="top" class="tbl-style-4" <cfif error_color> style="background-color: ##ff0000;color:white;" </cfif>>#ServerEmailTotal + ServerPrintTotal + ServerDownloadTotal#</td>
+180c189,191
+<
+---
+>
+>                                       <!--- 7. Total download on server --->
+>                                       <td align="center" valign="top" class="tbl-style-4" <cfif error_color> style="background-color: ##ff0000;color:white;" </cfif>>#ServerDownloadTotal#</td>
+206a218,220
+>
+>                                       <!--- 7. Total download on server --->
+>                                       <td align="center" valign="top" class="tbl-style-4" style="font-weight: bold;">#Month_total.invoiceServerTotalDownload#</td>
+232a247,248
+>               <cfset listClientIDDownload = "">
+>
+290a307,322
+>
+>                       <cfset tempQueryDownload = get_all_invoices.PDFINVOICEONSERVER[logicalMatchDate].dload>
+>
+>                       <cfif tempQueryDownload.recordcount GT 0>
+>                               <cfset listClientIDDownload = valuelist(tempQueryDownload.name)>
+>                       <cfelse>
+>                               <cfset listClientIDDownload = "">
+>                       </cfif>
+>
+>                       <cfloop list="#listClientIDDownload#" delimiters="," index="filename">
+>                               <cfset tmepClientID =  gettoken(getToken(filename,1,"_"),2,"-")>
+>                               <cfif listfind(listClientIDDB,tmepClientID) EQ FALSE>
+>                                       <cfset listClientIDDB = listAppend(listClientIDDB, tmepClientID)>
+>                               </cfif>
+>                       </cfloop>
+>
+324a357,359
+>                               <!--- 7. Is Download on Server --->
+>                               <td width="150" align="center" valign="top" class="tbl-style-4"><strong>On Server - Download</strong></td>
+>
+336c371,372
+<                               <cfset bIsPDFPrint = false >
+---
+>                               <cfset bIsPDFPrint = false >
+>                               <cfset bIsPDFDownload = false >
+358a395,400
+>                               <cfloop query="tempQueryDownload">
+>                                       <cfif find(trim(clientID),tempQueryDownload.name) GT 0>
+>                                               <cfset bIsPDFDownload = true>
+>                                       </cfif>
+>                               </cfloop>
+>
+409a452,460
+>                                       <!--- 7. Is Download on Server --->
+>                                       <td align="center" valign="top" class="tbl-style-4">
+>                                               <cfif NOT bIsPDFDownload>
+>                                                       No
+>                                               <cfelse>
+>                                                       Yes
+>                                               </cfif>
+>                                       </td>
+>
+------------------- differences between old version and new version ---------------------
+### Moving the git code to prod
+### Changing owner and permission on files
+/bin/ln: creating symbolic link `/home/jeenee/www/secure/ecgateway/billing/bills/bills' to `/data/billing/bills': File exists
+/bin/ln: creating symbolic link `/home/jeenee/www/secure/ecgateway/IPND/files/files' to `/data/IPND/files': File exists
+/bin/ln: creating symbolic link `/home/jeenee/www/secure/ecgateway/creditcheck/creditcheck' to `/data/creditcheck': File exists
